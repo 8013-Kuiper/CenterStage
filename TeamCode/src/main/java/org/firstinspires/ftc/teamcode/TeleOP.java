@@ -7,53 +7,15 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
+
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 
 @TeleOp
-public class TeleOP extends LinearOpMode {
-
-    private DcMotor frontLeft;
-    private DcMotor frontRight;                                         //Declaring Motor varibles
-    private DcMotor backLeft;
-    private DcMotor backRight;
-
-
-    private DcMotor lights;
-    private CRServo Left;
-    private DcMotor Crain;
-    private DcMotor Spin;
-    private Servo Guide;
-
-    private Rev2mDistanceSensor distance;
-
-
+public class TeleOP extends DriveConstants {
     public void runOpMode() throws InterruptedException {
 
-//alskdfj
 
-        frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
-        frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        backRight = hardwareMap.get(DcMotor.class, "backRight");
-
-        Guide = hardwareMap.get(Servo.class, "Guide");
-        Left = hardwareMap.get(CRServo.class, "Lefts");
-        Crain = hardwareMap.get(DcMotor.class, "Crane");
-        Spin = hardwareMap.get(DcMotor.class, "Spin");
-
-        distance = hardwareMap.get(Rev2mDistanceSensor.class,"distance");
-        lights =hardwareMap.get(DcMotor.class,"Lights");
-
-        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);                 //setting direction of drive train
-        backRight.setDirection(DcMotorSimple.Direction.FORWARD);
-
-
-        Crain.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Crain.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Spin.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Spin.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        initrobot();
         waitForStart();
         while (opModeIsActive()) {
             double turn;
