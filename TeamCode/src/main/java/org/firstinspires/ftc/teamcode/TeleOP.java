@@ -1,5 +1,5 @@
 package org.firstinspires.ftc.teamcode;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;                //imports from FIRST
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;                //imports from FIRST
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -12,12 +12,12 @@ import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCapt
 
 @TeleOp
 public class TeleOP extends DriveConstants {
-    public void runOpMode() throws InterruptedException {
-
-
-        initrobot();
-        waitForStart();
-        while (opModeIsActive()) {
+        @Override
+        public void init() {
+            initrobot();
+        }
+        @Override
+        public void loop() {
             double turn;
             double throttle;
             boolean strafeLeft;
@@ -137,7 +137,4 @@ public class TeleOP extends DriveConstants {
             }
 
         }
-
-
-    }
 }
