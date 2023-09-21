@@ -34,10 +34,9 @@ public abstract class DriveConstants extends OpMode {
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
         backRight = hardwareMap.get(DcMotor.class, "backRight");
 
-        Guide = hardwareMap.get(Servo.class, "Guide");
-        Left = hardwareMap.get(CRServo.class, "Lefts");
+
+
         Crain = hardwareMap.get(DcMotor.class, "Crane");
-        Spin = hardwareMap.get(DcMotor.class, "Spin");
 
         distance = hardwareMap.get(Rev2mDistanceSensor.class, "distance");
         lights = hardwareMap.get(DcMotor.class, "Lights");

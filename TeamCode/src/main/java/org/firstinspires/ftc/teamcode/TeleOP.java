@@ -26,21 +26,13 @@ public class TeleOP extends DriveConstants {
             boolean light;
             boolean lightoff;
 
-            float pickup;                                   //setting varibles from conteroler imputs
+            float intake;                                   //setting varibles from conteroler imputs
             float dropoff;
-            boolean spinpowerup;
-            boolean spinpowerdown;
+
+
             double crainpower;
-            boolean spincenter;
-            boolean opspincenter;
 
-            boolean guideUp;
-            boolean guideDown;
 
-            //Pole Preset
-            boolean smallJunction;
-            boolean mediumJunction;
-            boolean tallJunction;
 
 
             //setting controls on controller
@@ -54,18 +46,8 @@ public class TeleOP extends DriveConstants {
 
             crainpower = gamepad2.right_stick_y;
 
-            guideDown=gamepad2.x;
-            guideUp=gamepad2.y;
-
-            spinpowerup = gamepad2.dpad_right;
-            spinpowerdown =gamepad2.dpad_left;
-            pickup = gamepad2.left_trigger;
+            intake = gamepad2.left_trigger;
             dropoff = gamepad2.right_trigger;
-            //Pole Presets
-            smallJunction = gamepad2.x;
-            mediumJunction = gamepad2.y;
-            tallJunction = gamepad2.b;
-
 
             if (lightoff){
                 lights.setPower(0);
@@ -100,41 +82,19 @@ public class TeleOP extends DriveConstants {
 
             Crain.setPower(crainpower);
 
-            if (guideDown){
-                Guide.setPosition(0);
-            }
-
-            else{
-                Guide.setPosition(1);
-            }
-
-            if (spinpowerup){
-                Spin.setPower(1);
-            }
-            if (spinpowerdown){
-                Spin.setPower(-1);
-            }
-
-            if (!spinpowerdown && !spinpowerup ){
-                Spin.setPower(0);
-            }
-
-
-            if (pickup>0) {
+            if (intake>0) {
 
                 Left.setPower(-1);
             }
+            else
+                Left.setPower(0);
 
             if (dropoff>0){
 
                 Left.setPower(1);
 
             }
-            if (dropoff == 0 && pickup == 0){
 
-                Left.setPower(0);
-
-            }
 
         }
 }
