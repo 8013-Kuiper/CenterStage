@@ -7,19 +7,23 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.openftc.easyopencv.OpenCvCamera;
 
 import java.util.ArrayList;
-
+@TeleOp
 public class intakeTest extends OpMode {
 
     public Servo Intake;
     public CRServo Push;
 
+    public DcMotor Crane;
+
     public void init() {
         Intake = hardwareMap.get(Servo.class, "intake");
         Push = hardwareMap.get(CRServo.class, "push");
+        Crane = hardwareMap.get(DcMotor.class,"crane");
     }
 
     @Override
@@ -35,13 +39,18 @@ public class intakeTest extends OpMode {
         boolean IntakeOut;
         Boolean Push;
         Boolean Pull;
+        double Cranepower;
 
 
         IntakeIn = gamepad1.right_bumper;
         IntakeOut = gamepad1.left_bumper;
 
+        Cranepower = gamepad1.left_stick_y;
+
         Push = gamepad1.x;
         Pull = gamepad1.y;
+
+        Crane.setPower(Cranepower);
 
 
         if (IntakeIn) {
