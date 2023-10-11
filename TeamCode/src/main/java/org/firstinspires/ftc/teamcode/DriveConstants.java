@@ -36,10 +36,10 @@ public abstract class DriveConstants extends OpMode {
 
 
 
-        Crain = hardwareMap.get(DcMotor.class, "Crane");
+        //Crain = hardwareMap.get(DcMotor.class, "Crane");
 
-        distance = hardwareMap.get(Rev2mDistanceSensor.class, "distance");
-        lights = hardwareMap.get(DcMotor.class, "Lights");
+       // distance = hardwareMap.get(Rev2mDistanceSensor.class, "distance");
+       // lights = hardwareMap.get(DcMotor.class, "Lights");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);

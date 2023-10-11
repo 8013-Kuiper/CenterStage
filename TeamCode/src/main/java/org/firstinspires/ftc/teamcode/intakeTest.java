@@ -21,8 +21,8 @@ public class intakeTest extends OpMode {
     public DcMotor Crane;
 
     public void init() {
-        Intake = hardwareMap.get(Servo.class, "intake");
-        Push = hardwareMap.get(CRServo.class, "push");
+       // Intake = hardwareMap.get(Servo.class, "intake");
+        //Push = hardwareMap.get(CRServo.class, "push");
         Crane = hardwareMap.get(DcMotor.class,"crane");
     }
 
@@ -31,6 +31,8 @@ public class intakeTest extends OpMode {
         super.start();
 
         mRuntime.reset();
+        Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void loop() {
@@ -50,6 +52,12 @@ public class intakeTest extends OpMode {
         Push = gamepad1.x;
         Pull = gamepad1.y;
 
+        if(Crane.getCurrentPosition()>4300){
+            Crane.setDirection(DcMotorSimple.Direction.FORWARD);
+        }
+        if (Math.abs((Crane.getCurrentPosition())<30 ){
+            Crane.setDirection(DcMotorSimple.Direction.REVERSE);
+        }
         Crane.setPower(Cranepower);
 
 
@@ -68,6 +76,8 @@ public class intakeTest extends OpMode {
             Pixelpush();
         }
 
+        telemetry.addData("encoder", Crane.getCurrentPosition());
+        telemetry.update();
 
     }
 
