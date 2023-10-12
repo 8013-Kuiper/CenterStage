@@ -55,7 +55,7 @@ public class intakeTest extends OpMode {
         if(Crane.getCurrentPosition()>4300){
             Crane.setDirection(DcMotorSimple.Direction.FORWARD);
         }
-        if (Math.abs((Crane.getCurrentPosition())<30 ){
+        if (Math.abs(Crane.getCurrentPosition())<30 ){
             Crane.setDirection(DcMotorSimple.Direction.REVERSE);
         }
         Crane.setPower(Cranepower);
