@@ -22,7 +22,6 @@ public class intakeTest extends OpMode {
 
     public void init() {
        // Intake = hardwareMap.get(Servo.class, "intake");
-        //Push = hardwareMap.get(CRServo.class, "push");
         Crane = hardwareMap.get(DcMotor.class,"crane");
     }
 
@@ -37,10 +36,10 @@ public class intakeTest extends OpMode {
 
     public void loop() {
 
-        Boolean IntakeIn;
+        boolean IntakeIn;
         boolean IntakeOut;
-        Boolean Push;
-        Boolean Pull;
+        boolean Push;
+        boolean Pull;
         double Cranepower;
 
 
@@ -52,7 +51,7 @@ public class intakeTest extends OpMode {
         Push = gamepad1.x;
         Pull = gamepad1.y;
 
-        if(Crane.getCurrentPosition()>4300){
+        if(Math.abs(Crane.getCurrentPosition())>4300){
             Crane.setDirection(DcMotorSimple.Direction.FORWARD);
         }
         if (Math.abs(Crane.getCurrentPosition())<30 ){

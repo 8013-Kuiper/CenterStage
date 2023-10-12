@@ -17,16 +17,10 @@ public abstract class DriveConstants extends OpMode {
     public DcMotor backLeft;
     public DcMotor backRight;
 
-
-    public DcMotor lights;
-    public CRServo Left;
-    public DcMotor Crain;
-    public DcMotor Spin;
-    public Servo Guide;
+    public DcMotor Crane;
 
     public OpenCvCamera webcam;
 
-    private Rev2mDistanceSensor distance;
 
     public void initrobot() {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
@@ -36,21 +30,15 @@ public abstract class DriveConstants extends OpMode {
 
 
 
-        //Crain = hardwareMap.get(DcMotor.class, "Crane");
-
-       // distance = hardwareMap.get(Rev2mDistanceSensor.class, "distance");
-       // lights = hardwareMap.get(DcMotor.class, "Lights");
+        Crane = hardwareMap.get(DcMotor.class,"crane");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         backLeft.setDirection(DcMotorSimple.Direction.FORWARD);                 //setting direction of drive train
         backRight.setDirection(DcMotorSimple.Direction.FORWARD);
 
 
-        Crain.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Crain.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        Spin.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Spin.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
 
     }
