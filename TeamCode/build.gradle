@@ -16,6 +16,14 @@ apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
 android {
+
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets', 'src\\main\\java\\org\\firstinspires\\ftc\\teamcode\\folder'
+            }
+        }
+    }
     namespace = 'org.firstinspires.ftc.teamcode'
     androidResources {
         noCompress 'tflite'
