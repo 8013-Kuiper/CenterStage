@@ -51,10 +51,10 @@ public class intakeTest extends OpMode {
         Push = gamepad1.x;
         Pull = gamepad1.y;
 
-        if(Math.abs(Crane.getCurrentPosition())>4300){
+        if(Math.abs(Crane.getCurrentPosition())>4280){
             Crane.setDirection(DcMotorSimple.Direction.FORWARD);
         }
-        if (Math.abs(Crane.getCurrentPosition())<30 ){
+        if (Math.abs(Crane.getCurrentPosition())<5 ){
             Crane.setDirection(DcMotorSimple.Direction.REVERSE);
         }
         Crane.setPower(Cranepower);

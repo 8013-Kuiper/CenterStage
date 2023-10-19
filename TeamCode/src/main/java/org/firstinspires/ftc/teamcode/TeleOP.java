@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 
 @TeleOp
-public class TeleOP extends DriveConstants {
+public class TeleOP extends driveConstant {
         @Override
         public void init() {
             initrobot();
@@ -65,9 +65,9 @@ public class TeleOP extends DriveConstants {
 
 
             frontLeft.setPower(throttle);
-            frontRight.setPower(throttle);
+            frontRight.setPower(throttle*.97);
             backLeft.setPower(throttle);
-            backRight.setPower(throttle);
+            backRight.setPower(throttle*.97);
 
             frontLeft.setPower(-turn);
             frontRight.setPower(turn);

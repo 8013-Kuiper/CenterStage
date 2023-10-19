@@ -10,7 +10,7 @@ import org.openftc.apriltag.AprilTagDetection;
 
 
 @Autonomous
-public class Ex_auto extends DriveConstants {
+public class Ex_auto extends driveConstant {
 
     public void init() {
 
