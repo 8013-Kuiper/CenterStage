@@ -31,7 +31,8 @@ public class TeleOP extends driveConstant {
             float dropoff;
 
 
-            double crainpower;
+            double cranepower;
+            double Intakepower;
 
 
 
@@ -42,13 +43,15 @@ public class TeleOP extends driveConstant {
             strafeLeft = gamepad1.left_bumper;
             strafeRight = gamepad1.right_bumper;
 
-            crainpower = gamepad2.right_stick_y;
+            cranepower = gamepad2.right_stick_y;
 
             intake = gamepad2.left_trigger;
             dropoff = gamepad2.right_trigger;
 
             extend = gamepad2.a;
             retract = gamepad2.b;
+
+            Intakepower = gamepad2.left_stick_y;
 
 
             if (strafeRight) {
@@ -75,9 +78,15 @@ public class TeleOP extends driveConstant {
             backLeft.setPower(-turn);
             backRight.setPower(turn);
 
-            //Crane.setPower(crainpower);
+            if(Math.abs(Crane.getCurrentPosition())>4280){
+                Crane.setDirection(DcMotorSimple.Direction.FORWARD);
+            }
+            if (Math.abs(Crane.getCurrentPosition())<5 ){
+                Crane.setDirection(DcMotorSimple.Direction.REVERSE);
+            }
+            Crane.setPower(cranepower);
 
-            if(extend){
+            /*if(extend){
                 Crane.setPower(1);
                 Crane.setTargetPosition(4290);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -87,7 +96,10 @@ public class TeleOP extends driveConstant {
                 Crane.setPower(1);
                 Crane.setTargetPosition(10);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
+            }*/
+
+            Intake.setPower(Intakepower*.60);
+
 
             telemetry.addData("fL",frontLeft.getCurrentPosition());
             telemetry.addData("fR",frontRight.getCurrentPosition());

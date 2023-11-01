@@ -16,6 +16,8 @@ public abstract class driveConstant extends OpMode {
 
     public DcMotor Crane;
 
+    public DcMotor Intake;
+
     public OpenCvCamera webcam;
 
 
@@ -27,7 +29,9 @@ public abstract class driveConstant extends OpMode {
 
 
 
-        //Crane = hardwareMap.get(DcMotor.class,"crane");
+        Crane = hardwareMap.get(DcMotor.class,"crane");
+
+        Intake = hardwareMap.get(DcMotor.class, "intake");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
