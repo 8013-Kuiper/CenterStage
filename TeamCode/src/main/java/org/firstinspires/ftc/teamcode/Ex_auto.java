@@ -34,12 +34,33 @@ public class Ex_auto extends driveConstant {
 
     }
         public void loop() {
-            //code stuff
+            switch(position){
+                case right:
+                
+
+
+            }
 
 
 
             stop();
             }
+
+public void Drive (double power, double time){
+    frontLeft.setpower(power);
+    frontRight.setpower(power);
+    backLeft.setPower(power);
+    backRight.setpower(power);
+    sleep(time);
+    stopmotors();
+}
+    
+public void stopmotors(){
+    frontLeft.setpower(0);
+    frontRight.setpower(0);
+    backLeft.setPower(0);
+    backRight.setpower(0);
+    }
         }
 
 
