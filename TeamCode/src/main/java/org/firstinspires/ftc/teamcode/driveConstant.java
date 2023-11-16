@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.openftc.easyopencv.OpenCvCamera;
 
@@ -20,6 +21,10 @@ public abstract class driveConstant extends OpMode {
 
     public OpenCvCamera webcam;
 
+    public Servo leftServo;
+
+    public Servo rightServo;
+
 
     public void initrobot() {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
@@ -32,6 +37,10 @@ public abstract class driveConstant extends OpMode {
         Crane = hardwareMap.get(DcMotor.class,"crane");
 
         Intake = hardwareMap.get(DcMotor.class, "intake");
+
+        leftServo = hardwareMap.get(Servo.class, "leftServo");
+
+        rightServo = hardwareMap.get(Servo.class, "rightServo");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);

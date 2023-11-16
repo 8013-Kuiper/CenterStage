@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
@@ -27,8 +28,11 @@ public class TeleOP extends driveConstant {
             boolean retract;
             boolean extend;
 
-            float intake;                                   //setting varibles from conteroler imputs
-            float dropoff;
+            boolean intakeClose;                                   //setting varibles from conteroler imputs
+            boolean intakeOpen;
+
+            double intake2Close;
+            double intake2Open;
 
 
             double cranepower;
@@ -45,8 +49,11 @@ public class TeleOP extends driveConstant {
 
             cranepower = gamepad2.right_stick_y;
 
-            intake = gamepad2.left_trigger;
-            dropoff = gamepad2.right_trigger;
+            intakeClose = gamepad2.right_bumper;
+            intakeOpen = gamepad2.left_bumper;
+
+            intake2Close = gamepad2.right_trigger;
+            intake2Open = gamepad2.left_trigger;
 
             extend = gamepad2.a;
             retract = gamepad2.b;
@@ -86,6 +93,24 @@ public class TeleOP extends driveConstant {
             }
             Crane.setPower(cranepower);
 
+
+            if (intakeClose){
+                leftServo.setPosition(0);
+            }
+            if (intakeOpen){
+                leftServo.setPosition(.5);
+            }
+
+            if (intake2Close>0){
+                rightServo.setPosition(0);
+            }
+
+            if (intake2Open>0){
+                rightServo.setPosition(.5);
+            }
+
+
+
             /*if(extend){
                 Crane.setPower(1);
                 Crane.setTargetPosition(4290);
@@ -98,17 +123,20 @@ public class TeleOP extends driveConstant {
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }*/
 
-            Intake.setPower(Intakepower*.60);
+            Intake.setPower(Intakepower*.70);
 
 
             telemetry.addData("fL",frontLeft.getCurrentPosition());
             telemetry.addData("fR",frontRight.getCurrentPosition());
             telemetry.addData("bL",backLeft.getCurrentPosition());
             telemetry.addData("bR",backRight.getCurrentPosition());
+            telemetry.addData("servo",leftServo.getPosition());
             telemetry.update();
 
 
 
 
         }
+    public ElapsedTime mRuntime = new ElapsedTime();
+
 }

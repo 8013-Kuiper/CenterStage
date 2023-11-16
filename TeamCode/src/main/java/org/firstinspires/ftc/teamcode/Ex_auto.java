@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -34,12 +36,12 @@ public class Ex_auto extends driveConstant {
 
     }
         public void loop() {
-            switch(position){
-                case right:
+            //switch(position){
+             //   case right:
                 
 
 
-            }
+         //   }
 
 
 
@@ -47,20 +49,22 @@ public class Ex_auto extends driveConstant {
             }
 
 public void Drive (double power, double time){
-    frontLeft.setpower(power);
-    frontRight.setpower(power);
+    frontLeft.setPower(power);
+    frontRight.setPower(power);
     backLeft.setPower(power);
-    backRight.setpower(power);
-    sleep(time);
+    backRight.setPower(power);
+
     stopmotors();
 }
     
 public void stopmotors(){
-    frontLeft.setpower(0);
-    frontRight.setpower(0);
+    frontLeft.setPower(0);
+    frontRight.setPower(0);
     backLeft.setPower(0);
-    backRight.setpower(0);
+    backRight.setPower(0);
     }
-        }
+    public ElapsedTime mRuntime = new ElapsedTime();
+    public ElapsedTime timer = new ElapsedTime();
+}
 
 
