@@ -28,6 +28,8 @@ public class TeleOP extends driveConstant {
             boolean retract;
             boolean extend;
 
+            boolean windshieldwiper;
+
             boolean intakeClose;                                   //setting varibles from conteroler imputs
             boolean intakeOpen;
 
@@ -54,6 +56,8 @@ public class TeleOP extends driveConstant {
 
             intake2Close = gamepad2.right_trigger;
             intake2Open = gamepad2.left_trigger;
+
+            windshieldwiper = gamepad2.y;
 
             extend = gamepad2.a;
             retract = gamepad2.b;
@@ -85,12 +89,7 @@ public class TeleOP extends driveConstant {
             backLeft.setPower(-turn);
             backRight.setPower(turn);
 
-            if(Math.abs(Crane.getCurrentPosition())>4280){
-                Crane.setDirection(DcMotorSimple.Direction.FORWARD);
-            }
-            if (Math.abs(Crane.getCurrentPosition())<5 ){
-                Crane.setDirection(DcMotorSimple.Direction.REVERSE);
-            }
+
             Crane.setPower(cranepower);
 
 
@@ -109,28 +108,36 @@ public class TeleOP extends driveConstant {
                 rightServo.setPosition(.5);
             }
 
+            if(windshieldwiper){
+                rightServo.setPosition(0);
+                rightServo.setPosition(1);
+            }
 
 
-            /*if(extend){
-                Crane.setPower(1);
-                Crane.setTargetPosition(4290);
+
+
+
+
+            if(extend){
+                Crane.setPower(-1);
+                Crane.setTargetPosition(-2290);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
-            if(retract){
+            if(retract) {
                 Crane.setPower(1);
-                Crane.setTargetPosition(10);
+                Crane.setTargetPosition(-10);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }*/
+            }
 
-            Intake.setPower(Intakepower*.70);
+            Intake.setPower(Intakepower*.80);
 
 
             telemetry.addData("fL",frontLeft.getCurrentPosition());
             telemetry.addData("fR",frontRight.getCurrentPosition());
             telemetry.addData("bL",backLeft.getCurrentPosition());
             telemetry.addData("bR",backRight.getCurrentPosition());
-            telemetry.addData("servo",leftServo.getPosition());
+            telemetry.addData("crane",Crane.getCurrentPosition());
             telemetry.update();
 
 

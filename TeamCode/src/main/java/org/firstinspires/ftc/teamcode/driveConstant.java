@@ -48,8 +48,9 @@ public abstract class driveConstant extends OpMode {
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
-        //Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //Crane.setDirection(DcMotorSimple.Direction.FORWARD);
+        Crane.setDirection(DcMotorSimple.Direction.FORWARD);
+        Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
     }
