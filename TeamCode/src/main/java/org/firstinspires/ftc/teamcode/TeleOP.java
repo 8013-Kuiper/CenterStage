@@ -110,7 +110,9 @@ public class TeleOP extends driveConstant {
 
             if(windshieldwiper){
                 rightServo.setPosition(0);
-                rightServo.setPosition(1);
+                mRuntime.reset();
+                if (mRuntime.seconds() >2)
+                    rightServo.setPosition(1);
             }
 
 

@@ -19,6 +19,8 @@ public abstract class driveConstant extends OpMode {
 
     public DcMotor Intake;
 
+    public DcMotor Winch;
+
     public OpenCvCamera webcam;
 
     public Servo leftServo;
@@ -41,6 +43,8 @@ public abstract class driveConstant extends OpMode {
         leftServo = hardwareMap.get(Servo.class, "leftServo");
 
         rightServo = hardwareMap.get(Servo.class, "rightServo");
+
+        //Winch = hardwareMap.get(DcMotor.class, "Winch");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
