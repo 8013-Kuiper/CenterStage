@@ -130,7 +130,7 @@ public class TeleOP extends driveConstant {
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             }
 
-            Intake.setPower(Intakepower*.80);
+            Intake.setPower(Intakepower*.90);
 
 
             telemetry.addData("fL",frontLeft.getCurrentPosition());
