@@ -38,6 +38,7 @@ public class testTeloOP extends driveConstant {
         Intake,
         Intake2,
         windshield,
+        servoclose,
         liftextend,
         liftretract,
         endGame
@@ -46,6 +47,7 @@ public class testTeloOP extends driveConstant {
     @Override
     public void init() {
         initrobot();
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
     }
@@ -103,12 +105,12 @@ public class testTeloOP extends driveConstant {
     switch (state){
 
         case Intake:
+            Crane.setTargetPosition(0);
             if(endGame){
                 state = State.endGame;
             }
-            if(Intakepower>0){
-                Intake.setPower(.9);
-            }
+            Intake.setPower(Intakepower*.9);
+
             if(stopIntakePower/*x button*/){
                 Intake.setPower(0);
                 rightServo.setPosition(0);
@@ -119,23 +121,28 @@ public class testTeloOP extends driveConstant {
         case windshield:
             if (mRuntime.seconds()>2){
                 rightServo.setPosition(1);
-                Crane.setTargetPosition(20);
+                Crane.setTargetPosition(-130);
                 state = State.Intake2;
             }
             break;
         case Intake2:
-            if (Intakepower>0){
-                Intake.setPower(.9);
-            }
+            Intake.setPower(Intakepower*.9);
+
             if (stopIntakePower){
                 Intake.setPower(0);
                 leftServo.setPosition(.5);
-                rightServo.setPosition(.5);
+                rightServo.setPosition(.3);
                 mRuntime.reset();
-                Crane.setTargetPosition(4000);
+                state = State.servoclose;
+            }
+            break;
+        case servoclose:
+            if(mRuntime.seconds()>5){
+                Crane.setTargetPosition(-4000);
                 state = State.liftextend;
             }
             break;
+
         case liftextend:
             if (Math.abs(Crane.getCurrentPosition()-4000) < 15){
                 if (intakeOpen/*left bumper*/){

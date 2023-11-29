@@ -110,8 +110,8 @@ public class TeleOP extends driveConstant {
 
             if(windshieldwiper){
                 rightServo.setPosition(0);
-                mRuntime.reset();
-                if (mRuntime.seconds() >2)
+
+                if (mRuntime.seconds() >mRuntime.seconds()+2)
                     rightServo.setPosition(1);
             }
 
@@ -140,6 +140,7 @@ public class TeleOP extends driveConstant {
             telemetry.addData("bL",backLeft.getCurrentPosition());
             telemetry.addData("bR",backRight.getCurrentPosition());
             telemetry.addData("crane",Crane.getCurrentPosition());
+            telemetry.addData("timer", mRuntime.seconds());
             telemetry.update();
 
 
