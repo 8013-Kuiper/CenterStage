@@ -44,7 +44,7 @@ public abstract class driveConstant extends OpMode {
 
         rightServo = hardwareMap.get(Servo.class, "rightServo");
 
-        //Winch = hardwareMap.get(DcMotor.class, "Winch");
+        Winch = hardwareMap.get(DcMotor.class, "launcher");
 
         frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);

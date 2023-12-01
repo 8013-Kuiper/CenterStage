@@ -36,6 +36,8 @@ public class TeleOP extends driveConstant {
             double intake2Close;
             double intake2Open;
 
+            double Winchpower;
+
 
             double cranepower;
             double Intakepower;
@@ -50,6 +52,8 @@ public class TeleOP extends driveConstant {
             strafeRight = gamepad1.right_bumper;
 
             cranepower = gamepad2.right_stick_y;
+
+            Winchpower = gamepad1.right_trigger;
 
             intakeClose = gamepad2.right_bumper;
             intakeOpen = gamepad2.left_bumper;
@@ -91,6 +95,8 @@ public class TeleOP extends driveConstant {
 
 
             Crane.setPower(cranepower);
+
+            Winch.setPower(Winchpower);
 
 
             if (intakeClose){
