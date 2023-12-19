@@ -29,6 +29,8 @@ public abstract class driveConstant extends OpMode {
 
     public Servo rightServo;
 
+    public Servo springArm;
+
 
     public void initrobot() {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
@@ -49,6 +51,8 @@ public abstract class driveConstant extends OpMode {
         Winch = hardwareMap.get(DcMotor.class, "Winch");
 
         Plane = hardwareMap.get(Servo.class, "plane");
+
+        springArm = hardwareMap.get(Servo.class, "springarm");
 
 
 

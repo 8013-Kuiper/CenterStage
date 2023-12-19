@@ -44,6 +44,8 @@ public class TeleOP extends driveConstant {
 
             double plane;
 
+            boolean springarm;
+
 
 
 
@@ -55,7 +57,7 @@ public class TeleOP extends driveConstant {
 
             cranepower = gamepad2.right_stick_y;
 
-            Winchpower = gamepad2.right_trigger;
+            Winchpower = gamepad2.left_stick_x;
 
             intakeClose = gamepad2.right_bumper;
             intakeOpen = gamepad2.left_bumper;
@@ -71,6 +73,8 @@ public class TeleOP extends driveConstant {
             Intakepower = gamepad2.left_stick_y;
 
             plane = gamepad1.right_trigger;
+
+            springarm = gamepad2.x;
 
 
             if (strafeRight) {
@@ -104,12 +108,20 @@ public class TeleOP extends driveConstant {
 
 
             if(plane>0) {
-                Plane.setPosition(1);
+                Plane.setPosition(.9);
             }
 
             if (plane<=0) {
             Plane.setPosition(.5);
             }
+
+            if (springarm){
+                springArm.setPosition(1);
+            }
+            if(!springarm){
+                springArm.setPosition(0);
+            }
+
 
             if (intakeClose){
                 leftServo.setPosition(0);
