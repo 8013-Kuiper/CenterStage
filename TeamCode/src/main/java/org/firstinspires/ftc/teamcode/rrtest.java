@@ -12,6 +12,7 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import java.math.*;
 
 
 
@@ -22,18 +23,29 @@ public class rrtest extends driveConstant {
 
     SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-    Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())
-            .strafeRight(10)
-            .forward(5)
-            .build();
+    Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
 
 
     public void init() {
+        //set starting point
+        drive.setPoseEstimate(startPose);
+
+        //first movement
 
     }
-        public void loop() {
+        public void start() {
+            Trajectory traj1 = drive.trajectoryBuilder(startPose)
+                    .splineTo(new Vector2d(23,-46),Math.toRadians(90))
+                    .build();
 
-            drive.followTrajectory(myTrajectory);
+            //second movement
+            Trajectory traj2 = drive.trajectoryBuilder(traj1.end())
+                    .splineToLinearHeading(new Pose2d(46,-46, Math.toRadians(0)), Math.toRadians(0))
+                    .splineTo(new Vector2d(49, -46),Math.toRadians(0))
+                    .build();
+
+            drive.followTrajectory(traj1);
+            drive.followTrajectory(traj2);
 
         }
 
