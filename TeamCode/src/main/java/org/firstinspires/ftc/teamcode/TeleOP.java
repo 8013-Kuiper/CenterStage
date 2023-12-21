@@ -45,7 +45,7 @@ public class TeleOP extends driveConstant {
             double plane;
 
             boolean springarm;
-
+            boolean holderActivation;
 
 
 
@@ -75,6 +75,8 @@ public class TeleOP extends driveConstant {
             plane = gamepad1.right_trigger;
 
             springarm = gamepad2.x;
+
+            holderActivation = gamepad2.dpad_up;
 
 
             if (strafeRight) {
@@ -145,10 +147,13 @@ public class TeleOP extends driveConstant {
                     rightServo.setPosition(1);
             }
 
+            if (holderActivation){
+                armHolder.setPosition(1);
+            }
 
-
-
-
+            if (!holderActivation){
+                armHolder.setPosition(0);
+            }
 
             if(extend){
                 Crane.setPower(-1);

@@ -55,7 +55,11 @@ public class Pipeline extends OpenCvPipeline {
         Scalar greenLowHSV = new Scalar(40,40,40);
         Scalar greenHighHSV = new Scalar(70,255,255);
 
-        Core.inRange(mat, greenLowHSV, greenHighHSV, mat);
+        //red
+        Scalar redHighHSV = new Scalar(10,255,255);
+        Scalar redLowHSV = new Scalar(0,50,50);
+
+        Core.inRange(mat, redLowHSV, redHighHSV, mat);
 
         Mat left = mat.submat(LEFT_ROI);
         Mat mid = mat.submat(MID_ROI);
