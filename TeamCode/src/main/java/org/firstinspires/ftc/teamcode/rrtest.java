@@ -12,6 +12,8 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import java.math.*;
 
 
@@ -19,21 +21,23 @@ import java.math.*;
 
 @Autonomous
 
-public class rrtest extends driveConstant {
+public class rrtest extends LinearOpMode {
 
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
 
     Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
 
-
-    public void init() {
+@Override
+    public void runOpMode() {
+    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         //set starting point
         drive.setPoseEstimate(startPose);
 
         //first movement
 
-    }
-        public void start() {
+
+        waitForStart();
+        if (opModeIsActive()){
             Trajectory traj1 = drive.trajectoryBuilder(startPose)
                     .splineTo(new Vector2d(23,-46),Math.toRadians(90))
                     .build();
@@ -41,15 +45,13 @@ public class rrtest extends driveConstant {
             //second movement
             Trajectory traj2 = drive.trajectoryBuilder(traj1.end())
                     .splineToLinearHeading(new Pose2d(46,-46, Math.toRadians(0)), Math.toRadians(0))
-                    .splineTo(new Vector2d(49, -46),Math.toRadians(0))
+                    //.splineTo(new Vector2d(49, -46),Math.toRadians(0))
                     .build();
 
             drive.followTrajectory(traj1);
             drive.followTrajectory(traj2);
 
         }
-        public void loop(){
 
-        }
-
+}
 }
