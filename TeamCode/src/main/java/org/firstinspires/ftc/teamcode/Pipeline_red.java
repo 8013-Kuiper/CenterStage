@@ -9,7 +9,7 @@ import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 import org.opencv.core.Rect;
 
-public class Pipeline extends OpenCvPipeline {
+public class Pipeline_red extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
 
@@ -30,12 +30,12 @@ public class Pipeline extends OpenCvPipeline {
             new Point(170, 150));
 
     static final Rect RIGHT_ROI = new Rect(
-            new Point(240, 10),
-            new Point(320, 150));
+            new Point(250, 10),
+            new Point(280, 150));
 
     static double percentThreshold = 0.05;
 
-    public Pipeline(Telemetry t){
+    public Pipeline_red(Telemetry t){
         telemetry = t;
     }
 
@@ -58,6 +58,10 @@ public class Pipeline extends OpenCvPipeline {
         //red
         Scalar redHighHSV = new Scalar(10,255,255);
         Scalar redLowHSV = new Scalar(0,50,50);
+
+        //blue
+        Scalar blueLowHSV = new Scalar(110,50,50);
+        Scalar blueHighHSV = new Scalar(130,255,255);
 
         Core.inRange(mat, redLowHSV, redHighHSV, mat);
 
