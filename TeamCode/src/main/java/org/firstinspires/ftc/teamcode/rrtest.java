@@ -14,6 +14,8 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 import java.math.*;
 
 
@@ -24,8 +26,11 @@ import java.math.*;
 public class rrtest extends driveConstant {
 
     double teamElementPos;
+    double distancex =5;
 
     Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
+
+    ElapsedTime time = new ElapsedTime();
 
     public void runOpMode() {
         initrobot(); //init motors
@@ -52,6 +57,36 @@ public class rrtest extends driveConstant {
 
         //set starting point
         drive.setPoseEstimate(startPose);
+
+        //trajectorys
+        TrajectorySequence trajectorySequence1 = drive.trajectorySequenceBuilder(startPose)
+                .splineTo(new Vector2d(23, -46), Math.toRadians(90))
+                .addDisplacementMarker(()->{
+                 deliverPurple(100,.2);
+                })
+                .waitSeconds(1)
+                .addDisplacementMarker(()->{
+                    resetIntake();
+                })
+                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(0)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .strafeRight(distancex)
+                .build();
+
+        TrajectorySequence trajectorySequence2 = drive.trajectorySequenceBuilder(startPose)
+                .splineTo(new Vector2d(23, -46), Math.toRadians(90))
+                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(0)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .strafeRight(distancex)
+                .build();
+
+        TrajectorySequence trajectorySequence3 = drive.trajectorySequenceBuilder(startPose)
+                .splineTo(new Vector2d(23, -46), Math.toRadians(90))
+                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(0)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .strafeRight(distancex)
+                .build();
+
         waitForStart();
 
         if (opModeIsActive()){
@@ -76,19 +111,13 @@ public class rrtest extends driveConstant {
 
 
             if (teamElementPos == 2) {
-                Trajectory traj1 = drive.trajectoryBuilder(startPose)
-                        .splineTo(new Vector2d(23, -46), Math.toRadians(90))
-                        .build();
 
-                //second movement
-                Trajectory traj2 = drive.trajectoryBuilder(traj1.end())
-                        .splineToLinearHeading(new Pose2d(46, -46, Math.toRadians(0)), Math.toRadians(0))
-                        .splineTo(new Vector2d(49, -46), Math.toRadians(0))
-                        .build();
+                drive.followTrajectorySequence(trajectorySequence1);
+                extend();
+                sleep(1000);
+                drop();
 
-                drive.followTrajectory(traj1);
 
-                drive.followTrajectory(traj2);
 
             }
             if (teamElementPos == 1) {

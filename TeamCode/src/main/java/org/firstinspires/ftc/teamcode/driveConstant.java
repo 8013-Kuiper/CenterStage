@@ -80,9 +80,28 @@ public abstract class driveConstant extends LinearOpMode {
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
-    public void deliverpurple(int pos){
+
+
+    //methods
+    public void deliverPurple(int pos, double power){
         Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Intake.setTargetPosition(pos);
-        Intake.setPower(.3);
+        Intake.setPower(power);
     }
+    public void resetIntake(){
+        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Intake.setTargetPosition(0);
+        Intake.setPower(1);
+    }
+    public void extend(){
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Crane.setTargetPosition(-2290);
+        Crane.setPower(1);
+    }
+
+    public void drop(){
+        leftServo.setPosition(.5);
+        rightServo.setPosition(.5);
+    }
+
 }
