@@ -24,38 +24,39 @@ import java.math.*;
 public class rrtest extends driveConstant {
 
     double teamElementPos;
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
     Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
 
-    public void init() {
-        initrobot();
+    public void runOpMode() {
+        initrobot(); //init motors
+
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap); //init motors
+
+        //init camera
+        int cameraMonitorViewId = hardwareMap.appContext
+                .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
+        Pipeline_red detector = new Pipeline_red(telemetry);
+
+        webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
+            @Override
+            public void onOpened() {
+                webcam.startStreaming(320, 240, OpenCvCameraRotation.UPRIGHT);
+            }
+
+            @Override
+            public void onError(int errorCode) {
+
+            }
+        });
 
         //set starting point
         drive.setPoseEstimate(startPose);
+        waitForStart();
 
-        //first movement
-    }
-        public void start() {
-            //init camera
-            int cameraMonitorViewId = hardwareMap.appContext
-                    .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-            webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
-            Pipeline_red detector = new Pipeline_red(telemetry);
+        if (opModeIsActive()){
 
-            webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
-                @Override
-                public void onOpened() {
-                    webcam.startStreaming(320, 240, OpenCvCameraRotation.UPRIGHT);
-                }
-
-                @Override
-                public void onError(int errorCode) {
-
-                }
-            });
-
-
+            //find game element
             switch (detector.getLocation()) {
                 case LEFT:
                     teamElementPos = 1;
@@ -90,20 +91,18 @@ public class rrtest extends driveConstant {
                 drive.followTrajectory(traj2);
 
             }
-            if (teamElementPos == 1){
+            if (teamElementPos == 1) {
 
             }
-            if (teamElementPos == 3){
+            if (teamElementPos == 3) {
 
 
             }
-            if (teamElementPos == 4){
+            if (teamElementPos == 4) {
 
 
             }
         }
-        public void loop(){
-
-        }
+    }
 
 }

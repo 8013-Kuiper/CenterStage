@@ -14,7 +14,7 @@ import org.openftc.apriltag.AprilTagDetection;
 @Autonomous
 public class Ex_auto extends driveConstant {
 
-    public void init() {
+    public void runOpMode() {
 
 
         int cameraMonitorViewId = hardwareMap.appContext
@@ -33,20 +33,15 @@ public class Ex_auto extends driveConstant {
 
             }
         });
+        waitForStart();
+
+        while(opModeIsActive()){
+
+            requestOpModeStop();
+        }
 
     }
-        public void loop() {
-            //switch(position){
-             //   case right:
-                
 
-
-         //   }
-
-
-
-            stop();
-            }
 
 public void Drive (double power, double time){
     frontLeft.setPower(power);

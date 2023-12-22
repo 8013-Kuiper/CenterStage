@@ -18,7 +18,8 @@ public class MyClass {
                                 .splineTo(new Vector2d(23,-46),Math.toRadians(90))
                                 //.lineTo(new Vector2d(23,-46))
                                 .waitSeconds(3)
-                                .splineToLinearHeading(new Pose2d(46,-46, Math.toRadians(0)), Math.toRadians(0))
+                                //.splineToLinearHeading(new Pose2d(46,-46, Math.toRadians(0)), Math.toRadians(0))
+                                .splineToSplineHeading(new Pose2d(46,-46,Math.toRadians(0)),Math.toRadians(0))
                                 .splineTo(new Vector2d(49, -46),Math.toRadians(0))
                                 .build()
                 );
@@ -29,4 +30,4 @@ public class MyClass {
                 .addEntity(myBot)
                 .start();
     }
-}
+}//asdf
