@@ -17,6 +17,7 @@ public class TeleOP extends driveConstant {
         @Override
         public void init() {
             initrobot();
+            initdrivetrain();
         }
         @Override
         public void loop() {
