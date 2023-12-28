@@ -13,6 +13,9 @@ import org.openftc.apriltag.AprilTagDetection;
 
 @Autonomous
 public class Ex_auto extends driveConstant {
+    public double teamElementPos;
+
+
 
     public void runOpMode() {
 
@@ -36,8 +39,27 @@ public class Ex_auto extends driveConstant {
         waitForStart();
 
         while(opModeIsActive()){
+            switch (detector.getLocation()) {
+                case LEFT:
+                    teamElementPos = 1;
+                    break;
+                case RIGHT:
+                    teamElementPos = 2;
+                    break;
+                case MIDDLE:
+                    teamElementPos = 3;
+                    break;
+                case NOT_FOUND:
+                    teamElementPos = 2;//should be 4
+                    break;
 
-            requestOpModeStop();
+
+            }
+            telemetry.addData("vlvllv",detector.getLocation());
+            telemetry.addData("num", teamElementPos);
+            telemetry.update();
+
+            //requestOpModeStop();
         }
 
     }

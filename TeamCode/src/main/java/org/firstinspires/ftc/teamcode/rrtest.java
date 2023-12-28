@@ -29,6 +29,8 @@ public class rrtest extends driveConstant {
     double teamElementPos;
     double distancex =5;
 
+
+
     Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
@@ -42,7 +44,7 @@ public class rrtest extends driveConstant {
         int cameraMonitorViewId = hardwareMap.appContext
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
-        Pipeline_red detector = new Pipeline_red(telemetry);
+        Pipeline_blue detector = new Pipeline_blue(telemetry);
 
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
@@ -63,11 +65,11 @@ public class rrtest extends driveConstant {
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 .addDisplacementMarker(()->{
-                    deliverPurple(100,.2);
+                    //deliverPurple(100,.2);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    resetIntake();
+                    //resetIntake();
                     Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -90,7 +92,7 @@ public class rrtest extends driveConstant {
                 .back(8)
                 .build();
 
-        TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+        /*TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 .strafeTo(new Vector2d(6.7,-40))
                 .addDisplacementMarker(()->{
@@ -152,9 +154,10 @@ public class rrtest extends driveConstant {
                 })
                 .strafeTo(new Vector2d(49,-12))
                 .back(8)
-                .build();
+                .build();*/
 
         waitForStart();
+
 
         if (opModeIsActive()){
 
@@ -185,12 +188,12 @@ public class rrtest extends driveConstant {
             }
             if (teamElementPos == 1) {
 
-                drive.followTrajectorySequence(left);
+                //drive.followTrajectorySequence(left);
 
             }
             if (teamElementPos == 3) {
 
-                drive.followTrajectorySequence(center);
+                //drive.followTrajectorySequence(center);
 
             }
             if (teamElementPos == 4) {

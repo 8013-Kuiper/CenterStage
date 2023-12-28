@@ -19,7 +19,7 @@ public class Pipeline_blue extends OpenCvPipeline {
         RIGHT,
         NOT_FOUND
     }
-    private Location location;
+    public Location location = Location.NOT_FOUND;
 
     static final Rect LEFT_ROI = new Rect(
             new Point(30, 10),
