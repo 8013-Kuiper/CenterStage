@@ -92,7 +92,7 @@ public class rrtest extends driveConstant {
                 .back(8)
                 .build();
 
-        /*TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+        TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 .strafeTo(new Vector2d(6.7,-40))
                 .addDisplacementMarker(()->{
@@ -154,7 +154,7 @@ public class rrtest extends driveConstant {
                 })
                 .strafeTo(new Vector2d(49,-12))
                 .back(8)
-                .build();*/
+                .build();
 
         waitForStart();
 
@@ -182,7 +182,7 @@ public class rrtest extends driveConstant {
 
             if (teamElementPos == 2) {
 
-                drive.followTrajectorySequence(right);
+                drive.followTrajectorySequence(left);
 
 
             }

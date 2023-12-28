@@ -23,7 +23,7 @@ public class Ex_auto extends driveConstant {
         int cameraMonitorViewId = hardwareMap.appContext
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
-        Pipeline_red detector = new Pipeline_red(telemetry);
+        Pipeline_blue detector = new Pipeline_blue(telemetry);
         webcam.setPipeline(detector);
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
