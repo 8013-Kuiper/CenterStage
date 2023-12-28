@@ -15,13 +15,34 @@ public class MyClass {
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(23, -70, Math.toRadians(90)))
-                                .splineTo(new Vector2d(23,-46),Math.toRadians(90))
-                                //.lineTo(new Vector2d(23,-46))
-                                .waitSeconds(3)
-                                //.splineToLinearHeading(new Pose2d(46,-46, Math.toRadians(0)), Math.toRadians(0))
-                                .splineToSplineHeading(new Pose2d(46,-46,Math.toRadians(0)),Math.toRadians(0))
-                                .splineTo(new Vector2d(49, -46),Math.toRadians(0))
+                                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                                .strafeTo(new Vector2d(6.7,-40))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
+                                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeRight(16)
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeTo(new Vector2d(49,-12))
+                                .back(8)
                                 .build()
+
+
                 );
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
