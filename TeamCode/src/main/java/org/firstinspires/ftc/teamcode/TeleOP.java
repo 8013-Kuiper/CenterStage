@@ -155,7 +155,7 @@ public class TeleOP extends driveConstant {
                 armHolder.setPosition(0);
             }
 
-            if(extend){
+           /* if(extend){
                 Crane.setPower(-1);
                 Crane.setTargetPosition(-2290);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -165,7 +165,7 @@ public class TeleOP extends driveConstant {
                 Crane.setPower(1);
                 Crane.setTargetPosition(-10);
                 Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            }
+            }*/
 
             Intake.setPower(Intakepower*.90);
 
