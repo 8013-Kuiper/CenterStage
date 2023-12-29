@@ -3,6 +3,8 @@ package com.example.meepmeeptesting;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.noahbres.meepmeep.MeepMeep;
+import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueLight;
+import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeRedDark;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
@@ -16,7 +18,78 @@ public class MyClass {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(23, -70, Math.toRadians(90)))
                                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                                .strafeTo(new Vector2d(6.7,-40))
+                                .addDisplacementMarker(()->{
+                                    //deliverPurple(100,.2);
+                                })
+                                .waitSeconds(1)
+                                .addDisplacementMarker(()->{
+                                    //resetIntake();
+
+                                })
+                                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
+                                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeRight(3)
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeTo(new Vector2d(49,-12))
+                                .back(8)
+                                .build()
+
+
+                );
+
+        RoadRunnerBotEntity myBot2 = new DefaultBotBuilder(meepMeep)
+                .setColorScheme(new ColorSchemeBlueLight())
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .followTrajectorySequence(drive ->
+                                drive.trajectorySequenceBuilder(new Pose2d(23, -70, Math.toRadians(90)))
+                                        .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                                        .strafeTo(new Vector2d(6.7,-40))
+                                        .addDisplacementMarker(()->{
+
+                                        })
+                                        .waitSeconds(1)
+                                        .addDisplacementMarker(()->{
+
+                                        })
+                                        .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
+                                        .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                                        .addDisplacementMarker(()->{
+
+                                        })
+                                        .strafeRight(16)
+                                        .waitSeconds(.5)
+                                        .addDisplacementMarker(()->{
+
+                                        })
+                                        .waitSeconds(.5)
+                                        .addDisplacementMarker(()->{
+
+                                        })
+                                        .strafeTo(new Vector2d(49,-12))
+                                        .back(8)
+                                        .build()
+                );
+
+
+        RoadRunnerBotEntity myBot3 = new DefaultBotBuilder(meepMeep)
+                .setColorScheme(new ColorSchemeRedDark())
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(23, -70, Math.toRadians(90)))
+                                .splineTo(new Vector2d(23, -35), Math.toRadians(90))
+                                .strafeTo(new Vector2d(10,-35))
                                 .addDisplacementMarker(()->{
 
                                 })
@@ -33,22 +106,25 @@ public class MyClass {
                                 .waitSeconds(.5)
                                 .addDisplacementMarker(()->{
 
+
                                 })
                                 .waitSeconds(.5)
                                 .addDisplacementMarker(()->{
+
 
                                 })
                                 .strafeTo(new Vector2d(49,-12))
                                 .back(8)
                                 .build()
-
-
                 );
+
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
                 .addEntity(myBot)
+                .addEntity(myBot2)
+                .addEntity(myBot3)
                 .start();
     }
 }//asdf
