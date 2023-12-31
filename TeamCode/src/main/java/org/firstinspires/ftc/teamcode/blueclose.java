@@ -5,26 +5,16 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.apriltag.AprilTagDetection;
-import org.tensorflow.lite.task.vision.detector.Detection;
 
-import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import java.math.*;
-
-
 
 
 @Autonomous
 
-public class rrtest extends driveConstant {
+public class blueclose extends driveConstant {
 
     double teamElementPos;
     double distancex =5;
@@ -63,7 +53,7 @@ public class rrtest extends driveConstant {
 
         //trajectorys
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                 .addDisplacementMarker(()->{
                     //deliverPurple(100,.2);
                 })
@@ -74,12 +64,12 @@ public class rrtest extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(3)
+                .strafeLeft(3)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
                     drop();
@@ -88,13 +78,13 @@ public class rrtest extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,-58))
+                .strafeTo(new Vector2d(49,58))
                 .back(8)
                 .build();
 
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                .strafeTo(new Vector2d(6.7,-40))
+                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
+                .strafeTo(new Vector2d(6.7,40))
                 .addDisplacementMarker(()->{
                     deliverPurple(100,.2);
                 })
@@ -105,12 +95,12 @@ public class rrtest extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(16)
+                .strafeLeft(16)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
                     drop();
@@ -119,13 +109,13 @@ public class rrtest extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,-58))
+                .strafeTo(new Vector2d(49,58))
                 .back(8)
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, -35), Math.toRadians(90))
-                .strafeTo(new Vector2d(10,-35))
+                .splineTo(new Vector2d(23, 35), Math.toRadians(-90))
+                .strafeTo(new Vector2d(10,35))
                 .addDisplacementMarker(()->{
                     deliverPurple(100,.2);
                 })
@@ -136,12 +126,12 @@ public class rrtest extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, -46), Math.toRadians(0))
+                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(16)
+                .strafeLeft(12)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
                     drop();
@@ -152,7 +142,7 @@ public class rrtest extends driveConstant {
                     retract();
 
                 })
-                .strafeTo(new Vector2d(49,-58))
+                .strafeTo(new Vector2d(49,58))
                 .back(8)
                 .build();
 
@@ -182,7 +172,7 @@ public class rrtest extends driveConstant {
 
             if (teamElementPos == 2) {
 
-                drive.followTrajectorySequence(left);
+                drive.followTrajectorySequence(right);
 
 
             }

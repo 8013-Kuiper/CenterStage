@@ -12,6 +12,115 @@ public class MyClass {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(800);
 
+        RoadRunnerBotEntity myBotoppo = new DefaultBotBuilder(meepMeep)
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(23, 70, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
+                                .addDisplacementMarker(()->{
+                                    //deliverPurple(100,.2);
+                                })
+                                .waitSeconds(1)
+                                .addDisplacementMarker(()->{
+                                    //resetIntake();
+
+                                })
+                                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeLeft(3)
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeTo(new Vector2d(49,58))
+                                .back(8)
+                                .build()
+
+
+                );
+
+        RoadRunnerBotEntity myBot2oppo = new DefaultBotBuilder(meepMeep)
+                .setColorScheme(new ColorSchemeBlueLight())
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(23, 70, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
+                                .strafeTo(new Vector2d(6.7,40))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeLeft(16)
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeTo(new Vector2d(49,58))
+                                .back(8)
+                                .build()
+                );
+
+        RoadRunnerBotEntity myBot3oppo = new DefaultBotBuilder(meepMeep)
+                .setColorScheme(new ColorSchemeRedDark())
+                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
+                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(23, 70, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(23, 35), Math.toRadians(-90))
+                                .strafeTo(new Vector2d(10,35))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                                .addDisplacementMarker(()->{
+
+                                })
+                                .strafeLeft(12)
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+
+                                })
+                                .waitSeconds(.5)
+                                .addDisplacementMarker(()->{
+
+
+                                })
+                                .strafeTo(new Vector2d(49,58))
+                                .back(8)
+                                .build()
+                );
+
+
+
+
+
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
@@ -40,7 +149,7 @@ public class MyClass {
                                 .addDisplacementMarker(()->{
 
                                 })
-                                .strafeTo(new Vector2d(49,-12))
+                                .strafeTo(new Vector2d(49,-58))
                                 .back(8)
                                 .build()
 
@@ -76,7 +185,7 @@ public class MyClass {
                                         .addDisplacementMarker(()->{
 
                                         })
-                                        .strafeTo(new Vector2d(49,-12))
+                                        .strafeTo(new Vector2d(49,-58))
                                         .back(8)
                                         .build()
                 );
@@ -102,7 +211,7 @@ public class MyClass {
                                 .addDisplacementMarker(()->{
 
                                 })
-                                .strafeRight(16)
+                                .strafeRight(12)
                                 .waitSeconds(.5)
                                 .addDisplacementMarker(()->{
 
@@ -113,7 +222,7 @@ public class MyClass {
 
 
                                 })
-                                .strafeTo(new Vector2d(49,-12))
+                                .strafeTo(new Vector2d(49,-58))
                                 .back(8)
                                 .build()
                 );
@@ -125,6 +234,9 @@ public class MyClass {
                 .addEntity(myBot)
                 .addEntity(myBot2)
                 .addEntity(myBot3)
+                .addEntity(myBotoppo)
+                .addEntity(myBot2oppo)
+                .addEntity(myBot3oppo)
                 .start();
     }
 }//asdf
