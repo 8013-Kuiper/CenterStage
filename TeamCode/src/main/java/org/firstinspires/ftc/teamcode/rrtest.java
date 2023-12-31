@@ -88,7 +88,7 @@ public class rrtest extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,-12))
+                .strafeTo(new Vector2d(49,-58))
                 .back(8)
                 .build();
 
@@ -119,7 +119,7 @@ public class rrtest extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,-12))
+                .strafeTo(new Vector2d(49,-58))
                 .back(8)
                 .build();
 
@@ -152,7 +152,7 @@ public class rrtest extends driveConstant {
                     retract();
 
                 })
-                .strafeTo(new Vector2d(49,-12))
+                .strafeTo(new Vector2d(49,-58))
                 .back(8)
                 .build();
 
