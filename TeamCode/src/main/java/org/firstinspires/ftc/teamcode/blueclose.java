@@ -39,7 +39,7 @@ public class blueclose extends driveConstant {
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
-                webcam.startStreaming(320, 240, OpenCvCameraRotation.UPRIGHT);
+                webcam.startStreaming(1280, 960, OpenCvCameraRotation.UPRIGHT);
             }
 
             @Override
