@@ -21,7 +21,7 @@ public class redclose extends driveConstant {
 
 
 
-    Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(11.5,-70, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
 
