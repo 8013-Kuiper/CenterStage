@@ -27,7 +27,7 @@ public class Pipeline_blue extends OpenCvPipeline {
 
     static final Rect MID_ROI = new Rect(
             new Point(600, 230),
-            new Point(900, 1000));
+            new Point(900, 930));
 
     static final Rect RIGHT_ROI = new Rect(
             new Point(1100, 230),
@@ -63,7 +63,7 @@ public class Pipeline_blue extends OpenCvPipeline {
         Scalar blueLowHSV = new Scalar(110,50,50);
         Scalar blueHighHSV = new Scalar(130,255,255);
 
-        Core.inRange(mat, blueLowHSV, blueHighHSV, mat);
+        Core.inRange(mat, greenLowHSV, greenHighHSV, mat);
 
         Mat left = mat.submat(LEFT_ROI);
         Mat mid = mat.submat(MID_ROI);
