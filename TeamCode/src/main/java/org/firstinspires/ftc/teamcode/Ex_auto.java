@@ -28,7 +28,7 @@ public class Ex_auto extends driveConstant {
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
-                webcam.startStreaming(1280, 960, OpenCvCameraRotation.UPRIGHT);
+                webcam.startStreaming(1280, 960, OpenCvCameraRotation.SIDEWAYS_RIGHT);
             }
 
             @Override
