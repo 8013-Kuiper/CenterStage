@@ -14,14 +14,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous
 
-public class redclose extends driveConstant {
+public class redLong extends driveConstant {
 
     double teamElementPos;
     double distancex =5;
 
 
 
-    Pose2d startPose = new Pose2d(14.5,-70, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(-37.5,-70, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
 
@@ -53,108 +53,106 @@ public class redclose extends driveConstant {
 
         //trajectorys
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
                 .addDisplacementMarker(()->{
                     //deliverPurple(100,.2);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
                     //resetIntake();
-                    Crane.setTargetPosition(-1000);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                 })
-                //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
+                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
+                .setReversed(true)
+                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
+                .setReversed(false)
+                .waitSeconds(5)
+                .lineToConstantHeading(new Vector2d(11,-59.5))
+
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
+
                 .lineTo(new Vector2d(51,-46))
+
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+
                 })
                 .strafeRight(3)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
+
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
+
                 })
-                .strafeTo(new Vector2d(51,-58))
-                .back(8)
                 .build();
 
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
-                //.splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                //.strafeTo(new Vector2d(6.7,-40))
-                .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
+                .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
                 .addDisplacementMarker(()->{
-                    deliverPurple(100,.2);
+                    //deliverPurple(100,.2);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    resetIntake();
-                    Crane.setTargetPosition(-1000);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+                    //resetIntake();
+
                 })
-                //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
+                .setReversed(true)
+                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
+                .setReversed(false)
+                .waitSeconds(5)
+                .lineToConstantHeading(new Vector2d(11,-59.5))
+
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
+
                 .lineTo(new Vector2d(51,-46))
+
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+
                 })
                 .strafeRight(16)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
+
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
+
                 })
-                //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-58))
-                .back(8)
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                //.splineTo(new Vector2d(23, -35), Math.toRadians(90))
-                .splineTo(new Vector2d(23,-27),Math.toRadians(160))
-                //.strafeTo(new Vector2d(10,-35))
+                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
                 .addDisplacementMarker(()->{
-                    deliverPurple(100,.2);
+                    //deliverPurple(100,.2);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    resetIntake();
-                    Crane.setTargetPosition(-1000);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+                    //resetIntake();
+
                 })
-                //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
-                .lineTo(new Vector2d(51,-46))
+                .setReversed(true)
+                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
+                .setReversed(false)
+                .waitSeconds(5)
+                .lineToConstantHeading(new Vector2d(11,59.5))
+
+                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                .lineTo(new Vector2d(51,46))
+
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+
                 })
-                .strafeRight(12)
+                .strafeLeft(12)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
 
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
 
                 })
-                //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-58))
-
-                .back(8)
                 .build();
 
         waitForStart();

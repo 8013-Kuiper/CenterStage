@@ -21,7 +21,7 @@ public class blueclose extends driveConstant {
 
 
 
-    Pose2d startPose = new Pose2d(23,-70, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(14.5,70, Math.toRadians(-90));
 
     ElapsedTime time = new ElapsedTime();
 
@@ -52,7 +52,7 @@ public class blueclose extends driveConstant {
         drive.setPoseEstimate(startPose);
 
         //trajectorys
-        TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
+        TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                 .addDisplacementMarker(()->{
                     //deliverPurple(100,.2);
@@ -64,8 +64,11 @@ public class blueclose extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                .lineTo(new Vector2d(51,46))
+
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
@@ -78,13 +81,15 @@ public class blueclose extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,58))
+                //.strafeTo(new Vector2d(49,58))
+                .strafeTo(new Vector2d(51,58))
                 .back(8)
                 .build();
 
-        TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
-                .strafeTo(new Vector2d(6.7,40))
+        TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
+                //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
+                //.strafeTo(new Vector2d(6.7,40))
+                .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
                 .addDisplacementMarker(()->{
                     deliverPurple(100,.2);
                 })
@@ -95,8 +100,10 @@ public class blueclose extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                .lineTo(new Vector2d(51,46))
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
@@ -109,13 +116,15 @@ public class blueclose extends driveConstant {
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(49,58))
+                //.strafeTo(new Vector2d(49,58))
+                .strafeTo(new Vector2d(51,58))
                 .back(8)
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(23, 35), Math.toRadians(-90))
-                .strafeTo(new Vector2d(10,35))
+                //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
+                //.strafeTo(new Vector2d(10,35))
+                .splineTo(new Vector2d(23,27),Math.toRadians(-160))
                 .addDisplacementMarker(()->{
                     deliverPurple(100,.2);
                 })
@@ -126,8 +135,10 @@ public class blueclose extends driveConstant {
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
-                .splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                .splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                .lineTo(new Vector2d(51,46))
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
@@ -142,7 +153,8 @@ public class blueclose extends driveConstant {
                     retract();
 
                 })
-                .strafeTo(new Vector2d(49,58))
+                //.strafeTo(new Vector2d(49,58))
+                .strafeTo(new Vector2d(51,58))
                 .back(8)
                 .build();
 
