@@ -26,12 +26,12 @@ public class Pipeline_blue extends OpenCvPipeline {
             new Point(300, 830));*/
 
     static final Rect MID_ROI = new Rect(
-            new Point(200, 150),
-            new Point(450, 950));
+            new Point(200, 330),
+            new Point(450, 600));
 
     static final Rect RIGHT_ROI = new Rect(
-            new Point(900, 330),
-            new Point(1100,830));
+            new Point(850, 330),
+            new Point(1100,550));
 
     static double percentThreshold = 0.05;
 
@@ -77,6 +77,7 @@ public class Pipeline_blue extends OpenCvPipeline {
 
         telemetry.addData("raw Mid value", (int) Core.sumElems(mid).val[0]);
         telemetry.addData("Mid percentage", Math.round(midValue * 100) + "%");
+        telemetry.addData("Right percentage", Math.round(rightValue * 100) + "%");
 
         //boolean tseLeft = leftValue > percentThreshold;
         boolean tseMid = midValue > percentThreshold;
