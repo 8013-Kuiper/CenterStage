@@ -17,7 +17,7 @@ public class MyClass {
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
                                 .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -56,7 +56,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
                                 //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                                 //.strafeTo(new Vector2d(6.7,40))
                                 .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
@@ -94,7 +94,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
                                 //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
                                 //.strafeTo(new Vector2d(10,35))
                                 .splineTo(new Vector2d(23,27),Math.toRadians(-160))
@@ -137,7 +137,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -70, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -62, Math.toRadians(90)))
                                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -175,7 +175,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                                drive.trajectorySequenceBuilder(new Pose2d(14.5, -70, Math.toRadians(90)))
+                                drive.trajectorySequenceBuilder(new Pose2d(14.5, -65, Math.toRadians(90)))
                                         //.splineTo(new Vector2d(23, -40), Math.toRadians(90))
                                         //.strafeTo(new Vector2d(6.7,-40))
                                         .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
@@ -213,7 +213,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -70, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -65, Math.toRadians(90)))
                                 //.splineTo(new Vector2d(23, -35), Math.toRadians(90))
                                 .splineTo(new Vector2d(23,-27),Math.toRadians(160))
                                 //.strafeTo(new Vector2d(10,-35))
@@ -255,7 +255,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -70, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
                                 .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -296,7 +296,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -70, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
                                 .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -340,7 +340,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -70, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
                                 .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -383,7 +383,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
                                 .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -424,7 +424,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
                                 .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -468,7 +468,7 @@ public class MyClass {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 70, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
                                 .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
                                 .addDisplacementMarker(()->{
                                     //deliverPurple(100,.2);
@@ -509,18 +509,18 @@ public class MyClass {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                //.addEntity(myBot)
-                //.addEntity(myBot2)
-                //.addEntity(myBot3)
-                //.addEntity(myBotoppo)
-                //.addEntity(myBot2oppo)
-                //.addEntity(myBot3oppo)
-                //.addEntity(redlongbot1)
-                //.addEntity(redlongbot2)
-               // .addEntity(redlongbot3)
-                //.addEntity(redlongbot1oppo)
+                .addEntity(myBot)
+                .addEntity(myBot2)
+                .addEntity(myBot3)
+                .addEntity(myBotoppo)
+                .addEntity(myBot2oppo)
+                .addEntity(myBot3oppo)
+                .addEntity(redlongbot1)
+                .addEntity(redlongbot2)
+                .addEntity(redlongbot3)
+                .addEntity(redlongbot1oppo)
                 .addEntity(redlongbot2oppo)
-                //.addEntity(redlongbot3oppo)
+                .addEntity(redlongbot3oppo)
                 .start();
     }
 }//asdf

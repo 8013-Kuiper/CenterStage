@@ -22,16 +22,16 @@ public class Pipeline_blue extends OpenCvPipeline {
     public Location location = Location.NOT_FOUND;
 
     static final Rect LEFT_ROI = new Rect(
-            new Point(0, 230),
-            new Point(300, 930));
+            new Point(10, 330),
+            new Point(300, 830));
 
     static final Rect MID_ROI = new Rect(
-            new Point(600, 230),
-            new Point(900, 930));
+            new Point(600, 330),
+            new Point(900, 830));
 
     static final Rect RIGHT_ROI = new Rect(
-            new Point(1100, 230),
-            new Point(1280, 930));
+            new Point(1100, 330),
+            new Point(1280, 830));
 
     static double percentThreshold = 0.05;
 

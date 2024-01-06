@@ -21,7 +21,7 @@ public class blueLong extends driveConstant {
 
 
 
-    Pose2d startPose = new Pose2d(-37.5,-70, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(-37.5,-65, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
 

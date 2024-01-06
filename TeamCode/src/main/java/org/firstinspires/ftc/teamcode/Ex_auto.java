@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -12,9 +13,9 @@ import org.openftc.apriltag.AprilTagDetection;
 
 
 @Autonomous
-public class Ex_auto extends driveConstant {
+public class Ex_auto extends LinearOpMode {
     public double teamElementPos;
-
+    public OpenCvCamera webcam;
 
 
     public void runOpMode() {
@@ -65,21 +66,7 @@ public class Ex_auto extends driveConstant {
     }
 
 
-public void Drive (double power, double time){
-    frontLeft.setPower(power);
-    frontRight.setPower(power);
-    backLeft.setPower(power);
-    backRight.setPower(power);
 
-    stopmotors();
-}
-    
-public void stopmotors(){
-    frontLeft.setPower(0);
-    frontRight.setPower(0);
-    backLeft.setPower(0);
-    backRight.setPower(0);
-    }
     public ElapsedTime mRuntime = new ElapsedTime();
     public ElapsedTime timer = new ElapsedTime();
 }
