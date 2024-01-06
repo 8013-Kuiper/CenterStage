@@ -27,11 +27,11 @@ public class Pipeline_blue extends OpenCvPipeline {
 
     static final Rect MID_ROI = new Rect(
             new Point(200, 330),
-            new Point(450, 600));
+            new Point(650, 600));
 
     static final Rect RIGHT_ROI = new Rect(
             new Point(850, 330),
-            new Point(1100,550));
+            new Point(1200,500));
 
     static double percentThreshold = 0.05;
 
