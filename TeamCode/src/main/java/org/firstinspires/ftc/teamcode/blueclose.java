@@ -176,7 +176,7 @@ public class blueclose extends driveConstant {
                     teamElementPos = 3;
                     break;
                 case NOT_FOUND:
-                    teamElementPos = 2;//should be 4
+                    teamElementPos = 1;//should be 4
                     break;
 
 
@@ -191,18 +191,15 @@ public class blueclose extends driveConstant {
             }
             if (teamElementPos == 1) {
 
-                //drive.followTrajectorySequence(left);
+                drive.followTrajectorySequence(left);
 
             }
             if (teamElementPos == 3) {
 
-                //drive.followTrajectorySequence(center);
+                drive.followTrajectorySequence(center);
 
             }
-            if (teamElementPos == 4) {
 
-
-            }
         }
     }
 
