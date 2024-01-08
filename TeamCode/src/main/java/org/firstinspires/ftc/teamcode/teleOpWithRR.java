@@ -1,12 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore. eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+@TeleOp
 public class teleOpWithRR extends driveConstant{
-    public double strafe =0;
+
     @Override
     public void runOpMode(){
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
@@ -48,17 +49,12 @@ public class teleOpWithRR extends driveConstant{
             drive.setWeightedDrivePower(
                     new Pose2d(
                             gamepad1.left_stick_y,
-                            /*gamepad1.left_stick_x*/strafe,
+                            gamepad1.left_stick_x,
                             gamepad1.right_stick_x
                     )
             );
 
-            if (gamepad1.left_bumper){
-                strafe= strafe-1;
-            }
-            if (gamepad1.right_bumper){
-                strafe= strafe+1;
-            }
+
 
             cranepower = gamepad2.right_stick_y;
 
@@ -106,19 +102,13 @@ public class teleOpWithRR extends driveConstant{
             }
 
 
-            if (intakeClose) {
-                leftServo.setPosition(0);
-            }
-            if (intakeOpen) {
-                leftServo.setPosition(.5);
-            }
 
             if (intake2Close > 0) {
                 rightServo.setPosition(0);
             }
 
             if (intake2Open > 0) {
-                rightServo.setPosition(.5);
+                rightServo.setPosition(1);
             }
 
 
