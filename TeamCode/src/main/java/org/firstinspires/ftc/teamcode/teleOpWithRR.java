@@ -117,7 +117,7 @@ public class teleOpWithRR extends driveConstant{
             }
 
             if (!holderActivation) {
-                armHolder.setPosition(0);
+                armHolder.setPosition(.6);
             }
 
             /*if (extend) {
