@@ -30,6 +30,9 @@ public class blueclose extends driveConstant {
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap); //init motors
 
+        //set starting point
+        drive.setPoseEstimate(startPose);
+
         //init camera
         int cameraMonitorViewId = hardwareMap.appContext
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -48,8 +51,7 @@ public class blueclose extends driveConstant {
             }
         });
 
-        //set starting point
-        drive.setPoseEstimate(startPose);
+
 
 
 
