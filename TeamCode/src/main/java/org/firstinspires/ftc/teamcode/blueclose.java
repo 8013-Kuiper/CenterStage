@@ -10,12 +10,18 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.apriltag.AprilTagDetection;
+
 
 
 @Autonomous
 
 public class blueclose extends driveConstant {
 
+    public OpenCvCamera webcam;
     double teamElementPos;
     double distancex =5;
 
