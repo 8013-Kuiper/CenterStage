@@ -21,6 +21,7 @@ import org.openftc.apriltag.AprilTagDetection;
 
 public class blueclose extends driveConstant {
 
+
     public OpenCvCamera webcam;
     double teamElementPos;
     double distancex =5;
