@@ -100,8 +100,8 @@ public abstract class driveConstant extends LinearOpMode {
     }
 
     public void retract(){
-        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Crane.setTargetPosition(-10);
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Crane.setPower(1);
     }
 

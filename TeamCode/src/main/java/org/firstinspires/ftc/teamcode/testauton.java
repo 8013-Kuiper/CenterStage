@@ -59,6 +59,7 @@ public class testauton extends driveConstant {
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
                     .addDisplacementMarker(()->{
                         //deliverPurple(100,.2);
+                        telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -66,6 +67,7 @@ public class testauton extends driveConstant {
                         Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
+                        telemetry.addLine("crane up");
                     })
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
@@ -73,15 +75,19 @@ public class testauton extends driveConstant {
                     .lineTo(new Vector2d(51,46))
                     .addDisplacementMarker(()->{
                         Crane.setTargetPosition(-2000);
+                        telemetry.addLine("crane up more");
                     })
+
                     .strafeLeft(16)
                     .waitSeconds(.5)
                     .addDisplacementMarker(()->{
                         drop();
+                        telemetry.addLine("drop");
                     })
                     .waitSeconds(.5)
                     .addDisplacementMarker(()->{
                         retract();
+                        telemetry.addLine("crane down");
                     })
                     //.strafeTo(new Vector2d(49,58))
                     .strafeTo(new Vector2d(51,58))
@@ -92,7 +98,7 @@ public class testauton extends driveConstant {
 
 
                 drive.followTrajectorySequence(right);
-
+                telemetry.update();
 
 
 
