@@ -1,10 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.graphics.Path;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvViewRenderer;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -16,6 +19,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class blueLong extends driveConstant {
 
+    public OpenCvCamera webcam;
     double teamElementPos;
     double distancex =5;
 
@@ -35,6 +39,7 @@ public class blueLong extends driveConstant {
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
         Pipeline_blue detector = new Pipeline_blue(telemetry);
+        webcam.setPipeline(detector);
 
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override

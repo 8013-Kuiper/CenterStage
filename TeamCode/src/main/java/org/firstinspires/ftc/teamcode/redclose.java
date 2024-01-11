@@ -16,6 +16,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class redclose extends driveConstant {
 
+    public OpenCvCamera webcam;
     double teamElementPos;
     double distancex =5;
 
@@ -35,7 +36,7 @@ public class redclose extends driveConstant {
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
         Pipeline_red detector = new Pipeline_red(telemetry);
-
+        webcam.setPipeline(detector);
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {

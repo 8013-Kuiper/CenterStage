@@ -24,7 +24,7 @@ public abstract class driveConstant extends LinearOpMode {
 
     public DcMotor Winch;
 
-    public OpenCvCamera webcam;
+    //public OpenCvCamera webcam;
 
     public Servo leftServo;
 

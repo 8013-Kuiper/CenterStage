@@ -44,6 +44,7 @@ public class blueclose extends driveConstant {
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
         Pipeline_blue detector = new Pipeline_blue(telemetry);
+        webcam.setPipeline(detector);
 
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
@@ -65,6 +66,7 @@ public class blueclose extends driveConstant {
 
 
         if (opModeIsActive()){
+            Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             //trajectorys
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
@@ -105,11 +107,11 @@ public class blueclose extends driveConstant {
                     //.strafeTo(new Vector2d(6.7,40))
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
                     .addDisplacementMarker(()->{
-                        deliverPurple(100,.2);
+                        //deliverPurple(100,.2);
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
-                        resetIntake();
+                        //resetIntake();
                         Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
@@ -140,11 +142,11 @@ public class blueclose extends driveConstant {
                     //.strafeTo(new Vector2d(10,35))
                     .splineTo(new Vector2d(23,27),Math.toRadians(-160))
                     .addDisplacementMarker(()->{
-                        deliverPurple(100,.2);
+                        //deliverPurple(100,.2);
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
-                        resetIntake();
+                        //resetIntake();
                         Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
