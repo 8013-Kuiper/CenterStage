@@ -48,9 +48,9 @@ public class teleOpWithRR extends driveConstant{
             //driving
             drive.setWeightedDrivePower(
                     new Pose2d(
-                            gamepad1.left_stick_y,
-                            gamepad1.left_stick_x,
-                            gamepad1.right_stick_x
+                            gamepad1.left_stick_y*.80,
+                            gamepad1.left_stick_x*.90,
+                            gamepad1.right_stick_x*.80
                     )
             );
 
