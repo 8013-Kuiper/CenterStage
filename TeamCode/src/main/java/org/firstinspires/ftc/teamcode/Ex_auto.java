@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -13,6 +14,7 @@ import org.openftc.apriltag.AprilTagDetection;
 
 
 @Autonomous
+@Disabled
 public class Ex_auto extends LinearOpMode {
     public double teamElementPos;
     public OpenCvCamera webcam;

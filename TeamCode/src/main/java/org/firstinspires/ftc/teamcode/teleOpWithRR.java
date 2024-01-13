@@ -5,6 +5,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore. eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import java.util.concurrent.TimeUnit;
+
 @TeleOp
 public class teleOpWithRR extends driveConstant{
 
@@ -86,7 +89,7 @@ public class teleOpWithRR extends driveConstant{
             Winch.setPower(Winchpower);
 
 
-            if (plane > 0) {
+            if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>110) {
                 Plane.setPosition(.9);
             }
 

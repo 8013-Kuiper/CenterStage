@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 
 @TeleOp
+@Disabled
 public class TeleOP extends driveConstant {
         @Override
         public void runOpMode() {
