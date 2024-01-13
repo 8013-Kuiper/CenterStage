@@ -518,9 +518,9 @@ public class MyClass {
                 //.addEntity(redlongbot1)
                 //.addEntity(redlongbot2)
                 //.addEntity(redlongbot3)
-                .addEntity(redlongbot1oppo)
+                //.addEntity(redlongbot1oppo)
                 //.addEntity(redlongbot2oppo)
-                //.addEntity(redlongbot3oppo)
+                .addEntity(redlongbot3oppo)
                 .start();
     }
 }//asdf

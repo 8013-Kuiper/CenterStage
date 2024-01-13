@@ -57,7 +57,7 @@ public class redLong extends driveConstant {
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
                 .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
@@ -66,33 +66,38 @@ public class redLong extends driveConstant {
                 })
                 //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
                 .setReversed(true)
-                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
+                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
                 .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,-59.5))
+
+                .lineToConstantHeading(new Vector2d(11,-62))
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
                 .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-
+                    Crane.setTargetPosition(-2000);
+                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    Crane.setPower(.8);
+                    telemetry.addLine("crane up");
                 })
                 .strafeRight(3)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    retract();
                 })
+                .waitSeconds(10)
                 .build();
 
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
                 .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
@@ -100,33 +105,36 @@ public class redLong extends driveConstant {
 
                 })
                 .setReversed(true)
-                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
+                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
                 .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,-59.5))
+                .lineToConstantHeading(new Vector2d(11,-62))
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
                 .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-
+                    Crane.setTargetPosition(-2000);
+                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    Crane.setPower(.8);
+                    telemetry.addLine("crane up");
                 })
-                .strafeRight(16)
+                .strafeRight(18)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    retract();
                 })
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
+                .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
                 .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
@@ -134,27 +142,31 @@ public class redLong extends driveConstant {
 
                 })
                 .setReversed(true)
-                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
+                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
                 .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,59.5))
+                .lineToConstantHeading(new Vector2d(11,-62))
 
-                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                .lineTo(new Vector2d(51,46))
+                .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-
+                    Crane.setTargetPosition(-2000);
+                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    Crane.setPower(.8);
+                    telemetry.addLine("crane up");
                 })
-                .strafeLeft(12)
+                .strafeRight(16)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-
+                    retract();
                 })
+                .waitSeconds(10)
                 .build();
 
         waitForStart();
@@ -187,20 +199,17 @@ public class redLong extends driveConstant {
 
 
             }
-            if (teamElementPos == 1) {
+            else if (teamElementPos == 1) {
 
-                //drive.followTrajectorySequence(left);
-
-            }
-            if (teamElementPos == 3) {
-
-                //drive.followTrajectorySequence(center);
+                drive.followTrajectorySequence(left);
 
             }
-            if (teamElementPos == 4) {
+            else if (teamElementPos == 3) {
 
+                drive.followTrajectorySequence(center);
 
             }
+
         }
     }
 

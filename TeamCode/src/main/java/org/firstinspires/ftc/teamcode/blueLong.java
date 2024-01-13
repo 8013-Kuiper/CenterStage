@@ -68,7 +68,7 @@ public class blueLong extends driveConstant {
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
                     .addDisplacementMarker(()->{
-                       // deliverPurple(120,.5);
+                        deliverPurple(120,.5);
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -102,13 +102,14 @@ public class blueLong extends driveConstant {
                     .addDisplacementMarker(()->{
                         retract();
                     })
+                    .waitSeconds(10)
 
                     .build();
 
             TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
                     .addDisplacementMarker(()->{
-                        //deliverPurple(120,.5);
+                        deliverPurple(120,.5);
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -141,6 +142,7 @@ public class blueLong extends driveConstant {
                         retract();
 
                     })
+                    .waitSeconds(10)
                     .build();
 
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
@@ -179,6 +181,7 @@ public class blueLong extends driveConstant {
                     .addDisplacementMarker(()->{
                         retract();
                     })
+                    .waitSeconds(10)
                     .build();
 
 
