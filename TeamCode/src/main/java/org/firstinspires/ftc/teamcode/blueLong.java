@@ -56,116 +56,121 @@ public class blueLong extends driveConstant {
         //set starting point
         drive.setPoseEstimate(startPose);
 
-        //trajectorys
-        TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
-                .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
-                })
-                .waitSeconds(1)
-                .addDisplacementMarker(()->{
-                    //resetIntake();
 
-                })
-                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
-                .setReversed(true)
-                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                .setReversed(false)
-                .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                .lineTo(new Vector2d(51,46))
-
-                .addDisplacementMarker(()->{
-
-                })
-                .strafeLeft(3)
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-
-                .build();
-
-        TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
-                .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
-                })
-                .waitSeconds(1)
-                .addDisplacementMarker(()->{
-                    //resetIntake();
-
-                })
-                .setReversed(true)
-                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                .setReversed(false)
-                .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                .lineTo(new Vector2d(51,46))
-
-                .addDisplacementMarker(()->{
-
-                })
-                .strafeLeft(16)
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-                .build();
-
-        TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
-                .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
-                })
-                .waitSeconds(1)
-                .addDisplacementMarker(()->{
-                    //resetIntake();
-
-                })
-                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
-                .setReversed(true)
-                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                .setReversed(false)
-                .waitSeconds(5)
-                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                .lineTo(new Vector2d(51,46))
-
-                .addDisplacementMarker(()->{
-
-                })
-                .strafeLeft(12)
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-                .waitSeconds(.5)
-                .addDisplacementMarker(()->{
-
-                })
-                .build();
 
         waitForStart();
 
 
         if (opModeIsActive()){
+            //trajectorys
+            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                    .addDisplacementMarker(()->{
+                        deliverPurple(120,.5);
+                    })
+                    .waitSeconds(1)
+                    .addDisplacementMarker(()->{
+                        //resetIntake();
+
+                    })
+                    //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
+                    .setReversed(true)
+                    .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
+                    .setReversed(false)
+                    .waitSeconds(5)
+                    .lineToConstantHeading(new Vector2d(11,59.5))
+
+                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                    .lineTo(new Vector2d(51,46))
+
+                    .addDisplacementMarker(()->{
+                        Crane.setTargetPosition(-2000);
+                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                        Crane.setPower(.8);
+                        telemetry.addLine("crane up");
+                    })
+                    .strafeLeft(3)
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+                        rightServo.setPosition(1);
+                    })
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+                        retract();
+                    })
+
+                    .build();
+
+            TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
+                    .addDisplacementMarker(()->{
+                        //deliverPurple(100,.2);
+                    })
+                    .waitSeconds(1)
+                    .addDisplacementMarker(()->{
+                        //resetIntake();
+
+                    })
+                    .setReversed(true)
+                    .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
+                    .setReversed(false)
+                    .waitSeconds(5)
+                    .lineToConstantHeading(new Vector2d(11,59.5))
+
+                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                    .lineTo(new Vector2d(51,46))
+
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .strafeLeft(16)
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .build();
+
+            TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
+                    .addDisplacementMarker(()->{
+                        //deliverPurple(100,.2);
+                    })
+                    .waitSeconds(1)
+                    .addDisplacementMarker(()->{
+                        //resetIntake();
+
+                    })
+                    //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
+                    .setReversed(true)
+                    .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
+                    .setReversed(false)
+                    .waitSeconds(5)
+                    .lineToConstantHeading(new Vector2d(11,59.5))
+
+                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                    .lineTo(new Vector2d(51,46))
+
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .strafeLeft(12)
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .waitSeconds(.5)
+                    .addDisplacementMarker(()->{
+
+                    })
+                    .build();
+
 
             //find game element
             switch (detector.getLocation()) {
@@ -192,20 +197,17 @@ public class blueLong extends driveConstant {
 
 
             }
-            if (teamElementPos == 1) {
+            else if (teamElementPos == 1) {
 
                 drive.followTrajectorySequence(left);
 
             }
-            if (teamElementPos == 3) {
+            else if (teamElementPos == 3) {
 
                 drive.followTrajectorySequence(center);
 
             }
-            if (teamElementPos == 4) {
 
-
-            }
         }
     }
 

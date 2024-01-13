@@ -72,7 +72,8 @@ public class blueclose extends driveConstant {
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                     .addDisplacementMarker(()->{
-                        //deliverPurple(100,.2);
+                        deliverPurple(120,.5);
+                        telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -92,15 +93,17 @@ public class blueclose extends driveConstant {
                     .strafeLeft(3)
                     .waitSeconds(.5)
                     .addDisplacementMarker(()->{
-                        drop();
+                        //drop();
+                        rightServo.setPosition(1);
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(2)
                     .addDisplacementMarker(()->{
                         retract();
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,58))
+                    .strafeTo(new Vector2d(51,66))
                     .back(8)
+                    .waitSeconds(10)
                     .build();
 
             TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
@@ -108,7 +111,8 @@ public class blueclose extends driveConstant {
                     //.strafeTo(new Vector2d(6.7,40))
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
                     .addDisplacementMarker(()->{
-                        //deliverPurple(100,.2);
+                        deliverPurple(120,.5);
+                        telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -116,6 +120,7 @@ public class blueclose extends driveConstant {
                         Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
+                        telemetry.addLine("crane up");
                     })
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
@@ -123,19 +128,24 @@ public class blueclose extends driveConstant {
                     .lineTo(new Vector2d(51,46))
                     .addDisplacementMarker(()->{
                         Crane.setTargetPosition(-2000);
+                        telemetry.addLine("crane up more");
                     })
+
                     .strafeLeft(16)
                     .waitSeconds(.5)
                     .addDisplacementMarker(()->{
                         drop();
+                        telemetry.addLine("drop");
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(1)
                     .addDisplacementMarker(()->{
                         retract();
+                        telemetry.addLine("crane down");
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,58))
+                    .strafeTo(new Vector2d(51,66))//58
                     .back(8)
+                    .waitSeconds(10)
                     .build();
 
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
@@ -143,7 +153,8 @@ public class blueclose extends driveConstant {
                     //.strafeTo(new Vector2d(10,35))
                     .splineTo(new Vector2d(23,27),Math.toRadians(-160))
                     .addDisplacementMarker(()->{
-                        //deliverPurple(100,.2);
+                        deliverPurple(120,.5);
+                        telemetry.addLine("deliver center");
                     })
                     .waitSeconds(1)
                     .addDisplacementMarker(()->{
@@ -151,6 +162,7 @@ public class blueclose extends driveConstant {
                         Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
+                        telemetry.addLine("crane up");
                     })
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
@@ -159,20 +171,21 @@ public class blueclose extends driveConstant {
                     .addDisplacementMarker(()->{
                         Crane.setTargetPosition(-2000);
                     })
-                    .strafeLeft(12)
+                    .strafeLeft(11)
                     .waitSeconds(.5)
                     .addDisplacementMarker(()->{
                         drop();
 
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(1)
                     .addDisplacementMarker(()->{
                         retract();
 
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,58))
+                    .strafeTo(new Vector2d(51,66))
                     .back(8)
+                    .waitSeconds(10)
                     .build();
 
             //find game element
@@ -200,12 +213,12 @@ public class blueclose extends driveConstant {
 
 
             }
-            if (teamElementPos == 1) {
+            else if (teamElementPos == 1) {
 
                 drive.followTrajectorySequence(left);
 
             }
-            if (teamElementPos == 3) {
+            else if (teamElementPos == 3) {
 
                 drive.followTrajectorySequence(center);
 

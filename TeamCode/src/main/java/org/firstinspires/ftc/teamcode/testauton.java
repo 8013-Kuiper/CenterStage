@@ -26,7 +26,7 @@ public class testauton extends driveConstant {
 
 
 
-    Pose2d startPose = new Pose2d(14.5,65, Math.toRadians(-90));
+    Pose2d startPose = new Pose2d(-37.5,-65, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
 
@@ -49,55 +49,19 @@ public class testauton extends driveConstant {
 
 
         if (opModeIsActive()){
+            rightServo.setPosition(0);
             Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             //trajectorys
 
 
-            TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
-                    //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
-                    //.strafeTo(new Vector2d(6.7,40))
-                    .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
-                    .addDisplacementMarker(()->{
-                        //deliverPurple(100,.2);
-                        telemetry.addLine("deliver");
-                    })
-                    .waitSeconds(1)
-                    .addDisplacementMarker(()->{
-                        //resetIntake();
-                        Crane.setTargetPosition(-1000);
-                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        Crane.setPower(.8);
-                        telemetry.addLine("crane up");
-                    })
-                    //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-                    //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                    .lineTo(new Vector2d(51,46))
-                    .addDisplacementMarker(()->{
-                        Crane.setTargetPosition(-2000);
-                        telemetry.addLine("crane up more");
-                    })
-
-                    .strafeLeft(16)
-                    .waitSeconds(.5)
-                    .addDisplacementMarker(()->{
-                        drop();
-                        telemetry.addLine("drop");
-                    })
-                    .waitSeconds(.5)
-                    .addDisplacementMarker(()->{
-                        retract();
-                        telemetry.addLine("crane down");
-                    })
-                    //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,58))
-                    .back(8)
-                    .build();
+            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                            .build();
 
 
 
 
-                drive.followTrajectorySequence(right);
+                drive.followTrajectorySequence(left);
                 telemetry.update();
 
 

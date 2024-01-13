@@ -66,6 +66,8 @@ public abstract class driveConstant extends LinearOpMode {
         Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Crane.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
     }
     public void initdrivetrain(){
@@ -84,18 +86,18 @@ public abstract class driveConstant extends LinearOpMode {
 
     //methods
     public void deliverPurple(int pos, double power){
-        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Intake.setTargetPosition(pos);
+        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Intake.setPower(power);
     }
     public void resetIntake(){
-        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Intake.setTargetPosition(0);
+        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Intake.setPower(1);
     }
     public void extend(){
-        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Crane.setTargetPosition(-2290);
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         Crane.setPower(1);
     }
 
@@ -106,8 +108,7 @@ public abstract class driveConstant extends LinearOpMode {
     }
 
     public void drop(){
-        leftServo.setPosition(.5);
-        rightServo.setPosition(.5);
+        rightServo.setPosition(1);
     }
 
 }
