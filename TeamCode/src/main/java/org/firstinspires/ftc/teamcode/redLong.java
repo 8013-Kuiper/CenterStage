@@ -77,19 +77,19 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+                    /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");
+                    telemetry.addLine("crane up");*/
                 })
                 .strafeRight(3)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    rightServo.setPosition(1);
+                   // rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
+                   // retract();
                 })
                 .waitSeconds(10)
                 .build();
@@ -115,20 +115,21 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+                    /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");
+                    telemetry.addLine("crane up");*/
                 })
                 .strafeRight(18)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    rightServo.setPosition(1);
+                    //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
+                    //retract();
                 })
+                .waitSeconds(10)
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
@@ -152,19 +153,19 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addDisplacementMarker(()->{
-                    Crane.setTargetPosition(-2000);
+                    /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");
+                    telemetry.addLine("crane up");*/
                 })
                 .strafeRight(16)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    rightServo.setPosition(1);
+                    //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    retract();
+                    //retract();
                 })
                 .waitSeconds(10)
                 .build();
