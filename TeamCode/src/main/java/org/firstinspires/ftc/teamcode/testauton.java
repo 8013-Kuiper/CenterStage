@@ -26,7 +26,7 @@ public class testauton extends driveConstant {
 
 
 
-    Pose2d startPose = new Pose2d(-37.5,-65, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(-37.5,65, Math.toRadians(-90));
 
     ElapsedTime time = new ElapsedTime();
 
@@ -54,15 +54,23 @@ public class testauton extends driveConstant {
             //trajectorys
 
 
-            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+            /*TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+
                     .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                    .waitSeconds(10)
                             .build();
 
 
 
 
                 drive.followTrajectorySequence(left);
-                telemetry.update();
+                telemetry.update();*/
+            Intake.setPower(1);
+            sleep(1000);
+            Intake.setPower(0);
+            telemetry.addData("adf",Intake.getCurrentPosition());
+            telemetry.update();
+
 
 
 

@@ -10,7 +10,7 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class MyClass {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(750);
 
         RoadRunnerBotEntity myBotoppo = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
@@ -509,18 +509,18 @@ public class MyClass {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                .addEntity(myBot)
+                /*.addEntity(myBot)
                 .addEntity(myBot2)
                 .addEntity(myBot3)
                 .addEntity(myBotoppo)
                 .addEntity(myBot2oppo)
-                .addEntity(myBot3oppo)
+                .addEntity(myBot3oppo)*/
                 .addEntity(redlongbot1)
-                .addEntity(redlongbot2)
-                .addEntity(redlongbot3)
+                //.addEntity(redlongbot2)
+                //.addEntity(redlongbot3)
                 .addEntity(redlongbot1oppo)
-                .addEntity(redlongbot2oppo)
-                .addEntity(redlongbot3oppo)
+                //.addEntity(redlongbot2oppo)
+                //.addEntity(redlongbot3oppo)
                 .start();
     }
 }//asdf

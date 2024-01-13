@@ -56,11 +56,11 @@ public class redclose extends driveConstant {
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 .addDisplacementMarker(()->{
-                    //deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    //resetIntake();
+
                     Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -72,17 +72,18 @@ public class redclose extends driveConstant {
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(3)
+                .strafeRight(4)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
+                    rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(51,-58))
+                .strafeTo(new Vector2d(51,-66))
                 .back(8)
+                .waitSeconds(10)
                 .build();
 
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
@@ -90,11 +91,10 @@ public class redclose extends driveConstant {
                 //.strafeTo(new Vector2d(6.7,-40))
                 .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
                 .addDisplacementMarker(()->{
-                    deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    resetIntake();
                     Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -109,15 +109,16 @@ public class redclose extends driveConstant {
                 .strafeRight(16)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
+                    rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
                     retract();
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-58))
+                .strafeTo(new Vector2d(51,-66))
                 .back(8)
+                .waitSeconds(10)
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
@@ -125,11 +126,10 @@ public class redclose extends driveConstant {
                 .splineTo(new Vector2d(23,-27),Math.toRadians(160))
                 //.strafeTo(new Vector2d(10,-35))
                 .addDisplacementMarker(()->{
-                    deliverPurple(100,.2);
+                    deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addDisplacementMarker(()->{
-                    resetIntake();
                     Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -141,10 +141,10 @@ public class redclose extends driveConstant {
                 .addDisplacementMarker(()->{
                     Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(12)
+                .strafeRight(11)
                 .waitSeconds(.5)
                 .addDisplacementMarker(()->{
-                    drop();
+                    rightServo.setPosition(1);
 
                 })
                 .waitSeconds(.5)
@@ -153,9 +153,10 @@ public class redclose extends driveConstant {
 
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-58))
+                .strafeTo(new Vector2d(51,-66))
 
                 .back(8)
+                .waitSeconds(10)
                 .build();
 
         waitForStart();
@@ -175,7 +176,7 @@ public class redclose extends driveConstant {
                     teamElementPos = 3;
                     break;
                 case NOT_FOUND:
-                    teamElementPos = 2;//should be 4
+                    teamElementPos = 1;//should be 4
                     break;
 
 
@@ -188,20 +189,17 @@ public class redclose extends driveConstant {
 
 
             }
-            if (teamElementPos == 1) {
+            else if (teamElementPos == 1) {
 
-                //drive.followTrajectorySequence(left);
-
-            }
-            if (teamElementPos == 3) {
-
-                //drive.followTrajectorySequence(center);
+                drive.followTrajectorySequence(left);
 
             }
-            if (teamElementPos == 4) {
+           else if (teamElementPos == 3) {
 
+                drive.followTrajectorySequence(center);
 
             }
+
         }
     }
 
