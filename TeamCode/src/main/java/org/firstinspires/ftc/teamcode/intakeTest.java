@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -13,6 +14,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 
 import java.util.ArrayList;
 @TeleOp
+@Disabled
 public class intakeTest extends OpMode {
 
     public Servo Intake;

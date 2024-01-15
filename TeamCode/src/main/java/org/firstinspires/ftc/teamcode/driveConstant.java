@@ -1,14 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
 
 
-public abstract class driveConstant extends OpMode {
+public abstract class driveConstant extends LinearOpMode {
 
     public DcMotor frontLeft;
     public DcMotor frontRight;                                         //Declaring Motor varibles
@@ -21,7 +24,7 @@ public abstract class driveConstant extends OpMode {
 
     public DcMotor Winch;
 
-    public OpenCvCamera webcam;
+    //public OpenCvCamera webcam;
 
     public Servo leftServo;
 
@@ -34,11 +37,10 @@ public abstract class driveConstant extends OpMode {
     public Servo armHolder;
 
 
+
+
     public void initrobot() {
-        frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
-        frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
-        backRight = hardwareMap.get(DcMotor.class, "backRight");
+
 
 
 
@@ -59,18 +61,61 @@ public abstract class driveConstant extends OpMode {
         armHolder = hardwareMap.get(Servo.class, "armHolder");
 
 
-
-        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);                 //setting direction of drive train
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
-
-
         Crane.setDirection(DcMotorSimple.Direction.FORWARD);
         Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Crane.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        //Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
     }
+    public void initdrivetrain(){
+        frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
+        frontRight = hardwareMap.get(DcMotor.class, "frontRight");
+        backLeft = hardwareMap.get(DcMotor.class, "backLeft");
+        backRight = hardwareMap.get(DcMotor.class, "backRight");
+
+        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);                 //setting direction of drive train
+        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+    }
+
+
+
+    //methods
+    public void deliverPurple(int pos, double power){
+        Intake.setTargetPosition(pos);
+        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Intake.setPower(power);
+    }
+    public void activate(){
+        Intake.setPower(1);
+    }
+    public void deactivate(){
+        Intake.setPower(0);
+    }
+
+    public void resetIntake(){
+        Intake.setTargetPosition(0);
+        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Intake.setPower(1);
+    }
+    public void extend(){
+        Crane.setTargetPosition(-2290);
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Crane.setPower(1);
+    }
+
+    public void retract(){
+        Crane.setTargetPosition(-10);
+        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        Crane.setPower(1);
+    }
+
+    public void drop(){
+        rightServo.setPosition(1);
+    }
+
 }
