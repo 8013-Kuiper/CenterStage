@@ -89,7 +89,7 @@ public class teleOpWithRR extends driveConstant{
             Winch.setPower(Winchpower);
 
 
-            if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>110) {
+            if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>90) {
                 Plane.setPosition(.9);
             }
 
