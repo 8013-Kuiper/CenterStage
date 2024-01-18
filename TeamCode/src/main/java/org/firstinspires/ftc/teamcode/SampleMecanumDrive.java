@@ -85,7 +85,7 @@ import static org.firstinspires.ftc.teamcode.DriveConstants.kV;
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(4, 0, 1e-8);
-    public static PIDCoefficients HEADING_PID = new PIDCoefficients(4.5, 0, 1e-8);//Kd could be the issue for spinning
+    public static PIDCoefficients HEADING_PID = new PIDCoefficients(4.5, 0, 0/*1e-8*/);//Kd could be the issue for spinning
 
     public static double LATERAL_MULTIPLIER = 1;
 
