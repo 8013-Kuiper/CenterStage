@@ -139,11 +139,11 @@ public class MyClass {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(14.5, -62, Math.toRadians(90)))
                                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
                                     //deliverPurple(100,.2);
                                 })
                                 .waitSeconds(1)
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
                                     //resetIntake();
 
                                 })
@@ -151,16 +151,16 @@ public class MyClass {
                                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                                 //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
                                 .lineTo(new Vector2d(51,-46))
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
                                 .strafeRight(3)
                                 .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
                                 .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
                                 .strafeTo(new Vector2d(51,-58))
@@ -510,7 +510,7 @@ public class MyClass {
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
                 .addEntity(myBot)
-                .addEntity(myBot2)
+                /*.addEntity(myBot2)
                 .addEntity(myBot3)
                 .addEntity(myBotoppo)
                 .addEntity(myBot2oppo)
@@ -520,7 +520,7 @@ public class MyClass {
                 .addEntity(redlongbot3)
                 .addEntity(redlongbot1oppo)
                 .addEntity(redlongbot2oppo)
-                .addEntity(redlongbot3oppo)
+                .addEntity(redlongbot3oppo)*/
                 .start();
     }
 }//asdf
