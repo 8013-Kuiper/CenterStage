@@ -19,12 +19,9 @@ import org.openftc.apriltag.AprilTagDetection;
 
 
 @Autonomous
-@Disabled
+
 
 public class testauton extends driveConstant {
-
-
-
 
 
 
@@ -51,27 +48,43 @@ public class testauton extends driveConstant {
 
 
         if (opModeIsActive()){
-            rightServo.setPosition(0);
-            Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
             //trajectorys
+            Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
-            /*TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
 
-                    .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+
+                    //.forward(5)
+                    .addTemporalMarker(()->{
+                        Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                        Crane.setTargetPosition(-2000);
+                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                        Crane.setPower(1);
+                        rightServo.setPosition(1);
+                    })
+                    .waitSeconds(3)
+                    .addTemporalMarker(()->{
+                        //rightServo.setPosition(1);
+                        /*Crane.setTargetPosition(0);
+                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                        Crane.setPower(1);*/
+                        rightServo.setPosition(0);
+                    })
                     .waitSeconds(10)
-                            .build();
+                    .build();
 
 
 
 
                 drive.followTrajectorySequence(left);
-                telemetry.update();*/
-            Intake.setPower(1);
-            sleep(1000);
-            Intake.setPower(0);
-            telemetry.addData("adf",Intake.getCurrentPosition());
-            telemetry.update();
+                rightServo.setPosition(1);
+                sleep(2000);
+                rightServo.setPosition(0);
+                sleep(2000);
+                telemetry.update();
+
 
 
 

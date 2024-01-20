@@ -36,6 +36,7 @@ public abstract class driveConstant extends LinearOpMode {
 
     public Servo armHolder;
 
+    public Servo dropoff;
 
 
 
@@ -59,6 +60,8 @@ public abstract class driveConstant extends LinearOpMode {
         springArm = hardwareMap.get(Servo.class, "springarm");
 
         armHolder = hardwareMap.get(Servo.class, "armHolder");
+
+        dropoff = hardwareMap.get(Servo.class, "dropoff");
 
 
         Crane.setDirection(DcMotorSimple.Direction.FORWARD);
