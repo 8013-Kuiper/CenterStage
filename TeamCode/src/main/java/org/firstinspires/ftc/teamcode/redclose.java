@@ -55,11 +55,11 @@ public class redclose extends driveConstant {
         //trajectorys
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);*/
@@ -68,16 +68,16 @@ public class redclose extends driveConstant {
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
                 .lineTo(new Vector2d(51,-46))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(4)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //retract();
                 })
                 .strafeTo(new Vector2d(51,-66))
@@ -89,11 +89,11 @@ public class redclose extends driveConstant {
                 //.splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 //.strafeTo(new Vector2d(6.7,-40))
                 .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);*/
@@ -102,16 +102,16 @@ public class redclose extends driveConstant {
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
                 .lineTo(new Vector2d(51,-46))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(16)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //retract();
                 })
                 //.strafeTo(new Vector2d(49,-58))
@@ -124,11 +124,11 @@ public class redclose extends driveConstant {
                 //.splineTo(new Vector2d(23, -35), Math.toRadians(90))
                 .splineTo(new Vector2d(23,-27),Math.toRadians(160))
                 //.strafeTo(new Vector2d(10,-35))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-1000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);*/
@@ -137,17 +137,17 @@ public class redclose extends driveConstant {
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
                 .lineTo(new Vector2d(51,-46))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(11)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //rightServo.setPosition(1);
 
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //retract();
 
                 })

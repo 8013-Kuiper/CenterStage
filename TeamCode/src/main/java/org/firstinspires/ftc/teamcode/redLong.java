@@ -56,11 +56,11 @@ public class redLong extends driveConstant {
         //trajectorys
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //resetIntake();
 
                 })
@@ -76,7 +76,7 @@ public class redLong extends driveConstant {
 
                 .lineTo(new Vector2d(51,-46))
 
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -84,11 +84,11 @@ public class redLong extends driveConstant {
                 })
                 .strafeRight(3)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                    // rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                    // retract();
                 })
                 .waitSeconds(10)
@@ -96,11 +96,11 @@ public class redLong extends driveConstant {
 
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //resetIntake();
 
                 })
@@ -114,7 +114,7 @@ public class redLong extends driveConstant {
 
                 .lineTo(new Vector2d(51,-46))
 
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -122,11 +122,11 @@ public class redLong extends driveConstant {
                 })
                 .strafeRight(18)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //retract();
                 })
                 .waitSeconds(10)
@@ -134,11 +134,11 @@ public class redLong extends driveConstant {
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //resetIntake();
 
                 })
@@ -152,7 +152,7 @@ public class redLong extends driveConstant {
 
                 .lineTo(new Vector2d(51,-46))
 
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     /*Crane.setTargetPosition(-2000);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
@@ -160,11 +160,11 @@ public class redLong extends driveConstant {
                 })
                 .strafeRight(16)
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //rightServo.setPosition(1);
                 })
                 .waitSeconds(.5)
-                .addDisplacementMarker(()->{
+                .addTemporalMarker(()->{
                     //retract();
                 })
                 .waitSeconds(10)

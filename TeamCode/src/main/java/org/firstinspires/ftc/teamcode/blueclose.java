@@ -71,12 +71,12 @@ public class blueclose extends driveConstant {
             //trajectorys
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         deliverPurple(120,.5);
                         telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //resetIntake();
                         /*Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -87,17 +87,17 @@ public class blueclose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(51,46))
 
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(3)
                     .waitSeconds(.5)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //drop();
                         //rightServo.setPosition(1);
                     })
                     .waitSeconds(2)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         retract();
                     })
                     //.strafeTo(new Vector2d(49,58))
@@ -110,12 +110,12 @@ public class blueclose extends driveConstant {
                     //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                     //.strafeTo(new Vector2d(6.7,40))
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         deliverPurple(120,.5);
                         telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //resetIntake();
                         /*Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -126,19 +126,19 @@ public class blueclose extends driveConstant {
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(51,46))
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                         telemetry.addLine("crane up more");
                     })
 
                     .strafeLeft(16)
                     .waitSeconds(.5)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //drop();
                         telemetry.addLine("drop");
                     })
                     .waitSeconds(1)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //retract();
                         telemetry.addLine("crane down");
                     })
@@ -152,12 +152,12 @@ public class blueclose extends driveConstant {
                     //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
                     //.strafeTo(new Vector2d(10,35))
                     .splineTo(new Vector2d(23,27),Math.toRadians(-160))
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         deliverPurple(120,.5);
                         telemetry.addLine("deliver center");
                     })
                     .waitSeconds(1)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //resetIntake();
                         /*Crane.setTargetPosition(-1000);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -168,17 +168,17 @@ public class blueclose extends driveConstant {
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(51,46))
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(11)
                     .waitSeconds(.5)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //drop();
 
                     })
                     .waitSeconds(1)
-                    .addDisplacementMarker(()->{
+                    .addTemporalMarker(()->{
                         //retract();
 
                     })

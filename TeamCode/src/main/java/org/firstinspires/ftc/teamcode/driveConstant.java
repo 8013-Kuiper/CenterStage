@@ -60,7 +60,6 @@ public abstract class driveConstant extends LinearOpMode {
 
         armHolder = hardwareMap.get(Servo.class, "armHolder");
 
-
         Crane.setDirection(DcMotorSimple.Direction.FORWARD);
         Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

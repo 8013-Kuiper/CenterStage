@@ -90,11 +90,11 @@ public class teleOpWithRR extends driveConstant{
 
 
             if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>90) {
-                Plane.setPosition(.9);
+                Plane.setPosition(1);
             }
 
             if (plane <= 0) {
-                Plane.setPosition(.5);
+                Plane.setPosition(.75);
             }
 
             if (springarm) {
@@ -107,11 +107,11 @@ public class teleOpWithRR extends driveConstant{
 
 
             if (intake2Close > 0) {
-                rightServo.setPosition(0);
+                rightServo.setPosition(1);
             }
 
             if (intake2Open > 0) {
-                rightServo.setPosition(1);
+                rightServo.setPosition(.3);
             }
 
 
