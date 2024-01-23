@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 
 @TeleOp
-@Disabled
+
 public class TeleOP extends driveConstant {
         @Override
         public void runOpMode() {
@@ -57,7 +57,7 @@ public class TeleOP extends driveConstant {
                 strafeLeft = gamepad1.left_bumper;
                 strafeRight = gamepad1.right_bumper;
 
-                cranepower = gamepad2.right_stick_y;
+                cranepower = gamepad2.left_stick_y;
 
                 Winchpower = gamepad2.left_stick_x;
 

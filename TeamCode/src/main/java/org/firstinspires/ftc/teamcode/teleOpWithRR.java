@@ -19,6 +19,7 @@ public class teleOpWithRR extends driveConstant{
 
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         initrobot();
+        Crane.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         waitForStart();
 
@@ -89,7 +90,7 @@ public class teleOpWithRR extends driveConstant{
             Winch.setPower(Winchpower);
 
 
-            if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>90) {
+            if (plane > 0 && mRuntime.time(TimeUnit.SECONDS)>0) {
                 Plane.setPosition(1);
             }
 
@@ -111,7 +112,7 @@ public class teleOpWithRR extends driveConstant{
             }
 
             if (intake2Open > 0) {
-                rightServo.setPosition(.3);
+                rightServo.setPosition(.2);
             }
 
 
@@ -137,6 +138,8 @@ public class teleOpWithRR extends driveConstant{
 
             Intake.setPower(Intakepower * .90);
 
+            telemetry.addData("crane",Crane.getCurrentPosition());
+            telemetry.update();
 
         }
         }
