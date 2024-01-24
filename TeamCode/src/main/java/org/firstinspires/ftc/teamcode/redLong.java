@@ -57,7 +57,7 @@ public class redLong extends driveConstant {
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
@@ -77,19 +77,19 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-2000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");*/
+                    telemetry.addLine("crane up");
                 })
                 .strafeRight(3)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                   // rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                   // retract();
+                   retract();
                 })
                 .waitSeconds(10)
                 .build();
@@ -97,7 +97,7 @@ public class redLong extends driveConstant {
         TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
@@ -115,19 +115,19 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-2000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");*/
+                    telemetry.addLine("crane up");
                 })
                 .strafeRight(18)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //retract();
+                    retract();
                 })
                 .waitSeconds(10)
                 .build();
@@ -135,7 +135,7 @@ public class redLong extends driveConstant {
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
@@ -153,19 +153,19 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(51,-46))
 
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-2000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
-                    telemetry.addLine("crane up");*/
+                    telemetry.addLine("crane up");
                 })
                 .strafeRight(16)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //retract();
+                    retract();
                 })
                 .waitSeconds(10)
                 .build();

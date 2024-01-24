@@ -56,13 +56,13 @@ public class redclose extends driveConstant {
         TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                 .splineTo(new Vector2d(23, -40), Math.toRadians(90))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-1000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);*/
+                    Crane.setPower(.8);
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -74,11 +74,11 @@ public class redclose extends driveConstant {
                 .strafeRight(4)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //retract();
+                    retract();
                 })
                 .strafeTo(new Vector2d(51,-66))
                 .back(8)
@@ -90,13 +90,13 @@ public class redclose extends driveConstant {
                 //.strafeTo(new Vector2d(6.7,-40))
                 .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-1000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);*/
+                    Crane.setPower(.8);
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -108,11 +108,11 @@ public class redclose extends driveConstant {
                 .strafeRight(16)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //retract();
+                    retract();
                 })
                 //.strafeTo(new Vector2d(49,-58))
                 .strafeTo(new Vector2d(51,-66))
@@ -125,13 +125,13 @@ public class redclose extends driveConstant {
                 .splineTo(new Vector2d(23,-27),Math.toRadians(160))
                 //.strafeTo(new Vector2d(10,-35))
                 .addTemporalMarker(()->{
-                    deliverPurple(120,.5);
+                    //deliverPurple(120,.5);
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    /*Crane.setTargetPosition(-1000);
+                    Crane.setTargetPosition(-1750);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);*/
+                    Crane.setPower(.8);
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -143,12 +143,12 @@ public class redclose extends driveConstant {
                 .strafeRight(11)
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //rightServo.setPosition(1);
+                    rightServo.setPosition(.2);
 
                 })
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
-                    //retract();
+                    retract();
 
                 })
                 //.strafeTo(new Vector2d(49,-58))
