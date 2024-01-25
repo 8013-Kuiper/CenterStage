@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.roadrunner.drive.Drive;
+import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -78,19 +80,21 @@ public class blueclose extends driveConstant {
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //resetIntake();
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                     })
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                    .lineTo(new Vector2d(51,46))
-
+                    .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(3)
+                    .back(4.75,
+                            SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                     .waitSeconds(.5)
                     .addTemporalMarker(()->{
                         //drop();
@@ -101,7 +105,7 @@ public class blueclose extends driveConstant {
                         retract();
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,66))
+                    .strafeTo(new Vector2d(50,66))
                     .back(8)
                     .waitSeconds(10)
                     .build();
@@ -117,7 +121,7 @@ public class blueclose extends driveConstant {
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //resetIntake();
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
@@ -125,13 +129,17 @@ public class blueclose extends driveConstant {
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                    .lineTo(new Vector2d(51,46))
+                    .lineTo(new Vector2d(50,46),
+                            SampleMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                         telemetry.addLine("crane up more");
                     })
 
-                    .strafeLeft(16)
+                    .strafeLeft(17)
+                    .back(4.75,
+                            SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                     .waitSeconds(.5)
                     .addTemporalMarker(()->{
                         //drop();
@@ -145,7 +153,7 @@ public class blueclose extends driveConstant {
                         telemetry.addLine("crane down");
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,66))//58
+                    .strafeTo(new Vector2d(50,66))//58
                     .back(8)
                     .waitSeconds(10)
                     .build();
@@ -161,7 +169,7 @@ public class blueclose extends driveConstant {
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //resetIntake();
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
@@ -169,11 +177,15 @@ public class blueclose extends driveConstant {
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                    .lineTo(new Vector2d(51,46))
+                    .lineTo(new Vector2d(50,46),
+                            SampleMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(11)
+                    .back(4.75,
+                            SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                     .waitSeconds(.5)
                     .addTemporalMarker(()->{
                         //drop();
@@ -187,7 +199,7 @@ public class blueclose extends driveConstant {
 
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(51,66))
+                    .strafeTo(new Vector2d(50,66))
                     .back(8)
                     .waitSeconds(10)
                     .build();

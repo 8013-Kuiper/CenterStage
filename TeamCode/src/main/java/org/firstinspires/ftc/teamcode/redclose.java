@@ -60,7 +60,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1750);
+                    Crane.setTargetPosition(-1263);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
@@ -94,7 +94,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1750);
+                    Crane.setTargetPosition(-1263);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })
@@ -129,7 +129,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1750);
+                    Crane.setTargetPosition(-1263);
                     Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     Crane.setPower(.8);
                 })

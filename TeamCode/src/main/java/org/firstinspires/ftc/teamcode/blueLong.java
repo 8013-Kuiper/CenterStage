@@ -88,7 +88,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(51,46))
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
@@ -127,7 +127,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(51,46))
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
@@ -167,7 +167,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(51,46))
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1750);
+                        Crane.setTargetPosition(-1263);
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
