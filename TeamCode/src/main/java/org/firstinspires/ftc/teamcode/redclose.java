@@ -71,7 +71,7 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(4)
+                .strafeRight(3)
                 .back(4.75,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
@@ -108,7 +108,7 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(16)
+                .strafeRight(17)
                 .back(4.75,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
