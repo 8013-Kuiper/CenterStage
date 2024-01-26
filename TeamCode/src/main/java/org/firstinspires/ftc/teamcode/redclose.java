@@ -67,11 +67,14 @@ public class redclose extends driveConstant {
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(4)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
@@ -80,7 +83,7 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(51,-66))
+                .strafeTo(new Vector2d(50,-66))
                 .back(8)
                 .waitSeconds(10)
                 .build();
@@ -101,11 +104,14 @@ public class redclose extends driveConstant {
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(16)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
@@ -115,7 +121,7 @@ public class redclose extends driveConstant {
                     retract();
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-66))
+                .strafeTo(new Vector2d(50,-66))
                 .back(8)
                 .waitSeconds(10)
                 .build();
@@ -136,11 +142,14 @@ public class redclose extends driveConstant {
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
                 //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(11)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
@@ -152,7 +161,7 @@ public class redclose extends driveConstant {
 
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(51,-66))
+                .strafeTo(new Vector2d(50,-66))
 
                 .back(8)
                 .waitSeconds(10)

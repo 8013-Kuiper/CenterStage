@@ -93,7 +93,7 @@ public class blueclose extends driveConstant {
                     })
                     .strafeLeft(3)
                     .back(4.75,
-                            SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                            SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
                     .addTemporalMarker(()->{
@@ -130,7 +130,7 @@ public class blueclose extends driveConstant {
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46),
-                            SampleMecanumDrive.getVelocityConstraint(15, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                            SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                         telemetry.addLine("crane up more");
@@ -138,7 +138,7 @@ public class blueclose extends driveConstant {
 
                     .strafeLeft(17)
                     .back(4.75,
-                            SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                            SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
                     .addTemporalMarker(()->{
