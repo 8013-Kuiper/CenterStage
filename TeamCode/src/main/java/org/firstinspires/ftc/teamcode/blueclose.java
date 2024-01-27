@@ -182,7 +182,7 @@ public class blueclose extends driveConstant {
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
-                    .strafeLeft(11)
+                    .strafeLeft(10)
                     .back(4.75,
                             SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
