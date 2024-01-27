@@ -12,7 +12,232 @@ public class MyClass {
     public static void main(String[] args) {
         MeepMeep meepMeep = new MeepMeep(1200);
 
-        RoadRunnerBotEntity myBotoppo = new DefaultBotBuilder(meepMeep)
+
+        RoadRunnerBotEntity bluecloseleft = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                        .followTrajectorySequence(drive ->
+                                drive.trajectorySequenceBuilder(new Pose2d(14.5,65, Math.toRadians(-90)))
+                                        .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
+                                        .addTemporalMarker(()->{
+
+                                        })
+                                        .waitSeconds(1)
+                                        .addTemporalMarker(()->{
+
+                                        })
+
+                                        .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                                        .lineTo(new Vector2d(50,46))
+                                        .addTemporalMarker(()->{
+
+                                        })
+                                        .strafeLeft(3)
+                                        .back(4.75)
+
+                                        .waitSeconds(.5)
+                                        .addTemporalMarker(()->{
+
+                                        })
+                                        .waitSeconds(2)
+                                        .addTemporalMarker(()->{
+                                        })
+
+                                        .strafeTo(new Vector2d(50,66))
+                                        .back(8)
+                                        .waitSeconds(10)
+                                        .build()
+                        );
+
+        RoadRunnerBotEntity bluecloseright = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5,65, Math.toRadians(-90)))
+
+                                .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                                .lineTo(new Vector2d(50,46))
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .strafeLeft(17)
+                                .back(4.75)
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+                                //.strafeTo(new Vector2d(49,58))
+                                .strafeTo(new Vector2d(50,66))//58
+                                .back(8)
+                                .waitSeconds(10)
+                                .build()
+
+                );
+
+
+
+        RoadRunnerBotEntity blueclosecenter = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5,65, Math.toRadians(-90)))
+
+                                .splineTo(new Vector2d(23,27),Math.toRadians(-160))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+                                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
+                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
+                                .lineTo(new Vector2d(50,46))
+                                .addTemporalMarker(()->{
+                                    //Crane.setTargetPosition(-2000);
+                                })
+                                .strafeLeft(10)
+                                .back(4.75,
+                                        SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+                                    //drop();
+                                    rightServo.setPosition(.2);
+
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+                                    retract();
+
+                                })
+                                //.strafeTo(new Vector2d(49,58))
+                                .strafeTo(new Vector2d(50,66))
+                                .back(8)
+                                .waitSeconds(10)
+                                .build();
+
+                );
+
+
+
+        RoadRunnerBotEntity redcloseright = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity redcloseleft = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+        RoadRunnerBotEntity redclosecenter = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity bluelongleft = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity bluelongright = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity bluelongcenter = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity redlongright = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity redlongleft = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+        RoadRunnerBotEntity redlongcenter = new DefaultBotBuilder(meepMeep)
+                .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
+                .setColorScheme(new ColorSchemeBlueLight())
+                .followTrajectorySequence(drive ->
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+
+                );
+
+
+
+
+
+
+
+
+
+
+
+
+        /*RoadRunnerBotEntity myBotoppo = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
@@ -503,13 +728,13 @@ public class MyClass {
                                 })
 
                                 .build()
-                );
+                );*/
 
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                .addEntity(myBot)
+                //.addEntity(myBot)
                 /*.addEntity(myBot2)
                 .addEntity(myBot3)
                 .addEntity(myBotoppo)
