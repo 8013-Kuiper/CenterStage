@@ -5,6 +5,7 @@ import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueLight;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeRedDark;
+import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeRedLight;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
@@ -114,26 +115,23 @@ public class MyClass {
                                     //Crane.setTargetPosition(-2000);
                                 })
                                 .strafeLeft(10)
-                                .back(4.75,
-                                        SampleMecanumDrive.getVelocityConstraint(10, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                                .back(4.75)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
-                                    //drop();
-                                    rightServo.setPosition(.2);
 
 
                                 })
                                 .waitSeconds(1)
                                 .addTemporalMarker(()->{
-                                    retract();
+
 
                                 })
-                                //.strafeTo(new Vector2d(49,58))
+
                                 .strafeTo(new Vector2d(50,66))
                                 .back(8)
                                 .waitSeconds(10)
-                                .build();
+                                .build()
 
                 );
 
@@ -141,28 +139,125 @@ public class MyClass {
 
         RoadRunnerBotEntity redcloseright = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5,-65, Math.toRadians(90)))
+                                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                                .addTemporalMarker(()->{
 
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+
+                                .lineTo(new Vector2d(50,-46))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeRight(3)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeTo(new Vector2d(50,-66))
+                                .back(8)
+                                .waitSeconds(10)
+                                .build()
                 );
 
 
 
         RoadRunnerBotEntity redcloseleft = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5,-65, Math.toRadians(90)))
+
+                                .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+
+                                .lineTo(new Vector2d(50,-46))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeRight(17)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                //.strafeTo(new Vector2d(49,-58))
+                                .strafeTo(new Vector2d(50,-66))
+                                .back(8)
+                                .waitSeconds(10)
+                                .build()
 
                 );
 
 
         RoadRunnerBotEntity redclosecenter = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(14.5,-65, Math.toRadians(90)))
+
+                                .splineTo(new Vector2d(23,-27),Math.toRadians(160))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+
+                                .lineTo(new Vector2d(50,-46))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeRight(10)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+
+                                })
+                                //.strafeTo(new Vector2d(49,-58))
+                                .strafeTo(new Vector2d(50,-66))
+
+                                .back(8)
+                                .waitSeconds(10)
+                                .build()
 
                 );
 
@@ -172,8 +267,46 @@ public class MyClass {
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,65, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                                .addTemporalMarker(()->{
 
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+
+                                })
+                                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
+                                .setReversed(true)
+                                .splineTo(new Vector2d(-37,62), Math.toRadians(0))//59.5
+                                .setReversed(false)
+                                .waitSeconds(5)
+
+                                .lineToConstantHeading(new Vector2d(11,62))//59.6
+
+                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                                .lineTo(new Vector2d(50,46))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeLeft(3)
+
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(10)
+
+                                .build()
                 );
 
 
@@ -182,7 +315,42 @@ public class MyClass {
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,65, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .setReversed(true)
+                                .splineTo(new Vector2d(-37,62), Math.toRadians(0))
+                                .setReversed(false)
+                                .waitSeconds(5)
+                                .lineToConstantHeading(new Vector2d(11,62))
+
+                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                                .lineTo(new Vector2d(50,46))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeLeft(17)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+
+                                })
+                                .waitSeconds(10)
+                                .build()
 
                 );
 
@@ -192,27 +360,133 @@ public class MyClass {
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,65, Math.toRadians(-90)))
+                                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
+                                .addTemporalMarker(()->{
 
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+                                })
+
+                                .setReversed(true)
+                                .splineTo(new Vector2d(-37,62), Math.toRadians(0))//go in front of truss
+                                .setReversed(false)
+                                .waitSeconds(5)
+                                .lineToConstantHeading(new Vector2d(11,62))
+
+                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+
+                                .lineTo(new Vector2d(50,46))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeLeft(10)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(10)
+                                .build()
                 );
 
 
 
         RoadRunnerBotEntity redlongright = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,-65, Math.toRadians(90)))
+                                .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
+                                .addTemporalMarker(()->{
 
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+
+                                })
+
+                                .setReversed(true)
+                                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
+                                .setReversed(false)
+                                .waitSeconds(5)
+
+                                .lineToConstantHeading(new Vector2d(11,-62))
+
+                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+
+                                .lineTo(new Vector2d(50,-46))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeRight(3)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(10)
+                                .build()
                 );
 
 
 
         RoadRunnerBotEntity redlongleft = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,-65, Math.toRadians(90)))
+                                .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+
+                                })
+                                .setReversed(true)
+                                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
+                                .setReversed(false)
+                                .waitSeconds(5)
+                                .lineToConstantHeading(new Vector2d(11,-62))
+
+                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+
+                                .lineTo(new Vector2d(50,-46))
+
+                                .addTemporalMarker(()->{
+
+                                })
+                                .strafeRight(17)
+                                .back(4.75)
+
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(.5)
+                                .addTemporalMarker(()->{
+
+                                })
+                                .waitSeconds(10)
+                                .build()
 
                 );
 
@@ -220,532 +494,63 @@ public class MyClass {
 
         RoadRunnerBotEntity redlongcenter = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
+                .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
-
-                );
-
-
-
-
-
-
-
-
-
-
-
-
-        /*RoadRunnerBotEntity myBotoppo = new DefaultBotBuilder(meepMeep)
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .setColorScheme(new ColorSchemeBlueLight())
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
-                                .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-                                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                                .lineTo(new Vector2d(51,46))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(3)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                //.strafeTo(new Vector2d(49,58))
-                                .strafeTo(new Vector2d(51,58))
-                                .back(8)
-                                .build()
-
-
-                );
-
-        RoadRunnerBotEntity myBot2oppo = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeBlueLight())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
-                                //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
-                                //.strafeTo(new Vector2d(6.7,40))
-                                .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-                                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                                .lineTo(new Vector2d(51,46))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(16)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                //.strafeTo(new Vector2d(49,58))
-                                .strafeTo(new Vector2d(51,58))
-                                .back(8)
-                                .build()
-                );
-
-        RoadRunnerBotEntity myBot3oppo = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeBlueLight())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, 65, Math.toRadians(-90)))
-                                //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
-                                //.strafeTo(new Vector2d(10,35))
-                                .splineTo(new Vector2d(23,27),Math.toRadians(-160))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-                                //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
-                                .lineTo(new Vector2d(51,46))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(12)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-
-                                })
-                                //.strafeTo(new Vector2d(49,58))
-                                .strafeTo(new Vector2d(51,58))
-                                .back(8)
-                                .build()
-                );
-
-
-
-
-
-        RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -62, Math.toRadians(90)))
-                                .splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                                .addTemporalMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addTemporalMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                                //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
-                                .lineTo(new Vector2d(51,-46))
-                                .addTemporalMarker(()->{
-
-                                })
-                                .strafeRight(3)
-                                .waitSeconds(.5)
-                                .addTemporalMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addTemporalMarker(()->{
-
-                                })
-                                .strafeTo(new Vector2d(51,-58))
-                                .back(8)
-                                .build()
-
-
-                );
-
-        RoadRunnerBotEntity myBot2 = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeRedDark())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                                drive.trajectorySequenceBuilder(new Pose2d(14.5, -65, Math.toRadians(90)))
-                                        //.splineTo(new Vector2d(23, -40), Math.toRadians(90))
-                                        //.strafeTo(new Vector2d(6.7,-40))
-                                        .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
-                                        .addDisplacementMarker(()->{
-
-                                        })
-                                        .waitSeconds(1)
-                                        .addDisplacementMarker(()->{
-
-                                        })
-                                        //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                                        .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                                        //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
-                                        .lineTo(new Vector2d(51,-46))
-                                        .addDisplacementMarker(()->{
-
-                                        })
-                                        .strafeRight(16)
-                                        .waitSeconds(.5)
-                                        .addDisplacementMarker(()->{
-
-                                        })
-                                        .waitSeconds(.5)
-                                        .addDisplacementMarker(()->{
-
-                                        })
-                                        .strafeTo(new Vector2d(51,-58))
-                                        .back(8)
-                                        .build()
-                );
-
-
-        RoadRunnerBotEntity myBot3 = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeRedDark())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14.5, -65, Math.toRadians(90)))
-                                //.splineTo(new Vector2d(23, -35), Math.toRadians(90))
-                                .splineTo(new Vector2d(23,-27),Math.toRadians(160))
-                                //.strafeTo(new Vector2d(10,-35))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
-                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-                                //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
-                                .lineTo(new Vector2d(51,-46))
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeRight(12)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-
-                                })
-                                .strafeTo(new Vector2d(51,-58))
-                                .back(8)
-                                .build()
-                );
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        RoadRunnerBotEntity redlongbot1 = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeRedDark())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
-                                .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                .setReversed(true)
-                                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
-                                .setReversed(false)
-                                .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,-59.5))
-
-                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-
-                                .lineTo(new Vector2d(51,-46))
-
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeRight(16)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-
-                                .build()
-                );
-
-        RoadRunnerBotEntity redlongbot2 = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeRedDark())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
-                                .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
-                                .setReversed(true)
-                                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
-                                .setReversed(false)
-                                .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,-59.5))
-
-                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
-
-                                .lineTo(new Vector2d(51,-46))
-
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeRight(3)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-
-                                .build()
-                );
-
-
-
-        RoadRunnerBotEntity redlongbot3 = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeRedDark())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -65, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-37.5,-65, Math.toRadians(90)))
                                 .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
+                                .addTemporalMarker(()->{
 
                                 })
-                                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
+                                .waitSeconds(1)
+                                .addTemporalMarker(()->{
+
+
+                                })
                                 .setReversed(true)
-                                .splineTo(new Vector2d(-37,-59.5), Math.toRadians(0))
+                                .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                                 .setReversed(false)
                                 .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,-59.5))
+                                .lineToConstantHeading(new Vector2d(11,-62))
 
                                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                                .lineTo(new Vector2d(51,-46))
+                                .lineTo(new Vector2d(50,-46))
 
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
-                                .strafeRight(12)
+                                .strafeRight(10)
+                                .back(4.75)
+
                                 .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
                                 .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
+                                .addTemporalMarker(()->{
 
                                 })
-
+                                .waitSeconds(10)
                                 .build()
+
                 );
-
-
-        RoadRunnerBotEntity redlongbot1oppo = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeBlueLight())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
-                                .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                .setReversed(true)
-                                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                                .setReversed(false)
-                                .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                                .lineTo(new Vector2d(51,46))
-
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(16)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-
-                                .build()
-                );
-
-        RoadRunnerBotEntity redlongbot2oppo = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeBlueLight())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
-                                .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
-                                .setReversed(true)
-                                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                                .setReversed(false)
-                                .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                                .lineTo(new Vector2d(51,46))
-
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(3)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-
-                                .build()
-                );
-
-
-
-        RoadRunnerBotEntity redlongbot3oppo = new DefaultBotBuilder(meepMeep)
-                .setColorScheme(new ColorSchemeBlueLight())
-                // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(30, 30, Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
-                .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, 65, Math.toRadians(-90)))
-                                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
-                                .addDisplacementMarker(()->{
-                                    //deliverPurple(100,.2);
-                                })
-                                .waitSeconds(1)
-                                .addDisplacementMarker(()->{
-                                    //resetIntake();
-
-                                })
-                                //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
-                                .setReversed(true)
-                                .splineTo(new Vector2d(-37,59.5), Math.toRadians(0))
-                                .setReversed(false)
-                                .waitSeconds(5)
-                                .lineToConstantHeading(new Vector2d(11,59.5))
-
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
-
-                                .lineTo(new Vector2d(51,46))
-
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .strafeLeft(12)
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(()->{
-
-                                })
-
-                                .build()
-                );*/
 
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                //.addEntity(myBot)
-                /*.addEntity(myBot2)
-                .addEntity(myBot3)
-                .addEntity(myBotoppo)
-                .addEntity(myBot2oppo)
-                .addEntity(myBot3oppo)
-                .addEntity(redlongbot1)
-                .addEntity(redlongbot2)
-                .addEntity(redlongbot3)
-                .addEntity(redlongbot1oppo)
-                .addEntity(redlongbot2oppo)
-                .addEntity(redlongbot3oppo)*/
+                .addEntity(bluecloseleft)
+                .addEntity(bluecloseright)
+                .addEntity(blueclosecenter)
+                .addEntity(bluelongleft)
+                .addEntity(bluelongright)
+                .addEntity(bluelongcenter)
+                .addEntity(redlongright)
+                .addEntity(redlongleft)
+                .addEntity(redlongcenter)
+                .addEntity(redcloseright)
+                .addEntity(redcloseleft)
+                .addEntity(redclosecenter)
                 .start();
     }
 }//asdf

@@ -74,7 +74,7 @@ public class redLong extends driveConstant {
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
 
                 .addTemporalMarker(()->{
                     Crane.setTargetPosition(-1263);
@@ -83,6 +83,9 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(3)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
@@ -112,7 +115,7 @@ public class redLong extends driveConstant {
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
 
                 .addTemporalMarker(()->{
                     Crane.setTargetPosition(-1263);
@@ -120,7 +123,10 @@ public class redLong extends driveConstant {
                     Crane.setPower(.8);
                     telemetry.addLine("crane up");
                 })
-                .strafeRight(18)
+                .strafeRight(17)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
@@ -150,7 +156,7 @@ public class redLong extends driveConstant {
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                .lineTo(new Vector2d(51,-46))
+                .lineTo(new Vector2d(50,-46))
 
                 .addTemporalMarker(()->{
                     Crane.setTargetPosition(-1263);
@@ -158,7 +164,10 @@ public class redLong extends driveConstant {
                     Crane.setPower(.8);
                     telemetry.addLine("crane up");
                 })
-                .strafeRight(16)
+                .strafeRight(10)
+                .back(4.75,
+                        SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
