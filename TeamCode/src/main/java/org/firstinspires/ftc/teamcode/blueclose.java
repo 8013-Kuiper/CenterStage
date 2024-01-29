@@ -92,7 +92,7 @@ public class blueclose extends driveConstant {
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(3)
-                    .back(4.75,
+                    .back(4.8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
@@ -135,8 +135,8 @@ public class blueclose extends driveConstant {
                         telemetry.addLine("crane up more");
                     })
 
-                    .strafeLeft(17)
-                    .back(4.75,
+                    .strafeLeft(19)
+                    .back(4.8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
@@ -160,7 +160,7 @@ public class blueclose extends driveConstant {
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
                     //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
                     //.strafeTo(new Vector2d(10,35))
-                    .splineTo(new Vector2d(23,27),Math.toRadians(-160))
+                    .splineTo(new Vector2d(23,27),Math.toRadians(-179))//-160
                     .addTemporalMarker(()->{
                         //deliverPurple(120,.5);
                         telemetry.addLine("deliver center");
@@ -181,7 +181,7 @@ public class blueclose extends driveConstant {
                         //Crane.setTargetPosition(-2000);
                     })
                     .strafeLeft(10)
-                    .back(4.75,
+                    .back(4.8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
