@@ -539,18 +539,18 @@ public class MyClass {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                .addEntity(bluecloseleft)
+                /*.addEntity(bluecloseleft)
                 .addEntity(bluecloseright)
-                .addEntity(blueclosecenter)
+                .addEntity(blueclosecenter)*/
                 .addEntity(bluelongleft)
                 .addEntity(bluelongright)
                 .addEntity(bluelongcenter)
-                .addEntity(redlongright)
+                /*.addEntity(redlongright)
                 .addEntity(redlongleft)
                 .addEntity(redlongcenter)
                 .addEntity(redcloseright)
                 .addEntity(redcloseleft)
-                .addEntity(redclosecenter)
+                .addEntity(redclosecenter)*/
                 .start();
     }
 }//asdf
