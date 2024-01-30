@@ -11,7 +11,7 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class MyClass {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(1200);
+        MeepMeep meepMeep = new MeepMeep(700);
 
 
         RoadRunnerBotEntity bluecloseleft = new DefaultBotBuilder(meepMeep)
@@ -830,7 +830,7 @@ public class MyClass {
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
 
-                .addEntity(bluecloseleft)
+                /*.addEntity(bluecloseleft)
                 .addEntity(bluecloseright)
                 .addEntity(blueclosecenter)
 
@@ -853,11 +853,13 @@ public class MyClass {
                 .addEntity(redlongcentertruss)
 
 
+                 */
+
 
 
                 .addEntity(bluelonglefttruss)
-                .addEntity(bluelongrighttruss)
-                .addEntity(bluelongcentertruss)
+                //.addEntity(bluelongrighttruss)
+                //.addEntity(bluelongcentertruss)
                 .start();
     }
 }

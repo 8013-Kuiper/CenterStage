@@ -73,11 +73,15 @@ public class blueLongTruss extends driveConstant {
 
                     })
 
-                    .setReversed(true)
-                    .splineTo(new Vector2d(-45,12), Math.toRadians(0))
-                    .setReversed(false)
+                    //.setReversed(true)
+                    //.splineTo(new Vector2d(-45,12), Math.toRadians(0))
+                    .back(3)
+                    .lineTo(new Vector2d(-45,12))
+                    //.setReversed(false)
 
+                    //.lineToSplineHeading(new Pose2d(28,12, Math.toRadians(-180)))
                     .lineTo(new Vector2d(28,12))
+                    .turn(-180)
 
 
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
@@ -106,6 +110,10 @@ public class blueLongTruss extends driveConstant {
                         retract();
 
                     })
+
+
+
+
                     .waitSeconds(10)
                     .build();
 
@@ -122,11 +130,17 @@ public class blueLongTruss extends driveConstant {
                     })
                     .lineTo(new Vector2d(-47,44))
 
-                    .strafeTo(new Vector2d(-35,44))
+                    .strafeTo(new Vector2d(-32,44))
 
-                    .lineToSplineHeading(new Pose2d(-35,12,Math.toRadians(-180)))
+                    //.lineToSplineHeading(new Pose2d(-32,12,Math.toRadians(-180)))
 
-                    .lineTo(new Vector2d(28,12))
+                    .lineTo(new Vector2d(-32,36.5))//12
+
+                    .strafeTo(new Vector2d(0,36.5))
+
+                    .forward(8)
+
+                    //.lineTo(new Vector2d(28,12))
 
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
 
@@ -180,7 +194,7 @@ public class blueLongTruss extends driveConstant {
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
                     })
-                    .strafeLeft(10)
+                    .strafeLeft(1)
                     .back(8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 

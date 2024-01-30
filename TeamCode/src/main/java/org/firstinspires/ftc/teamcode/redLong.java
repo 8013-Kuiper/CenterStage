@@ -124,7 +124,7 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(20)
-                .back(8,
+                .back(6,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -205,13 +205,14 @@ public class redLong extends driveConstant {
 
             if (teamElementPos == 2) {
 
-                drive.followTrajectorySequence(right);
+                drive.followTrajectorySequence(left);//right
 
 
             }
             else if (teamElementPos == 1) {
 
-                drive.followTrajectorySequence(left);
+                drive.followTrajectorySequence(right);//left
+
 
             }
             else if (teamElementPos == 3) {

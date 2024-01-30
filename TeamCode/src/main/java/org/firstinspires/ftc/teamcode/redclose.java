@@ -79,7 +79,7 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(.5)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     retract();
                 })
@@ -108,15 +108,15 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(19)
-                .back(4.8,
+                .strafeRight(20)
+                .back(4,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(.5)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     retract();
                 })
@@ -146,7 +146,7 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(10)
+                .strafeRight(9)
                 .back(4.8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
