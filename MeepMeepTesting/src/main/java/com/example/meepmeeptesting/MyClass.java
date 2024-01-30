@@ -34,8 +34,8 @@ public class MyClass {
                                         .addTemporalMarker(()->{
 
                                         })
-                                        .strafeLeft(3)
-                                        .back(4.75)
+                                        .strafeLeft(5)
+                                        .back(4.8)
 
                                         .waitSeconds(.5)
                                         .addTemporalMarker(()->{
@@ -73,8 +73,8 @@ public class MyClass {
 
                                 })
 
-                                .strafeLeft(17)
-                                .back(4.75)
+                                .strafeLeft(20)
+                                .back(4.8)
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
 
@@ -99,7 +99,7 @@ public class MyClass {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(14.5,65, Math.toRadians(-90)))
 
-                                .splineTo(new Vector2d(23,27),Math.toRadians(-160))
+                                .splineTo(new Vector2d(23,27),Math.toRadians(-179))
                                 .addTemporalMarker(()->{
 
                                 })
@@ -115,7 +115,7 @@ public class MyClass {
                                     //Crane.setTargetPosition(-2000);
                                 })
                                 .strafeLeft(10)
-                                .back(4.75)
+                                .back(4.8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -158,7 +158,7 @@ public class MyClass {
 
                                 })
                                 .strafeRight(3)
-                                .back(4.75)
+                                .back(4.8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -197,8 +197,8 @@ public class MyClass {
                                 .addTemporalMarker(()->{
 
                                 })
-                                .strafeRight(17)
-                                .back(4.75)
+                                .strafeRight(19)
+                                .back(4.8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -223,7 +223,7 @@ public class MyClass {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(14.5,-65, Math.toRadians(90)))
 
-                                .splineTo(new Vector2d(23,-27),Math.toRadians(160))
+                                .splineTo(new Vector2d(23,-27),Math.toRadians(179))
 
                                 .addTemporalMarker(()->{
 
@@ -240,7 +240,7 @@ public class MyClass {
 
                                 })
                                 .strafeRight(10)
-                                .back(4.75)
+                                .back(4.8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -294,7 +294,7 @@ public class MyClass {
                                 })
                                 .strafeLeft(3)
 
-                                .back(4.75)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -338,7 +338,7 @@ public class MyClass {
 
                                 })
                                 .strafeLeft(17)
-                                .back(4.75)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -361,7 +361,7 @@ public class MyClass {
                 .setColorScheme(new ColorSchemeBlueLight())
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-37.5,65, Math.toRadians(-90)))
-                                .splineTo(new Vector2d(-45,27),Math.toRadians(-20))
+                                .splineTo(new Vector2d(-45,27),Math.toRadians(-1))
                                 .addTemporalMarker(()->{
 
 
@@ -377,15 +377,15 @@ public class MyClass {
                                 .waitSeconds(5)
                                 .lineToConstantHeading(new Vector2d(11,62))
 
-                                .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                                .lineToSplineHeading(new Pose2d(46, 40, Math.toRadians(-180)))
 
-                                .lineTo(new Vector2d(50,46))
+                                .lineTo(new Vector2d(50,40))
 
                                 .addTemporalMarker(()->{
 
                                 })
                                 .strafeLeft(10)
-                                .back(4.75)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -430,8 +430,8 @@ public class MyClass {
                                 .addTemporalMarker(()->{
 
                                 })
-                                .strafeRight(3)
-                                .back(4.75)
+                                .strafeRight(5)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -474,8 +474,8 @@ public class MyClass {
                                 .addTemporalMarker(()->{
 
                                 })
-                                .strafeRight(17)
-                                .back(4.75)
+                                .strafeRight(20)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -497,7 +497,7 @@ public class MyClass {
                 .setColorScheme(new ColorSchemeRedLight())
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-37.5,-65, Math.toRadians(90)))
-                                .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
+                                .splineTo(new Vector2d(-45,-27),Math.toRadians(1))
                                 .addTemporalMarker(()->{
 
                                 })
@@ -512,15 +512,15 @@ public class MyClass {
                                 .waitSeconds(5)
                                 .lineToConstantHeading(new Vector2d(11,-62))
 
-                                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+                                .lineToSplineHeading(new Pose2d(46, -40, Math.toRadians(180)))
 
-                                .lineTo(new Vector2d(50,-46))
+                                .lineTo(new Vector2d(50,-40))
 
                                 .addTemporalMarker(()->{
 
                                 })
                                 .strafeRight(10)
-                                .back(4.75)
+                                .back(8)
 
                                 .waitSeconds(.5)
                                 .addTemporalMarker(()->{
@@ -539,18 +539,18 @@ public class MyClass {
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
-                /*.addEntity(bluecloseleft)
+                .addEntity(bluecloseleft)
                 .addEntity(bluecloseright)
-                .addEntity(blueclosecenter)*/
+                .addEntity(blueclosecenter)
                 .addEntity(bluelongleft)
                 .addEntity(bluelongright)
                 .addEntity(bluelongcenter)
-                /*.addEntity(redlongright)
+                .addEntity(redlongright)
                 .addEntity(redlongleft)
                 .addEntity(redlongcenter)
                 .addEntity(redcloseright)
                 .addEntity(redcloseleft)
-                .addEntity(redclosecenter)*/
+                .addEntity(redclosecenter)
                 .start();
     }
 }//asdf

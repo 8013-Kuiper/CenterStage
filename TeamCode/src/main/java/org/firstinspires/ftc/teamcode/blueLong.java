@@ -151,7 +151,7 @@ public class blueLong extends driveConstant {
                     .build();
 
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                    .splineTo(new Vector2d(-45,27),Math.toRadians(-0))//-20
+                    .splineTo(new Vector2d(-45,27),Math.toRadians(-1))//-20
                     .addTemporalMarker(()->{
                         //deliverPurple(120,.5);
 

@@ -82,8 +82,8 @@ public class redLong extends driveConstant {
                     Crane.setPower(.8);
                     telemetry.addLine("crane up");
                 })
-                .strafeRight(3)
-                .back(4.75,
+                .strafeRight(5)
+                .back(8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -123,8 +123,8 @@ public class redLong extends driveConstant {
                     Crane.setPower(.8);
                     telemetry.addLine("crane up");
                 })
-                .strafeRight(17)
-                .back(4.75,
+                .strafeRight(20)
+                .back(8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -139,7 +139,7 @@ public class redLong extends driveConstant {
                 .build();
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(-45,-27),Math.toRadians(20))
+                .splineTo(new Vector2d(-45,-27),Math.toRadians(1))
                 .addTemporalMarker(()->{
                     //deliverPurple(120,.5);
                 })
@@ -154,9 +154,9 @@ public class redLong extends driveConstant {
                 .waitSeconds(5)
                 .lineToConstantHeading(new Vector2d(11,-62))
 
-                .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
+                .lineToSplineHeading(new Pose2d(46, -40, Math.toRadians(180)))
 
-                .lineTo(new Vector2d(50,-46))
+                .lineTo(new Vector2d(50,-40))
 
                 .addTemporalMarker(()->{
                     Crane.setTargetPosition(-1263);
@@ -165,7 +165,7 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(10)
-                .back(4.75,
+                .back(8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)

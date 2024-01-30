@@ -72,7 +72,7 @@ public class redclose extends driveConstant {
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(3)
-                .back(4.75,
+                .back(4.8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -108,8 +108,8 @@ public class redclose extends driveConstant {
                 .addTemporalMarker(()->{
                     //Crane.setTargetPosition(-2000);
                 })
-                .strafeRight(17)
-                .back(4.75,
+                .strafeRight(19)
+                .back(4.8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -128,7 +128,7 @@ public class redclose extends driveConstant {
 
         TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
                 //.splineTo(new Vector2d(23, -35), Math.toRadians(90))
-                .splineTo(new Vector2d(23,-27),Math.toRadians(160))
+                .splineTo(new Vector2d(23,-27),Math.toRadians(179))
                 //.strafeTo(new Vector2d(10,-35))
                 .addTemporalMarker(()->{
                     //deliverPurple(120,.5);
@@ -147,7 +147,7 @@ public class redclose extends driveConstant {
                     //Crane.setTargetPosition(-2000);
                 })
                 .strafeRight(10)
-                .back(4.75,
+                .back(4.8,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
