@@ -848,18 +848,18 @@ public class MyClass {
 
 
 
-                .addEntity(redlongrighttruss)
+                /*.addEntity(redlongrighttruss)
                 .addEntity(redlonglefttruss)
                 .addEntity(redlongcentertruss)
 
 
-                 */
+
 
 
 
                 .addEntity(bluelonglefttruss)
-                //.addEntity(bluelongrighttruss)
-                //.addEntity(bluelongcentertruss)
+                .addEntity(bluelongrighttruss)
+                .addEntity(bluelongcentertruss)*/
                 .start();
     }
 }
