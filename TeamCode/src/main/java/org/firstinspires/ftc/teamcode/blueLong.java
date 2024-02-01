@@ -97,10 +97,12 @@ public class blueLong extends driveConstant {
                     .back(8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         rightServo.setPosition(.2);
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
                     })
@@ -126,7 +128,7 @@ public class blueLong extends driveConstant {
 
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
 
-                    .lineTo(new Vector2d(50,46))
+                    .lineTo(new Vector2d(50,40))//46
 
                     .addTemporalMarker(()->{
                         Crane.setTargetPosition(-1263);
@@ -139,10 +141,12 @@ public class blueLong extends driveConstant {
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         rightServo.setPosition(.2);
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
 
@@ -172,20 +176,22 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(50,40))//was 50,46
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1263);
+                        Crane.setTargetPosition(-1437);//1263
                         Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                         Crane.setPower(.8);
                         telemetry.addLine("crane up");
                     })
-                    .strafeLeft(10)
+                    .strafeLeft(8)
                     .back(8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         rightServo.setPosition(.2);
                     })
-                    .waitSeconds(.5)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
                     })

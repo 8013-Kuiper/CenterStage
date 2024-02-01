@@ -87,10 +87,12 @@ public class redLong extends driveConstant {
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
+                .forward(1)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(.5)
+                .waitSeconds(3)
                 .addTemporalMarker(()->{
                    retract();
                 })
@@ -128,10 +130,12 @@ public class redLong extends driveConstant {
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
+                .forward(1)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(.5)
+                .waitSeconds(3)
                 .addTemporalMarker(()->{
                     retract();
                 })

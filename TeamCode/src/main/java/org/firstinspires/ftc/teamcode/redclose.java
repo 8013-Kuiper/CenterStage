@@ -76,14 +76,16 @@ public class redclose extends driveConstant {
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
+                .forward(1)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(1)
+                .waitSeconds(3)
                 .addTemporalMarker(()->{
                     retract();
                 })
-                .strafeTo(new Vector2d(50,-66))
+                .strafeTo(new Vector2d(50,-70))
                 .back(8)
                 .waitSeconds(10)
                 .build();
@@ -113,15 +115,17 @@ public class redclose extends driveConstant {
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
+                .forward(1)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
                 })
-                .waitSeconds(1)
+                .waitSeconds(3)
                 .addTemporalMarker(()->{
                     retract();
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(50,-66))
+                .strafeTo(new Vector2d(50,-70))
                 .back(8)
                 .waitSeconds(10)
                 .build();
@@ -151,17 +155,19 @@ public class redclose extends driveConstant {
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
+                .forward(1)
+                .waitSeconds(1)
                 .addTemporalMarker(()->{
                     rightServo.setPosition(.2);
 
                 })
-                .waitSeconds(.5)
+                .waitSeconds(3)
                 .addTemporalMarker(()->{
                     retract();
 
                 })
                 //.strafeTo(new Vector2d(49,-58))
-                .strafeTo(new Vector2d(50,-66))
+                .strafeTo(new Vector2d(50,-70))
 
                 .back(8)
                 .waitSeconds(10)

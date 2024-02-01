@@ -96,16 +96,18 @@ public class blueclose extends driveConstant {
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
                         rightServo.setPosition(.2);
                     })
-                    .waitSeconds(2)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(50,66))
+                    .strafeTo(new Vector2d(50,70))
                     .back(8)
                     .waitSeconds(10)
                     .build();
@@ -140,19 +142,21 @@ public class blueclose extends driveConstant {
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
                         rightServo.setPosition(.2);
 
                         telemetry.addLine("drop");
                     })
-                    .waitSeconds(1)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
                         telemetry.addLine("crane down");
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(50,66))//58
+                    .strafeTo(new Vector2d(50,70))//58
                     .back(8)
                     .waitSeconds(10)
                     .build();
@@ -180,24 +184,26 @@ public class blueclose extends driveConstant {
                     .addTemporalMarker(()->{
                         //Crane.setTargetPosition(-2000);
                     })
-                    .strafeLeft(10)
+                    .strafeLeft(9)
                     .back(4.8,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
+                    .forward(1)
+                    .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
                         rightServo.setPosition(.2);
 
 
                     })
-                    .waitSeconds(1)
+                    .waitSeconds(3)
                     .addTemporalMarker(()->{
                         retract();
 
                     })
                     //.strafeTo(new Vector2d(49,58))
-                    .strafeTo(new Vector2d(50,66))
+                    .strafeTo(new Vector2d(50,70))
                     .back(8)
                     .waitSeconds(10)
                     .build();
