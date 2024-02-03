@@ -83,7 +83,7 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(5)
-                .back(8,
+                .back(5,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -126,7 +126,7 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(20)
-                .back(6,
+                .back(5,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -169,7 +169,7 @@ public class redLong extends driveConstant {
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(10)
-                .back(8,
+                .back(5,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                 .waitSeconds(.5)
@@ -202,7 +202,7 @@ public class redLong extends driveConstant {
                     teamElementPos = 3;
                     break;
                 case NOT_FOUND:
-                    teamElementPos = 2;//should be 4
+                    teamElementPos = 1;//should be 4
                     break;
 
 
@@ -211,13 +211,13 @@ public class redLong extends driveConstant {
 
             if (teamElementPos == 2) {
 
-                drive.followTrajectorySequence(left);//right
+                drive.followTrajectorySequence(right);//right
 
 
             }
             else if (teamElementPos == 1) {
 
-                drive.followTrajectorySequence(right);//left
+                drive.followTrajectorySequence(left);//left
 
 
             }
