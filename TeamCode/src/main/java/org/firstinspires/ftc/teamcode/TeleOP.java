@@ -29,27 +29,12 @@ public class TeleOP extends driveConstant {
                 boolean strafeLeft;
                 boolean strafeRight;
 
-                boolean retract;
-                boolean extend;
+                double intakeOn;                                   //setting varibles from conteroler imputs
 
-                boolean windshieldwiper;
-
-                boolean intakeClose;                                   //setting varibles from conteroler imputs
-                boolean intakeOpen;
-
-                double intake2Close;
-                double intake2Open;
-
-                double Winchpower;
-
-
-                double cranepower;
-                double Intakepower;
+                double armpower;
 
                 double plane;
 
-                boolean springarm;
-                boolean holderActivation;
 
 
                 //setting controls on controller (initializing variables)
@@ -58,28 +43,14 @@ public class TeleOP extends driveConstant {
                 strafeLeft = gamepad1.left_bumper;
                 strafeRight = gamepad1.right_bumper;
 
-                cranepower = gamepad2.left_stick_y;
+                armpower = gamepad2.left_stick_y;
 
-                Winchpower = gamepad2.left_stick_x;
+                intakeOn = gamepad2.right_trigger;
 
-                intakeClose = gamepad2.right_bumper;
-                intakeOpen = gamepad2.left_bumper;
-
-                intake2Close = gamepad2.right_trigger;
-                intake2Open = gamepad2.left_trigger;
-
-                windshieldwiper = gamepad2.y;
-
-                extend = gamepad2.a;
-                retract = gamepad2.b;
-
-                Intakepower = gamepad2.left_stick_y;
 
                 plane = gamepad1.right_trigger;
 
-                springarm = gamepad2.x;
 
-                holderActivation = gamepad2.dpad_up;
 
 
                 if (strafeRight) {
@@ -107,9 +78,9 @@ public class TeleOP extends driveConstant {
                 backRight.setPower(turn);
 
 
-                Crane.setPower(cranepower);
+                arm.setPower(armpower);
 
-                Winch.setPower(Winchpower);
+
 
 
                 if (plane > 0) {
@@ -120,65 +91,23 @@ public class TeleOP extends driveConstant {
                     Plane.setPosition(.5);
                 }
 
-                if (springarm) {
-                    springArm.setPosition(1);
-                }
-                if (!springarm) {
-                    springArm.setPosition(0);
-                }
 
-
-                if (intakeClose) {
-                    leftServo.setPosition(0);
+                if (intakeOn>0){
+                    leftServo.setPower(1);
+                    rightServo.setPower(1);
                 }
-                if (intakeOpen) {
-                    leftServo.setPosition(.5);
-                }
-
-                if (intake2Close > 0) {
-                    rightServo.setPosition(0);
-                }
-
-                if (intake2Open > 0) {
-                    rightServo.setPosition(.5);
-                }
-
-                if (windshieldwiper) {
-                    rightServo.setPosition(0);
-
-                    if (mRuntime.seconds() > mRuntime.seconds() + 2)
-                        rightServo.setPosition(1);
-                }
-
-                if (holderActivation) {
-                    armHolder.setPosition(1);
-                }
-
-                if (!holderActivation) {
-                    armHolder.setPosition(0);
-                }
-
-                if (extend) {
-                    Crane.setPower(-1);
-                    Crane.setTargetPosition(-2290);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                }
-
-                if (retract) {
-                    Crane.setPower(1);
-                    Crane.setTargetPosition(-10);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                if(intakeOn<=0){
+                    leftServo.setPower(0);
+                    rightServo.setPower(0);
                 }
 
 
-                Intake.setPower(Intakepower * .90);
 
 
                 telemetry.addData("fL", frontLeft.getCurrentPosition());
                 telemetry.addData("fR", frontRight.getCurrentPosition());
                 telemetry.addData("bL", backLeft.getCurrentPosition());
                 telemetry.addData("bR", backRight.getCurrentPosition());
-                telemetry.addData("intake", Intake.getCurrentPosition());
 
                 telemetry.addData("timer", mRuntime.seconds());
                 telemetry.update();

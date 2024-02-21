@@ -68,7 +68,7 @@ public class redLong extends driveConstant {
                 .setReversed(true)
                 .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
-                .waitSeconds(5)
+                .waitSeconds(7)
 
                 .lineToConstantHeading(new Vector2d(11,-62))
 
@@ -112,7 +112,7 @@ public class redLong extends driveConstant {
                 .setReversed(true)
                 .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
-                .waitSeconds(5)
+                .waitSeconds(7)
                 .lineToConstantHeading(new Vector2d(11,-62))
 
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -125,7 +125,7 @@ public class redLong extends driveConstant {
                     Crane.setPower(.8);
                     telemetry.addLine("crane up");
                 })
-                .strafeRight(20)
+                .strafeRight(21)
                 .back(5,
                         SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
@@ -155,7 +155,7 @@ public class redLong extends driveConstant {
                 .setReversed(true)
                 .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                 .setReversed(false)
-                .waitSeconds(5)
+                .waitSeconds(7)
                 .lineToConstantHeading(new Vector2d(11,-62))
 
                 .lineToSplineHeading(new Pose2d(46, -40, Math.toRadians(180)))
