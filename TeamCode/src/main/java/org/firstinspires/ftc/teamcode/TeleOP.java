@@ -19,7 +19,7 @@ public class TeleOP extends driveConstant {
 
     enum State{
         firstPixel,
-        secondPixel,
+        backwards,
         dump,
         reset
     }
@@ -28,6 +28,7 @@ public class TeleOP extends driveConstant {
             initrobot();
             initdrivetrain();
 
+            State state = State.firstPixel;
             waitForStart();
 
             while (opModeIsActive()) {
@@ -43,9 +44,7 @@ public class TeleOP extends driveConstant {
 
                 double plane;
 
-                boolean winchdump;
-
-                boolean winchup;
+                boolean backwards;
 
 
 
@@ -63,9 +62,8 @@ public class TeleOP extends driveConstant {
 
                 plane = gamepad1.right_trigger;
 
-                winchdump = gamepad2.x;
 
-                winchup = gamepad2.y;
+                backwards = gamepad2.a;
 
 
 
@@ -118,16 +116,47 @@ public class TeleOP extends driveConstant {
                     rightServo.setPower(0);
                 }
 
-                outTake.setPosition(servoPos(arm.getCurrentPosition(),500));//find range
-
-                if(winchdump){
-                    winch.setPosition(.5);
+                outTake.setPosition(servoPos(arm.getCurrentPosition(),500));//TODO find range
 
 
-                }
-
-                if (winchup){
-                    winch.setPosition(1);
+                switch (state){
+                    case reset:
+                        leftServo.setPower(0);
+                        rightServo.setPower(0);
+                        winch.setPosition(0);//TODO what ever down is
+                        if (backwards){
+                            state = State.backwards;
+                            break;
+                        }
+                        else if (gamepad2.x) {
+                            state = State.firstPixel;
+                            break;
+                        }
+                    case firstPixel:
+                        leftServo.setPower(1);
+                        rightServo.setPower(1);
+                        if (backwards){
+                            state = State.backwards;
+                            break;
+                        }
+                        else if(gamepad2.x) {
+                            mRuntime.reset();
+                            winch.setPosition(.5);
+                            state = State.dump;
+                        }
+                        break;
+                    case dump:
+                        if (mRuntime.seconds()>1){
+                            state = State.reset;
+                            break;
+                        }
+                    case backwards:
+                        leftServo.setPower(1);
+                        rightServo.setPower(1);
+                        if (backwards){
+                            state = State.reset;
+                            break;
+                        }
                 }
 
 
