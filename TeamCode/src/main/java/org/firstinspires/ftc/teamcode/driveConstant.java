@@ -75,7 +75,27 @@ public abstract class driveConstant extends LinearOpMode {
 
 
     //methods
+    public void moveArm(double power, int position){
+        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm.setTargetPosition(position);
+        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm.setPower(power);
 
+    }
+
+    public double servoPos(double armPos, double encoderRange){
+        double ratio = 1/encoderRange;
+
+        if (gamepad2.left_trigger>1){
+            return .7;
+        }
+
+        else {
+            double pos = ratio*armPos;
+            return pos;
+        }
+
+    }
 }
 
 

@@ -35,6 +35,10 @@ public class TeleOP extends driveConstant {
 
                 double plane;
 
+                boolean winchdump;
+
+                boolean winchup;
+
 
 
                 //setting controls on controller (initializing variables)
@@ -43,12 +47,16 @@ public class TeleOP extends driveConstant {
                 strafeLeft = gamepad1.left_bumper;
                 strafeRight = gamepad1.right_bumper;
 
-                armpower = gamepad2.left_stick_y;
+                armpower = gamepad2.right_stick_y;
 
                 intakeOn = gamepad2.right_trigger;
 
 
                 plane = gamepad1.right_trigger;
+
+                winchdump = gamepad2.x;
+
+                winchup = gamepad2.y;
 
 
 
@@ -101,6 +109,17 @@ public class TeleOP extends driveConstant {
                     rightServo.setPower(0);
                 }
 
+                outTake.setPosition(servoPos(arm.getCurrentPosition(),500));//find range
+
+                if(winchdump){
+                    winch.setPosition(.5);
+
+
+                }
+
+                if (winchup){
+                    winch.setPosition(1);
+                }
 
 
 
@@ -108,6 +127,8 @@ public class TeleOP extends driveConstant {
                 telemetry.addData("fR", frontRight.getCurrentPosition());
                 telemetry.addData("bL", backLeft.getCurrentPosition());
                 telemetry.addData("bR", backRight.getCurrentPosition());
+
+                telemetry.addData("arm pos", arm.getCurrentPosition());
 
                 telemetry.addData("timer", mRuntime.seconds());
                 telemetry.update();
