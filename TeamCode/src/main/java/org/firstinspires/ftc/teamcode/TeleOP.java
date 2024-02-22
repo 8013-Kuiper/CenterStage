@@ -16,6 +16,13 @@ import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCapt
 
 
 public class TeleOP extends driveConstant {
+
+    enum State{
+        firstPixel,
+        secondPixel,
+        dump,
+        reset
+    }
         @Override
         public void runOpMode() {
             initrobot();
@@ -24,6 +31,7 @@ public class TeleOP extends driveConstant {
             waitForStart();
 
             while (opModeIsActive()) {
+
                 double turn;
                 double throttle;
                 boolean strafeLeft;
@@ -39,12 +47,6 @@ public class TeleOP extends driveConstant {
 
                 boolean winchup;
 
-                enum State{
-                    firstPixel,
-                    secondPixel,
-                    dump,
-                    reset
-                }
 
 
 
