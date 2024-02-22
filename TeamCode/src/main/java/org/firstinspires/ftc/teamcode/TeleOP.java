@@ -39,6 +39,13 @@ public class TeleOP extends driveConstant {
 
                 boolean winchup;
 
+                enum State{
+                    firstPixel,
+                    secondPixel,
+                    dump,
+                    reset
+                }
+
 
 
                 //setting controls on controller (initializing variables)
