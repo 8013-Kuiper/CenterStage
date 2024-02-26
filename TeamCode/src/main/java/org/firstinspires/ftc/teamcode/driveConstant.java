@@ -85,16 +85,16 @@ public abstract class driveConstant extends LinearOpMode {
 
     public double servoPos(double armPos, double encoderRange){
         double ratio = 1/encoderRange;
+        double pos;
 
-        if (gamepad2.left_trigger>1){
-            return .7;
+        if (gamepad2.left_trigger>0){
+            pos = .7;
         }
 
         else {
-            double pos = ratio*armPos;
-            return pos;
+            pos = ratio*armPos;
         }
-
+        return pos;
     }
 }
 

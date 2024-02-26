@@ -11,6 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
+import org.opencv.features2d.BRISK;
 
 @TeleOp
 
@@ -28,7 +29,9 @@ public class TeleOP extends driveConstant {
             initrobot();
             initdrivetrain();
 
-            State state = State.firstPixel;
+            State state = State.reset;
+            arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             waitForStart();
 
             while (opModeIsActive()) {
@@ -107,56 +110,62 @@ public class TeleOP extends driveConstant {
                 }
 
 
-                if (intakeOn>0){
+                /*if (intakeOn>.1){
                     leftServo.setPower(1);
                     rightServo.setPower(1);
                 }
                 if(intakeOn<=0){
                     leftServo.setPower(0);
                     rightServo.setPower(0);
-                }
+                }*/
 
-                outTake.setPosition(servoPos(arm.getCurrentPosition(),500));//TODO find range
+                outTake.setPosition(servoPos(arm.getCurrentPosition(),2200));//2200
 
 
                 switch (state){
                     case reset:
                         leftServo.setPower(0);
                         rightServo.setPower(0);
-                        winch.setPosition(0);//TODO what ever down is
+                        winch.setPosition(1);//TODO what ever down is
                         if (backwards){
+                            mRuntime.reset();
                             state = State.backwards;
                             break;
                         }
                         else if (gamepad2.x) {
+                            mRuntime.reset();
                             state = State.firstPixel;
                             break;
                         }
+                        break;
                     case firstPixel:
-                        leftServo.setPower(1);
+                        leftServo.setPower(-1);
                         rightServo.setPower(1);
                         if (backwards){
+                            mRuntime.reset();
                             state = State.backwards;
                             break;
                         }
-                        else if(gamepad2.x) {
+                        else if(gamepad2.x&&mRuntime.seconds()>1) {
                             mRuntime.reset();
-                            winch.setPosition(.5);
+                            winch.setPosition(0);
                             state = State.dump;
                         }
                         break;
                     case dump:
-                        if (mRuntime.seconds()>1){
+                        if (mRuntime.seconds()>1.5){
                             state = State.reset;
                             break;
                         }
+                        break;
                     case backwards:
                         leftServo.setPower(1);
-                        rightServo.setPower(1);
-                        if (backwards){
+                        rightServo.setPower(-1);
+                        if (backwards&&mRuntime.seconds()>1){
                             state = State.reset;
                             break;
                         }
+                        break;
                 }
 
 
@@ -167,6 +176,8 @@ public class TeleOP extends driveConstant {
                 telemetry.addData("bR", backRight.getCurrentPosition());
 
                 telemetry.addData("arm pos", arm.getCurrentPosition());
+
+                telemetry.addData("state",state);
 
                 telemetry.addData("timer", mRuntime.seconds());
                 telemetry.update();
