@@ -119,14 +119,14 @@ public class TeleOP extends driveConstant {
                     rightServo.setPower(0);
                 }*/
 
-                outTake.setPosition(servoPos(arm.getCurrentPosition(),2200));//2200
+                outTake.setPosition(servoPos(arm.getCurrentPosition(),6100));//2200
 
 
                 switch (state){
                     case reset:
                         leftServo.setPower(0);
                         rightServo.setPower(0);
-                        winch.setPosition(1);//TODO what ever down is
+                        winch.setPosition(1);//
                         if (backwards){
                             mRuntime.reset();
                             state = State.backwards;

@@ -92,7 +92,8 @@ public abstract class driveConstant extends LinearOpMode {
         }
 
         else {
-            pos = ratio*armPos;
+            pos = 1-(ratio*armPos);
+
         }
         return pos;
     }
