@@ -34,6 +34,8 @@ public abstract class driveConstant extends LinearOpMode {
 
     public DcMotor arm;
 
+    public DcMotor WinchM;
+
 
     public void initrobot() {
 
@@ -49,6 +51,8 @@ public abstract class driveConstant extends LinearOpMode {
         Plane = hardwareMap.get(Servo.class, "plane");
 
         arm = hardwareMap.get(DcMotor.class, "Arm");
+
+        WinchM = hardwareMap.get(DcMotor.class, "WinchM");
 
 
         arm.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -92,7 +96,7 @@ public abstract class driveConstant extends LinearOpMode {
         }
 
         else if (armPos<1000){
-            pos = .1;
+            pos = .8;
 
         }
         else {

@@ -41,11 +41,13 @@ public class TeleOP extends driveConstant {
             boolean strafeLeft;
             boolean strafeRight;
 
-            double intakeOn;                                   //setting varibles from conteroler imputs
+            boolean winchUp;                                   //setting varibles from conteroler imputs
 
             double armpower;
 
             double plane;
+
+            double Winchpower;
 
             boolean backwards;
 
@@ -60,8 +62,9 @@ public class TeleOP extends driveConstant {
 
             armpower = gamepad2.right_stick_y;
 
-            intakeOn = gamepad2.right_trigger;
+            winchUp = gamepad2.y;
 
+            Winchpower = gamepad2.left_stick_y;
 
             plane = gamepad1.right_trigger;
 
@@ -98,6 +101,9 @@ public class TeleOP extends driveConstant {
 
             arm.setPower(armpower);
 
+            WinchM.setPower(Winchpower);
+
+
 
 
 
@@ -127,7 +133,7 @@ public class TeleOP extends driveConstant {
                     leftServo.setPower(0);
                     rightServo.setPower(0);
                     winch.setPosition(1);//
-                    if (backwards){
+                    if (backwards&&mRuntime.seconds()>1){
                         mRuntime.reset();
                         state = State.backwards;
                         break;
@@ -148,12 +154,12 @@ public class TeleOP extends driveConstant {
                     }
                     else if(gamepad2.x&&mRuntime.seconds()>1) {
                         mRuntime.reset();
-                        winch.setPosition(0);
+                        winch.setPosition(.8);
                         state = State.dump;
                     }
                     break;
                 case dump:
-                    if (mRuntime.seconds()>1.5){
+                    if (mRuntime.seconds()>3){
                         state = State.reset;
                         break;
                     }
@@ -162,6 +168,7 @@ public class TeleOP extends driveConstant {
                     leftServo.setPower(1);
                     rightServo.setPower(-1);
                     if (backwards&&mRuntime.seconds()>1){
+                        mRuntime.reset();
                         state = State.reset;
                         break;
                     }
