@@ -60,9 +60,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -79,11 +77,11 @@ public class redclose extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                    retract();
+
                 })
                 .strafeTo(new Vector2d(50,-70))
                 .back(8)
@@ -99,9 +97,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -118,11 +114,11 @@ public class redclose extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                    retract();
+
                 })
                 //.strafeTo(new Vector2d(49,-58))
                 .strafeTo(new Vector2d(50,-70))
@@ -139,9 +135,7 @@ public class redclose extends driveConstant {
                 })
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                 })
                 //.splineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)), Math.toRadians(0))
                 .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
@@ -158,12 +152,12 @@ public class redclose extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
 
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                    retract();
+
 
                 })
                 //.strafeTo(new Vector2d(49,-58))

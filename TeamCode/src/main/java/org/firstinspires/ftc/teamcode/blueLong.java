@@ -88,9 +88,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(50, 46))
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1263);
-                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        Crane.setPower(.8);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(5)
@@ -100,11 +98,11 @@ public class blueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        rightServo.setPosition(.2);
+
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        retract();
+
                     })
                     .waitSeconds(10)
 
@@ -131,9 +129,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(50,40))//46
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1263);
-                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        Crane.setPower(.8);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(20)
@@ -144,11 +140,11 @@ public class blueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        rightServo.setPosition(.2);
+
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        retract();
+
 
                     })
                     .waitSeconds(10)
@@ -176,9 +172,7 @@ public class blueLong extends driveConstant {
                     .lineTo(new Vector2d(50,40))//was 50,46
 
                     .addTemporalMarker(()->{
-                        Crane.setTargetPosition(-1437);//1263
-                        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                        Crane.setPower(.8);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(8)
@@ -189,11 +183,11 @@ public class blueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        rightServo.setPosition(.2);
+
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        retract();
+
                     })
                     .waitSeconds(10)
                     .build();

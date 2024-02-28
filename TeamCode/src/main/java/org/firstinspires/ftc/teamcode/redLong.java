@@ -77,9 +77,7 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(50,-46))
 
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(5)
@@ -90,11 +88,11 @@ public class redLong extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                   retract();
+
                 })
                 .waitSeconds(10)
                 .build();
@@ -120,9 +118,7 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(50,-46))
 
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(20)
@@ -133,11 +129,11 @@ public class redLong extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                    retract();
+
                 })
                 .waitSeconds(10)
                 .build();
@@ -163,9 +159,7 @@ public class redLong extends driveConstant {
                 .lineTo(new Vector2d(50,-40))
 
                 .addTemporalMarker(()->{
-                    Crane.setTargetPosition(-1263);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Crane.setPower(.8);
+
                     telemetry.addLine("crane up");
                 })
                 .strafeRight(10)
@@ -176,11 +170,11 @@ public class redLong extends driveConstant {
                 .forward(1)
                 .waitSeconds(1)
                 .addTemporalMarker(()->{
-                    rightServo.setPosition(.2);
+
                 })
                 .waitSeconds(3)
                 .addTemporalMarker(()->{
-                    retract();
+
                 })
                 .waitSeconds(10)
                 .build();

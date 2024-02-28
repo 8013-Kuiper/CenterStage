@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -18,58 +19,49 @@ public abstract class driveConstant extends LinearOpMode {
     public DcMotor backLeft;
     public DcMotor backRight;
 
-    public DcMotor Crane;
-
-    public DcMotor Intake;
-
-    public DcMotor Winch;
 
     //public OpenCvCamera webcam;
 
-    public Servo leftServo;
+    public CRServo leftServo;
 
     public Servo Plane;
 
-    public Servo rightServo;
+    public CRServo rightServo;
 
-    public Servo springArm;
+    public Servo winch;
 
-    public Servo armHolder;
+    public Servo outTake;
 
-
+    public DcMotor arm;
 
 
     public void initrobot() {
 
 
+        winch = hardwareMap.get(Servo.class, "Winch");
 
+        outTake = hardwareMap.get(Servo.class, "outTake");
 
-        Crane = hardwareMap.get(DcMotor.class,"crane");
+        leftServo = hardwareMap.get(CRServo.class, "leftServo");
 
-        Intake = hardwareMap.get(DcMotor.class, "intake");
-
-        leftServo = hardwareMap.get(Servo.class, "leftServo");
-
-        rightServo = hardwareMap.get(Servo.class, "rightServo");
-
-        Winch = hardwareMap.get(DcMotor.class, "Winch");
+        rightServo = hardwareMap.get(CRServo.class, "rightServo");
 
         Plane = hardwareMap.get(Servo.class, "plane");
 
-        springArm = hardwareMap.get(Servo.class, "springarm");
+        arm = hardwareMap.get(DcMotor.class, "Arm");
 
-        armHolder = hardwareMap.get(Servo.class, "armHolder");
 
-        Crane.setDirection(DcMotorSimple.Direction.FORWARD);
-        Crane.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        //arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Crane.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //Intake.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
     }
-    public void initdrivetrain(){
+
+    public void initdrivetrain() {
         frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");                            //mapping motors from control hub
         frontRight = hardwareMap.get(DcMotor.class, "frontRight");
         backLeft = hardwareMap.get(DcMotor.class, "backLeft");
@@ -82,39 +74,32 @@ public abstract class driveConstant extends LinearOpMode {
     }
 
 
-
     //methods
-    public void deliverPurple(int pos, double power){
-        Intake.setTargetPosition(pos);
-        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        Intake.setPower(power);
-    }
-    public void activate(){
-        Intake.setPower(1);
-    }
-    public void deactivate(){
-        Intake.setPower(0);
+    public void moveArm(double power, int position){
+        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm.setTargetPosition(position);
+        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm.setPower(power);
+
     }
 
-    public void resetIntake(){
-        Intake.setTargetPosition(0);
-        Intake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        Intake.setPower(1);
-    }
-    public void extend(){
-        Crane.setTargetPosition(-2290);
-        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        Crane.setPower(1);
-    }
+    public double servoPos(double armPos, double encoderRange){
+        double ratio = 1/encoderRange;
+        double pos;
 
-    public void retract(){
-        Crane.setTargetPosition(-10);
-        Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        Crane.setPower(1);
-    }
+        if (gamepad2.left_trigger>0){
+            pos = .7;
+        }
 
-    public void drop(){
-        rightServo.setPosition(1);
-    }
+        else if (armPos<1000){
+            pos = .1;
 
+        }
+        else {
+            pos = 1-(ratio*armPos);
+        }
+        return pos;
+    }
 }
+
+
