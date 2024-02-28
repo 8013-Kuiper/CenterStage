@@ -11,182 +11,181 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
+import org.opencv.features2d.BRISK;
 
 @TeleOp
-@Disabled
+
 
 public class TeleOP extends driveConstant {
-        @Override
-        public void runOpMode() {
-            initrobot();
-            initdrivetrain();
 
-            waitForStart();
+    enum State{
+        firstPixel,
+        backwards,
+        dump,
+        reset
+    }
+    @Override
+    public void runOpMode() {
+        initrobot();
+        initdrivetrain();
 
-            while (opModeIsActive()) {
-                double turn;
-                double throttle;
-                boolean strafeLeft;
-                boolean strafeRight;
+        State state = State.reset;
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        waitForStart();
 
-                boolean retract;
-                boolean extend;
+        while (opModeIsActive()) {
 
-                boolean windshieldwiper;
+            double turn;
+            double throttle;
+            boolean strafeLeft;
+            boolean strafeRight;
 
-                boolean intakeClose;                                   //setting varibles from conteroler imputs
-                boolean intakeOpen;
+            double intakeOn;                                   //setting varibles from conteroler imputs
 
-                double intake2Close;
-                double intake2Open;
+            double armpower;
 
-                double Winchpower;
+            double plane;
 
-
-                double cranepower;
-                double Intakepower;
-
-                double plane;
-
-                boolean springarm;
-                boolean holderActivation;
+            boolean backwards;
 
 
-                //setting controls on controller (initializing variables)
-                throttle = gamepad1.left_stick_y;
-                turn = gamepad1.right_stick_x;
-                strafeLeft = gamepad1.left_bumper;
-                strafeRight = gamepad1.right_bumper;
-
-                cranepower = gamepad2.left_stick_y;
-
-                Winchpower = gamepad2.left_stick_x;
-
-                intakeClose = gamepad2.right_bumper;
-                intakeOpen = gamepad2.left_bumper;
-
-                intake2Close = gamepad2.right_trigger;
-                intake2Open = gamepad2.left_trigger;
-
-                windshieldwiper = gamepad2.y;
-
-                extend = gamepad2.a;
-                retract = gamepad2.b;
-
-                Intakepower = gamepad2.left_stick_y;
-
-                plane = gamepad1.right_trigger;
-
-                springarm = gamepad2.x;
-
-                holderActivation = gamepad2.dpad_up;
 
 
-                if (strafeRight) {
-                    frontLeft.setPower(-1);
-                    frontRight.setPower(1);                         //conecting motor varibles to controler inputs
-                    backLeft.setPower(1);
-                    backRight.setPower(-1);
-                }
-                if (strafeLeft) {
-                    frontLeft.setPower(1);
-                    frontRight.setPower(-1);
-                    backLeft.setPower(-1);
-                    backRight.setPower(1);
-                }
+            //setting controls on controller (initializing variables)
+            throttle = gamepad1.left_stick_y;
+            turn = gamepad1.right_stick_x;
+            strafeLeft = gamepad1.left_bumper;
+            strafeRight = gamepad1.right_bumper;
+
+            armpower = gamepad2.right_stick_y;
+
+            intakeOn = gamepad2.right_trigger;
 
 
-                frontLeft.setPower(throttle);
-                frontRight.setPower(throttle * .97);
-                backLeft.setPower(throttle);
-                backRight.setPower(throttle * .97);
-
-                frontLeft.setPower(-turn);
-                frontRight.setPower(turn);
-                backLeft.setPower(-turn);
-                backRight.setPower(turn);
+            plane = gamepad1.right_trigger;
 
 
-                Crane.setPower(cranepower);
-
-                Winch.setPower(Winchpower);
+            backwards = gamepad2.a;
 
 
-                if (plane > 0) {
-                    Plane.setPosition(.9);
-                }
-
-                if (plane <= 0) {
-                    Plane.setPosition(.5);
-                }
-
-                if (springarm) {
-                    springArm.setPosition(1);
-                }
-                if (!springarm) {
-                    springArm.setPosition(0);
-                }
 
 
-                if (intakeClose) {
-                    leftServo.setPosition(0);
-                }
-                if (intakeOpen) {
-                    leftServo.setPosition(.5);
-                }
-
-                if (intake2Close > 0) {
-                    rightServo.setPosition(0);
-                }
-
-                if (intake2Open > 0) {
-                    rightServo.setPosition(.5);
-                }
-
-                if (windshieldwiper) {
-                    rightServo.setPosition(0);
-
-                    if (mRuntime.seconds() > mRuntime.seconds() + 2)
-                        rightServo.setPosition(1);
-                }
-
-                if (holderActivation) {
-                    armHolder.setPosition(1);
-                }
-
-                if (!holderActivation) {
-                    armHolder.setPosition(0);
-                }
-
-                if (extend) {
-                    Crane.setPower(-1);
-                    Crane.setTargetPosition(-2290);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                }
-
-                if (retract) {
-                    Crane.setPower(1);
-                    Crane.setTargetPosition(-10);
-                    Crane.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                }
-
-
-                Intake.setPower(Intakepower * .90);
-
-
-                telemetry.addData("fL", frontLeft.getCurrentPosition());
-                telemetry.addData("fR", frontRight.getCurrentPosition());
-                telemetry.addData("bL", backLeft.getCurrentPosition());
-                telemetry.addData("bR", backRight.getCurrentPosition());
-                telemetry.addData("intake", Intake.getCurrentPosition());
-
-                telemetry.addData("timer", mRuntime.seconds());
-                telemetry.update();
-
-
+            if (strafeRight) {
+                frontLeft.setPower(-1);
+                frontRight.setPower(1);                         //conecting motor varibles to controler inputs
+                backLeft.setPower(1);
+                backRight.setPower(-1);
+            }
+            if (strafeLeft) {
+                frontLeft.setPower(1);
+                frontRight.setPower(-1);
+                backLeft.setPower(-1);
+                backRight.setPower(1);
             }
 
+
+            frontLeft.setPower(throttle);
+            frontRight.setPower(throttle * .97);
+            backLeft.setPower(throttle);
+            backRight.setPower(throttle * .97);
+
+            frontLeft.setPower(-turn);
+            frontRight.setPower(turn);
+            backLeft.setPower(-turn);
+            backRight.setPower(turn);
+
+
+            arm.setPower(armpower);
+
+
+
+
+            if (plane > 0) {
+                Plane.setPosition(.9);
+            }
+
+            if (plane <= 0) {
+                Plane.setPosition(.5);
+            }
+
+
+                /*if (intakeOn>.1){
+                    leftServo.setPower(1);
+                    rightServo.setPower(1);
+                }
+                if(intakeOn<=0){
+                    leftServo.setPower(0);
+                    rightServo.setPower(0);
+                }*/
+
+            outTake.setPosition(servoPos(arm.getCurrentPosition(),6100));//2200
+
+
+            switch (state){
+                case reset:
+                    leftServo.setPower(0);
+                    rightServo.setPower(0);
+                    winch.setPosition(1);//
+                    if (backwards){
+                        mRuntime.reset();
+                        state = State.backwards;
+                        break;
+                    }
+                    else if (gamepad2.x) {
+                        mRuntime.reset();
+                        state = State.firstPixel;
+                        break;
+                    }
+                    break;
+                case firstPixel:
+                    leftServo.setPower(-1);
+                    rightServo.setPower(1);
+                    if (backwards){
+                        mRuntime.reset();
+                        state = State.backwards;
+                        break;
+                    }
+                    else if(gamepad2.x&&mRuntime.seconds()>1) {
+                        mRuntime.reset();
+                        winch.setPosition(0);
+                        state = State.dump;
+                    }
+                    break;
+                case dump:
+                    if (mRuntime.seconds()>1.5){
+                        state = State.reset;
+                        break;
+                    }
+                    break;
+                case backwards:
+                    leftServo.setPower(1);
+                    rightServo.setPower(-1);
+                    if (backwards&&mRuntime.seconds()>1){
+                        state = State.reset;
+                        break;
+                    }
+                    break;
+            }
+
+
+
+            telemetry.addData("fL", frontLeft.getCurrentPosition());
+            telemetry.addData("fR", frontRight.getCurrentPosition());
+            telemetry.addData("bL", backLeft.getCurrentPosition());
+            telemetry.addData("bR", backRight.getCurrentPosition());
+
+            telemetry.addData("arm pos", arm.getCurrentPosition());
+
+            telemetry.addData("state",state);
+
+            telemetry.addData("timer", mRuntime.seconds());
+            telemetry.update();
+
+
         }
+
+    }
     public ElapsedTime mRuntime = new ElapsedTime();
 
 }
