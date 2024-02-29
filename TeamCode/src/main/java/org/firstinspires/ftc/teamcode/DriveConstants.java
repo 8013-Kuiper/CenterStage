@@ -54,9 +54,9 @@ public class DriveConstants {
      * motor encoders or have elected not to use them for velocity control, these values should be
      * empirically tuned.
      */
-    public static double kV = -0.0195182447677747; //1.0 / rpmToVelocity(MAX_RPM);
-    public static double kA = -0.0039;
-    public static double kStatic = -0.002;
+    public static double kV = -0.0166282447677747; //1.0 / rpmToVelocity(MAX_RPM);
+    public static double kA = -0.0036;
+    public static double kStatic = -0.004;
 
     /*
      * These values are used to generate the trajectories for you robot. To ensure proper operation,
@@ -65,16 +65,16 @@ public class DriveConstants {
      * small and gradually increase them later after everything is working. All distance units are
      * inches.
      */
-    public static double MAX_VEL = 30;
-    public static double MAX_ACCEL = 30;
-    public static double MAX_ANG_VEL = Math.toRadians(139.76083890256965);//179.75008838722556
+    public static double MAX_VEL = 40;
+    public static double MAX_ACCEL = 40;
+    public static double MAX_ANG_VEL = Math.toRadians(143.93470739869974);//179.75008838722556
     public static double MAX_ANG_ACCEL = Math.toRadians(60);
 
     /*
      * Adjust the orientations here to match your robot. See the FTC SDK documentation for details.
      */
     public static RevHubOrientationOnRobot.LogoFacingDirection LOGO_FACING_DIR =
-            RevHubOrientationOnRobot.LogoFacingDirection.UP;
+            RevHubOrientationOnRobot.LogoFacingDirection.RIGHT;
     public static RevHubOrientationOnRobot.UsbFacingDirection USB_FACING_DIR =
             RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
 
