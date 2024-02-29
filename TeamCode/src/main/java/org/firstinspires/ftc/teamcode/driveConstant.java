@@ -94,13 +94,16 @@ public abstract class driveConstant extends LinearOpMode {
         if (gamepad2.left_trigger>0){
             pos = .7;
         }
+        else if (gamepad2.right_trigger>0){
+            pos = .9;
+        }
 
-        else if (armPos<400){
+        else if (armPos>-400){
             pos = .8;
 
         }
         else {
-            pos = 1-(ratio*armPos);
+            pos = 1-(ratio*(-armPos));
         }
         return pos;
     }

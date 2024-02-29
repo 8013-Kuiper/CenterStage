@@ -55,6 +55,7 @@ public class TeleOP extends driveConstant {
 
 
 
+
             //setting controls on controller (initializing variables)
             throttle = gamepad1.left_stick_y;
             turn = gamepad1.right_stick_x;
@@ -116,7 +117,7 @@ public class TeleOP extends driveConstant {
                 Plane.setPosition(.5);
             }
 
-            outTake.setPosition(servoPos(arm.getCurrentPosition(),6300));//2200
+            outTake.setPosition(servoPos(arm.getCurrentPosition(),5500));//2200
 
 
             switch (state){
@@ -134,7 +135,7 @@ public class TeleOP extends driveConstant {
                         state = State.firstPixel;
                         break;
                     }
-                    else if (winchUp){
+                    else if (winchUp&&mRuntime.seconds()>1){
                         mRuntime.reset();
                         state= State.up;
                         break;
@@ -170,10 +171,13 @@ public class TeleOP extends driveConstant {
                     }
                     break;
                 case up:
-                    winch.setPosition(.2);
+                    winch.setPosition(.86);
                     if (winchUp&&mRuntime.seconds()>1){
+                        mRuntime.reset();
                         state=State.reset;
                     }
+
+
                     break;
             }
 
@@ -187,6 +191,8 @@ public class TeleOP extends driveConstant {
             telemetry.addData("arm pos", arm.getCurrentPosition());
 
             telemetry.addData("state",state);
+
+            telemetry.addData("servo",servoPos(arm.getCurrentPosition(), 5500));
 
             telemetry.addData("timer", mRuntime.seconds());
             telemetry.update();

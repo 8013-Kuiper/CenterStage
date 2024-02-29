@@ -14,7 +14,7 @@ import org.openftc.apriltag.AprilTagDetection;
 
 
 @Autonomous
-@Disabled
+
 public class Ex_auto extends LinearOpMode {
     public double teamElementPos;
     public OpenCvCamera webcam;
