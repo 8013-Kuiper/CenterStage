@@ -22,7 +22,8 @@ public class TeleOP extends driveConstant {
         firstPixel,
         backwards,
         dump,
-        reset
+        reset,
+        up
     }
     @Override
     public void runOpMode() {
@@ -115,17 +116,7 @@ public class TeleOP extends driveConstant {
                 Plane.setPosition(.5);
             }
 
-
-                /*if (intakeOn>.1){
-                    leftServo.setPower(1);
-                    rightServo.setPower(1);
-                }
-                if(intakeOn<=0){
-                    leftServo.setPower(0);
-                    rightServo.setPower(0);
-                }*/
-
-            outTake.setPosition(servoPos(arm.getCurrentPosition(),6100));//2200
+            outTake.setPosition(servoPos(arm.getCurrentPosition(),6300));//2200
 
 
             switch (state){
@@ -141,6 +132,11 @@ public class TeleOP extends driveConstant {
                     else if (gamepad2.x) {
                         mRuntime.reset();
                         state = State.firstPixel;
+                        break;
+                    }
+                    else if (winchUp){
+                        mRuntime.reset();
+                        state= State.up;
                         break;
                     }
                     break;
@@ -171,6 +167,12 @@ public class TeleOP extends driveConstant {
                         mRuntime.reset();
                         state = State.reset;
                         break;
+                    }
+                    break;
+                case up:
+                    winch.setPosition(.2);
+                    if (winchUp&&mRuntime.seconds()>1){
+                        state=State.reset;
                     }
                     break;
             }

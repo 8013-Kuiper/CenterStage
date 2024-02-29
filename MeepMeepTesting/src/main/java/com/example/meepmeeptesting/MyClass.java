@@ -6,8 +6,11 @@ import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeBlueLight;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeRedDark;
 import com.noahbres.meepmeep.core.colorscheme.scheme.ColorSchemeRedLight;
+import com.noahbres.meepmeep.core.entity.Entity;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
+
+import java.util.ArrayList;
 
 public class MyClass {
     public static void main(String[] args) {
@@ -821,16 +824,11 @@ public class MyClass {
 
 
 
-
-
-
-
-
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
 
-                /*.addEntity(bluecloseleft)
+                .addEntity(bluecloseleft)
                 .addEntity(bluecloseright)
                 .addEntity(blueclosecenter)
 
@@ -848,7 +846,7 @@ public class MyClass {
 
 
 
-                /*.addEntity(redlongrighttruss)
+                .addEntity(redlongrighttruss)
                 .addEntity(redlonglefttruss)
                 .addEntity(redlongcentertruss)
 
@@ -859,7 +857,7 @@ public class MyClass {
 
                 .addEntity(bluelonglefttruss)
                 .addEntity(bluelongrighttruss)
-                .addEntity(bluelongcentertruss)*/
+                .addEntity(bluelongcentertruss)
                 .start();
     }
 }

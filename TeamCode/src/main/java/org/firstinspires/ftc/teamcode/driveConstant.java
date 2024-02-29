@@ -55,7 +55,7 @@ public abstract class driveConstant extends LinearOpMode {
         WinchM = hardwareMap.get(DcMotor.class, "WinchM");
 
 
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        arm.setDirection(DcMotorSimple.Direction.REVERSE);
         //arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Crane.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -95,7 +95,7 @@ public abstract class driveConstant extends LinearOpMode {
             pos = .7;
         }
 
-        else if (armPos<1000){
+        else if (armPos<400){
             pos = .8;
 
         }
