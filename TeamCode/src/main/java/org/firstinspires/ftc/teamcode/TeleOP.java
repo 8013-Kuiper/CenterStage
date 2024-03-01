@@ -151,12 +151,12 @@ public class TeleOP extends driveConstant {
                     }
                     else if(gamepad2.x&&mRuntime.seconds()>1) {
                         mRuntime.reset();
-                        winch.setPosition(.8);
+                        winch.setPosition(.82);
                         state = State.dump;
                     }
                     break;
                 case dump:
-                    if (mRuntime.seconds()>3){
+                    if (mRuntime.seconds()>3.5){
                         state = State.reset;
                         break;
                     }
