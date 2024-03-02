@@ -56,11 +56,13 @@ public class teleOpWithrr extends driveConstant {
 
             boolean backwards;
 
+            boolean reset;
+
 
             //driving
             drive.setWeightedDrivePower(
                     new Pose2d(
-                            gamepad1.left_stick_y*.80,
+                            gamepad1.left_stick_y*.90,
                             gamepad1.left_stick_x*.90,
                             gamepad1.right_stick_x*.80
                     )
@@ -84,10 +86,12 @@ public class teleOpWithrr extends driveConstant {
 
             backwards = gamepad2.a;
 
+            reset = gamepad2.left_bumper;
 
 
 
-            arm.setPower(armpower);
+
+            arm.setPower(armpower*.5);
 
             WinchM.setPower(Winchpower);
 
@@ -137,7 +141,7 @@ public class teleOpWithrr extends driveConstant {
                     }
                     else if(gamepad2.x&&mRuntime.seconds()>1) {
                         mRuntime.reset();
-                        winch.setPosition(.82);
+                        winch.setPosition(.86);
                         state = State.dump;
                     }
                     break;
@@ -157,7 +161,7 @@ public class teleOpWithrr extends driveConstant {
                     }
                     break;
                 case up:
-                    winch.setPosition(.86);
+                    winch.setPosition(.85);
                     if (winchUp&&mRuntime.seconds()>1){
                         mRuntime.reset();
                         state=State.reset;
@@ -168,11 +172,17 @@ public class teleOpWithrr extends driveConstant {
             }
 
 
+            if (reset){
+                arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            }
 
-            telemetry.addData("fL", frontLeft.getCurrentPosition());
-            telemetry.addData("fR", frontRight.getCurrentPosition());
-            telemetry.addData("bL", backLeft.getCurrentPosition());
-            telemetry.addData("bR", backRight.getCurrentPosition());
+
+
+            //telemetry.addData("fL", frontLeft.getCurrentPosition());
+            //telemetry.addData("fR", frontRight.getCurrentPosition());
+            //telemetry.addData("bL", backLeft.getCurrentPosition());
+            //telemetry.addData("bR", backRight.getCurrentPosition());
 
             telemetry.addData("arm pos", arm.getCurrentPosition());
 

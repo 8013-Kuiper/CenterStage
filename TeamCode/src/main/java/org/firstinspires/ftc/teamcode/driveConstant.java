@@ -86,11 +86,17 @@ public abstract class driveConstant extends LinearOpMode {
 
     //methods
     public void moveArm(double power, int position){
+        //move servo to desired position
+        //servoController=2;
         arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         arm.setTargetPosition(position);
         arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         arm.setPower(power);
+        while (arm.isBusy()&&opModeIsActive()) {
+            //math for servo pos
+            outTake.setPosition(servoPosAuton(arm.getCurrentPosition(), 5500));
 
+        }
     }
 
     public double servoPos(double armPos, double encoderRange){
@@ -98,14 +104,14 @@ public abstract class driveConstant extends LinearOpMode {
         double pos;
 
         if (gamepad2.left_trigger>0){
-            pos = .5;//.7
+            pos = .4;//.7
         }
         else if (gamepad2.right_trigger>0){
             pos = .9;
         }
 
-        else if (armPos>-600){
-            pos = .8;
+        else if (armPos>-1200){//600//auton 700
+            pos = .8;//8
 
         }
         else {
@@ -119,15 +125,9 @@ public abstract class driveConstant extends LinearOpMode {
         double ratio = 1/encoderRange;
         double pos;
 
-        if (servoController == 1){
-            pos = .5;
-        }
-        else if (servoController == 2){
-            pos = .9;
-        }
 
-        else if (armPos>-600){
-            pos = .8;
+         if (armPos>-700){//600//auton 700
+            pos = .9;//8
 
         }
         else {

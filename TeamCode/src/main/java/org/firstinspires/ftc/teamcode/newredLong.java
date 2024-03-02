@@ -1,35 +1,27 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.Path;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.easyopencv.OpenCvViewRenderer;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 @Autonomous
-@Disabled
 
-public class blueLong extends driveConstant {
+public class newredLong extends driveConstant {
 
     public OpenCvCamera webcam;
     double teamElementPos;
-    double distancex =5;
 
 
 
-
-    Pose2d startPose = new Pose2d(-37.5,65, Math.toRadians(-90));
-
+    Pose2d startPose = new Pose2d(-37.5,-65, Math.toRadians(90));
 
     ElapsedTime time = new ElapsedTime();
 
@@ -42,7 +34,7 @@ public class blueLong extends driveConstant {
         int cameraMonitorViewId = hardwareMap.appContext
                 .getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam"), cameraMonitorViewId);
-        Pipeline_blue detector = new Pipeline_blue(telemetry);
+        Pipeline_red detector = new Pipeline_red(telemetry);
         webcam.setPipeline(detector);
 
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
@@ -62,138 +54,148 @@ public class blueLong extends driveConstant {
 
 
 
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
         waitForStart();
 
 
         if (opModeIsActive()){
+
             //trajectorys
-            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
-                    .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+            TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-29, -37.5), Math.toRadians(20))
                     .addTemporalMarker(()->{
-                        //deliverPurple(120,.5);
+                        leftServo.setPower(1);
+                        rightServo.setPower(-1);
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        //resetIntake();
+                        leftServo.setPower(0);
+                        rightServo.setPower(0);
 
                     })
                     //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
                     .setReversed(true)
-                    .splineTo(new Vector2d(-37,62), Math.toRadians(0))//59.5
+                    .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                     .setReversed(false)
                     .waitSeconds(5)
 
-                    .lineToConstantHeading(new Vector2d(11,62))//59.6
+                    .lineToConstantHeading(new Vector2d(11,-62))
 
-                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                    .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                    .lineTo(new Vector2d(50, 46))
+                    .lineTo(new Vector2d(50,-46))
 
                     .addTemporalMarker(()->{
-
+                        moveArm(.5,-5800);
                         telemetry.addLine("crane up");
                     })
-                    .strafeLeft(5)
-                    .back(8,
+                    .strafeRight(5)
+                    /*.back(5,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                    */
                     .waitSeconds(.5)
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
+                        moveArm(.8,0);
 
                     })
                     .waitSeconds(10)
-
                     .build();
 
-            TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
-                    .splineTo(new Vector2d(-47, 38), Math.toRadians(-90))
+            TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+                    .splineTo(new Vector2d(-47, -38), Math.toRadians(90))
                     .addTemporalMarker(()->{
-                        //deliverPurple(120,.5);
+                        leftServo.setPower(1);
+                        rightServo.setPower(-1);
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        //resetIntake();
+                        leftServo.setPower(0);
+                        rightServo.setPower(0);
 
                     })
                     .setReversed(true)
-                    .splineTo(new Vector2d(-37,62), Math.toRadians(0))
+                    .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                     .setReversed(false)
                     .waitSeconds(5)
-                    .lineToConstantHeading(new Vector2d(11,62))
+                    .lineToConstantHeading(new Vector2d(11,-62))
 
-                    .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
+                    .lineToSplineHeading(new Pose2d(46, -46, Math.toRadians(180)))
 
-                    .lineTo(new Vector2d(50,40))//46
+                    .lineTo(new Vector2d(50,-46))
 
                     .addTemporalMarker(()->{
-
+                        moveArm(.5,-5800);
                         telemetry.addLine("crane up");
                     })
-                    .strafeLeft(20)
-                    .back(8,
+                    .strafeRight(20)
+                    .back(5,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
 
                     .waitSeconds(.5)
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-
+                        moveArm(.8,0);
 
                     })
                     .waitSeconds(10)
                     .build();
 
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
-                    .splineTo(new Vector2d(-45,27),Math.toRadians(-1))//-20
+                    .splineTo(new Vector2d(-45,-27),Math.toRadians(1))
                     .addTemporalMarker(()->{
-                        //deliverPurple(120,.5);
-
+                        leftServo.setPower(1);
+                        rightServo.setPower(-1);
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
+                        leftServo.setPower(0);
+                        rightServo.setPower(0);
 
                     })
-                    //.lineToSplineHeading(new Pose2d(-35,-60.5, Math.toRadians(0)))
                     .setReversed(true)
-                    .splineTo(new Vector2d(-37,62), Math.toRadians(0))//go in front of truss
+                    .splineTo(new Vector2d(-37,-62), Math.toRadians(0))
                     .setReversed(false)
                     .waitSeconds(5)
-                    .lineToConstantHeading(new Vector2d(11,62))
+                    .lineToConstantHeading(new Vector2d(11,-62))
 
-                    .lineToSplineHeading(new Pose2d(46, 40, Math.toRadians(-180)))//was 46,46
+                    .lineToSplineHeading(new Pose2d(46, -40, Math.toRadians(180)))
 
-                    .lineTo(new Vector2d(50,40))//was 50,46
+                    .lineTo(new Vector2d(50,-40))
 
                     .addTemporalMarker(()->{
-
+                        moveArm(.5,-5800);
                         telemetry.addLine("crane up");
                     })
-                    .strafeLeft(8)
-                    .back(8,
+                    .strafeRight(10)
+                    /* .back(5,
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
-
+                     */
                     .waitSeconds(.5)
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
+                        outTake.setPosition(.4);
 
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
+                        moveArm(.8,0);
 
                     })
                     .waitSeconds(10)
                     .build();
-
 
             //find game element
             switch (detector.getLocation()) {
@@ -216,13 +218,14 @@ public class blueLong extends driveConstant {
 
             if (teamElementPos == 2) {
 
-                drive.followTrajectorySequence(right);
+                drive.followTrajectorySequence(right);//right
 
 
             }
             else if (teamElementPos == 1) {
 
-                drive.followTrajectorySequence(left);
+                drive.followTrajectorySequence(left);//left
+
 
             }
             else if (teamElementPos == 3) {

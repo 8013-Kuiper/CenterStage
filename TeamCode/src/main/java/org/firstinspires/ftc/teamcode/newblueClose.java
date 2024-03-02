@@ -26,7 +26,6 @@ public class newblueClose extends driveConstant {
 
     public OpenCvCamera webcam;
     double teamElementPos;
-    double toggle =0;
 
 
 
@@ -36,7 +35,6 @@ public class newblueClose extends driveConstant {
 
     public void runOpMode() {
         initrobot(); //init motors
-        servoController = 0;
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap); //init motors
 
         //set starting point
@@ -64,14 +62,15 @@ public class newblueClose extends driveConstant {
 
 
 
-
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
 
-        while (opModeIsActive()){
+        if (opModeIsActive()){
 
             //trajectorys
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
+                    .waitSeconds(1)
                     .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                     .addTemporalMarker(()->{
                         leftServo.setPower(1);
@@ -89,8 +88,7 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
                     })
                     .strafeLeft(3)
                     /*.back(4.8,
@@ -101,12 +99,11 @@ public class newblueClose extends driveConstant {
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
-                        servoController = 1;
+                        outTake.setPosition(.4);
 
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
                     })
                     //.strafeTo(new Vector2d(49,58))
@@ -116,9 +113,11 @@ public class newblueClose extends driveConstant {
                     .build();
 
             TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
+                    .waitSeconds(1)
                     //.splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                     //.strafeTo(new Vector2d(6.7,40))
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
+                    .back(5)
                     .addTemporalMarker(()->{
                         leftServo.setPower(1);
                         rightServo.setPower(-1);
@@ -134,8 +133,7 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
                         telemetry.addLine("crane up more");
                     })
 
@@ -144,17 +142,18 @@ public class newblueClose extends driveConstant {
                             SampleMecanumDrive.getVelocityConstraint(5, DriveConstants.MAX_ANG_VEL,DriveConstants.TRACK_WIDTH),SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))*/
 
                     .waitSeconds(.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.5,-5500);
+                    })
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
-                        servoController = 1;
-
+                        outTake.setPosition(.4);
                         telemetry.addLine("drop");
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
                         telemetry.addLine("crane down");
                     })
@@ -165,6 +164,7 @@ public class newblueClose extends driveConstant {
                     .build();
 
             TrajectorySequence center = drive.trajectorySequenceBuilder(startPose)
+                    .waitSeconds(1)
                     //.splineTo(new Vector2d(23, 35), Math.toRadians(-90))
                     //.strafeTo(new Vector2d(10,35))
                     .splineTo(new Vector2d(23,27),Math.toRadians(-179))//-160
@@ -185,8 +185,7 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
                     })
                     .strafeLeft(9)
                     /*.back(4.8,
@@ -197,11 +196,10 @@ public class newblueClose extends driveConstant {
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
                         //drop();
-                        servoController = 1;
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
                     })
                     //.strafeTo(new Vector2d(49,58))
@@ -210,8 +208,32 @@ public class newblueClose extends driveConstant {
                     .waitSeconds(10)
                     .build();
 
+            TrajectorySequence test = drive.trajectorySequenceBuilder(startPose)
+                    .forward(.5)
+                    .addTemporalMarker(()->{
+                        //outTake.setPosition(.9);
+
+
+                    })
+                    .waitSeconds(3)
+                    .addTemporalMarker(()->{
+                        moveArm(.5,-5800);
+                    })
+                    .waitSeconds(1)
+
+                    .addTemporalMarker(()->{
+                        outTake.setPosition(.4);
+                    })
+                    .waitSeconds(2)
+                    .addTemporalMarker(()->{
+                        moveArm(.8,0);
+                    })
+
+                    .build();
+
+
             //servo stuff
-            outTake.setPosition(servoPosAuton(arm.getCurrentPosition(), 5500));
+            //outTake.setPosition(servoPosAuton(arm.getCurrentPosition(), 5500));
 
 
             //find game element
@@ -233,21 +255,19 @@ public class newblueClose extends driveConstant {
             }
 
 
-            if (teamElementPos == 2 && toggle==0) {
-                toggle = 1;
+            if (teamElementPos == 2) {
                 winch.setPosition(1);
+                //servoController=2;
                 drive.followTrajectorySequence(right);
 
 
             }
-            else if (teamElementPos == 1 && toggle==0) {
-                toggle = 1;
+            else if (teamElementPos == 1 ) {
                 winch.setPosition(1);
                 drive.followTrajectorySequence(left);
 
             }
-            else if (teamElementPos == 3 && toggle==0) {
-                toggle = 1;
+            else if (teamElementPos == 3) {
                 winch.setPosition(1);
                 drive.followTrajectorySequence(center);
 

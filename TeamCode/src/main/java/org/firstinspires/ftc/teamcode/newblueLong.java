@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -17,7 +18,7 @@ public class newblueLong extends driveConstant {
 
     public OpenCvCamera webcam;
     double teamElementPos;
-    double toggle =0;
+
 
 
 
@@ -54,15 +55,16 @@ public class newblueLong extends driveConstant {
         drive.setPoseEstimate(startPose);
 
 
-
+        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
 
-        while (opModeIsActive()){
+        if (opModeIsActive()){
             //trajectorys
 
             TrajectorySequence left = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                    .back(5)
                     .addTemporalMarker(()->{
                         leftServo.setPower(1);
                         rightServo.setPower(-1);
@@ -86,8 +88,8 @@ public class newblueLong extends driveConstant {
                     .lineTo(new Vector2d(50, 46))
 
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(5)
@@ -97,11 +99,10 @@ public class newblueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        servoController = 1;
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
                     })
                     .waitSeconds(10)
@@ -128,11 +129,11 @@ public class newblueLong extends driveConstant {
 
                     .lineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)))
 
-                    .lineTo(new Vector2d(50,40))//46
+                    .lineTo(new Vector2d(50,46))//46
 
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(20)
@@ -143,11 +144,10 @@ public class newblueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        servoController = 1;
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
 
                     })
@@ -174,11 +174,11 @@ public class newblueLong extends driveConstant {
 
                     .lineToSplineHeading(new Pose2d(46, 40, Math.toRadians(-180)))//was 46,46
 
-                    .lineTo(new Vector2d(50,40))//was 50,46
+                    .lineTo(new Vector2d(50,46))//was 50,46
 
                     .addTemporalMarker(()->{
-                        servoController = 2;
-                        moveArm(.5,-5550);
+                        moveArm(.5,-5800);
+
                         telemetry.addLine("crane up");
                     })
                     .strafeLeft(8)
@@ -189,11 +189,10 @@ public class newblueLong extends driveConstant {
                     .forward(1)
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        servoController = 1;
+                        outTake.setPosition(.4);
                     })
                     .waitSeconds(3)
                     .addTemporalMarker(()->{
-                        servoController = 0;
                         moveArm(.8,0);
                     })
                     .waitSeconds(10)
@@ -222,21 +221,18 @@ public class newblueLong extends driveConstant {
             }
 
 
-            if (teamElementPos == 2 &&toggle == 0) {
-                toggle = 1;
+            if (teamElementPos == 2) {
                 winch.setPosition(1);
                 drive.followTrajectorySequence(right);
 
 
             }
-            else if (teamElementPos == 1 && toggle == 0) {
-                toggle = 1;
+            else if (teamElementPos == 1) {
                 winch.setPosition(1);
                 drive.followTrajectorySequence(left);
 
             }
-            else if (teamElementPos == 3 && toggle == 0) {
-                toggle = 1;
+            else if (teamElementPos == 3) {
                 winch.setPosition(1);
                 drive.followTrajectorySequence(center);
 

@@ -61,6 +61,7 @@ public class MyClass {
                         drive.trajectorySequenceBuilder(new Pose2d(14.5,65, Math.toRadians(-90)))
 
                                 .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
+                                .back(5)
                                 .addTemporalMarker(()->{
 
                                 })
@@ -272,6 +273,7 @@ public class MyClass {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-37.5,65, Math.toRadians(-90)))
                                 .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
+                                .back(5)
                                 .addTemporalMarker(()->{
 
                                 })
@@ -682,8 +684,6 @@ public class MyClass {
 
 
 
-
-
         RoadRunnerBotEntity bluelonglefttruss = new DefaultBotBuilder(meepMeep)
                 .setConstraints(30,30,Math.toRadians(139.76083890256965), Math.toRadians(60), 18.52)
                 .setColorScheme(new ColorSchemeBlueLight())
@@ -828,7 +828,7 @@ public class MyClass {
                 .setDarkMode(true)
                 .setBackgroundAlpha(0.95f)
 
-                .addEntity(bluecloseleft)
+                /*.addEntity(bluecloseleft)
                 .addEntity(bluecloseright)
                 .addEntity(blueclosecenter)
 
@@ -846,7 +846,7 @@ public class MyClass {
 
 
 
-                .addEntity(redlongrighttruss)
+                /*.addEntity(redlongrighttruss)
                 .addEntity(redlonglefttruss)
                 .addEntity(redlongcentertruss)
 
@@ -857,7 +857,8 @@ public class MyClass {
 
                 .addEntity(bluelonglefttruss)
                 .addEntity(bluelongrighttruss)
-                .addEntity(bluelongcentertruss)
+                .addEntity(bluelongcentertruss)*/
+
                 .start();
     }
 }
