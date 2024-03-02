@@ -37,6 +37,12 @@ public abstract class driveConstant extends LinearOpMode {
     public DcMotor WinchM;
 
 
+
+
+
+    public double servoController;
+
+
     public void initrobot() {
 
 
@@ -92,13 +98,13 @@ public abstract class driveConstant extends LinearOpMode {
         double pos;
 
         if (gamepad2.left_trigger>0){
-            pos = .7;
+            pos = .5;//.7
         }
         else if (gamepad2.right_trigger>0){
             pos = .9;
         }
 
-        else if (armPos>-400){
+        else if (armPos>-600){
             pos = .8;
 
         }
@@ -107,6 +113,29 @@ public abstract class driveConstant extends LinearOpMode {
         }
         return pos;
     }
+
+    public double servoPosAuton(double armPos, double encoderRange){
+
+        double ratio = 1/encoderRange;
+        double pos;
+
+        if (servoController == 1){
+            pos = .5;
+        }
+        else if (servoController == 2){
+            pos = .9;
+        }
+
+        else if (armPos>-600){
+            pos = .8;
+
+        }
+        else {
+            pos = 1-(ratio*(-armPos));
+        }
+        return pos;
+    }
+
 }
 
 

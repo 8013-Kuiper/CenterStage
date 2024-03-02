@@ -1,18 +1,19 @@
+
 package org.firstinspires.ftc.teamcode;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;                //imports from FIRST
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.ElapsedTime;
+        import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+        import com.qualcomm.robotcore.eventloop.opmode.OpMode;                //imports from FIRST
+        import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+        import com.qualcomm.robotcore.hardware.DcMotor;
+        import com.qualcomm.robotcore.hardware.DcMotorSimple;
+        import com.qualcomm.robotcore.hardware.CRServo;
+        import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
+        import com.qualcomm.robotcore.hardware.Servo;
+        import com.qualcomm.robotcore.util.ElapsedTime;
+        import com.acmerobotics.roadrunner.geometry.Pose2d;
 
 
-import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
-import org.opencv.features2d.BRISK;
+        import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
+        import org.opencv.features2d.BRISK;
 
 @TeleOp
 
@@ -23,12 +24,13 @@ public class teleOpWithrr extends driveConstant {
         firstPixel,
         backwards,
         dump,
-        reset
+        reset,
+        up
     }
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-
     @Override
     public void runOpMode() {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
         drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         initrobot();
 
@@ -44,13 +46,16 @@ public class teleOpWithrr extends driveConstant {
             boolean strafeLeft;
             boolean strafeRight;
 
-            double intakeOn;                                   //setting varibles from conteroler imputs
+            boolean winchUp;                                   //setting varibles from conteroler imputs
 
             double armpower;
 
             double plane;
 
+            double Winchpower;
+
             boolean backwards;
+
 
             //driving
             drive.setWeightedDrivePower(
@@ -70,8 +75,9 @@ public class teleOpWithrr extends driveConstant {
 
             armpower = gamepad2.right_stick_y;
 
-            intakeOn = gamepad2.right_trigger;
+            winchUp = gamepad2.y;
 
+            Winchpower = gamepad2.left_stick_y;
 
             plane = gamepad1.right_trigger;
 
@@ -79,7 +85,12 @@ public class teleOpWithrr extends driveConstant {
             backwards = gamepad2.a;
 
 
+
+
             arm.setPower(armpower);
+
+            WinchM.setPower(Winchpower);
+
 
 
 
@@ -92,17 +103,7 @@ public class teleOpWithrr extends driveConstant {
                 Plane.setPosition(.5);
             }
 
-
-                /*if (intakeOn>.1){
-                    leftServo.setPower(1);
-                    rightServo.setPower(1);
-                }
-                if(intakeOn<=0){
-                    leftServo.setPower(0);
-                    rightServo.setPower(0);
-                }*/
-
-            outTake.setPosition(servoPos(arm.getCurrentPosition(),6100));//2200
+            outTake.setPosition(servoPos(arm.getCurrentPosition(),5500));//2200
 
 
             switch (state){
@@ -110,7 +111,7 @@ public class teleOpWithrr extends driveConstant {
                     leftServo.setPower(0);
                     rightServo.setPower(0);
                     winch.setPosition(1);//
-                    if (backwards){
+                    if (backwards&&mRuntime.seconds()>1){
                         mRuntime.reset();
                         state = State.backwards;
                         break;
@@ -118,6 +119,11 @@ public class teleOpWithrr extends driveConstant {
                     else if (gamepad2.x) {
                         mRuntime.reset();
                         state = State.firstPixel;
+                        break;
+                    }
+                    else if (winchUp&&mRuntime.seconds()>1){
+                        mRuntime.reset();
+                        state= State.up;
                         break;
                     }
                     break;
@@ -131,12 +137,12 @@ public class teleOpWithrr extends driveConstant {
                     }
                     else if(gamepad2.x&&mRuntime.seconds()>1) {
                         mRuntime.reset();
-                        winch.setPosition(0);
+                        winch.setPosition(.82);
                         state = State.dump;
                     }
                     break;
                 case dump:
-                    if (mRuntime.seconds()>1.5){
+                    if (mRuntime.seconds()>3.5){
                         state = State.reset;
                         break;
                     }
@@ -145,9 +151,19 @@ public class teleOpWithrr extends driveConstant {
                     leftServo.setPower(1);
                     rightServo.setPower(-1);
                     if (backwards&&mRuntime.seconds()>1){
+                        mRuntime.reset();
                         state = State.reset;
                         break;
                     }
+                    break;
+                case up:
+                    winch.setPosition(.86);
+                    if (winchUp&&mRuntime.seconds()>1){
+                        mRuntime.reset();
+                        state=State.reset;
+                    }
+
+
                     break;
             }
 
@@ -162,6 +178,8 @@ public class teleOpWithrr extends driveConstant {
 
             telemetry.addData("state",state);
 
+            telemetry.addData("servo",servoPos(arm.getCurrentPosition(), 5500));
+
             telemetry.addData("timer", mRuntime.seconds());
             telemetry.update();
 
@@ -172,3 +190,4 @@ public class teleOpWithrr extends driveConstant {
     public ElapsedTime mRuntime = new ElapsedTime();
 
 }
+
