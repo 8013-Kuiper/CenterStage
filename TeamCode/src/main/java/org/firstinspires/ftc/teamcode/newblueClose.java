@@ -61,7 +61,6 @@ public class newblueClose extends driveConstant {
 
 
 
-
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         waitForStart();
 
@@ -88,7 +87,11 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeLeft(3)
                     /*.back(4.8,
@@ -133,8 +136,11 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
-                        telemetry.addLine("crane up more");
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
 
                     .strafeLeft(19)
@@ -185,7 +191,11 @@ public class newblueClose extends driveConstant {
                     //.splineTo(new Vector2d(49, 46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeLeft(9)
                     /*.back(4.8,

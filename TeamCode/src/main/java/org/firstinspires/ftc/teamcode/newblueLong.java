@@ -88,9 +88,11 @@ public class newblueLong extends driveConstant {
                     .lineTo(new Vector2d(50, 46))
 
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
-
-                        telemetry.addLine("crane up");
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeLeft(5)
                     /*.back(8,
@@ -132,9 +134,11 @@ public class newblueLong extends driveConstant {
                     .lineTo(new Vector2d(50,46))//46
 
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
-
-                        telemetry.addLine("crane up");
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeLeft(20)
                     /*.back(8,
@@ -177,9 +181,11 @@ public class newblueLong extends driveConstant {
                     .lineTo(new Vector2d(50,46))//was 50,46
 
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
-
-                        telemetry.addLine("crane up");
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeLeft(8)
                     /*.back(8,

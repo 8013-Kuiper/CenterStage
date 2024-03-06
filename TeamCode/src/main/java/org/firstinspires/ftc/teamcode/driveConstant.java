@@ -126,12 +126,12 @@ public abstract class driveConstant extends LinearOpMode {
         double pos;
 
 
-         if (armPos>-700){//600//auton 700
+         if (armPos>-600){//600//auton 700
             pos = .9;//8
 
         }
         else {
-            pos = 1-(ratio*(-armPos));
+            pos = (1-(ratio*(-armPos)))-.1;
         }
         return pos;
     }

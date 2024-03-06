@@ -60,6 +60,7 @@ public class newredClose extends driveConstant {
             //trajectorys
             TrajectorySequence right = drive.trajectorySequenceBuilder(startPose)
                     .splineTo(new Vector2d(23, -40), Math.toRadians(90))
+                    .back(5)
                     .addTemporalMarker(()->{
                         leftServo.setPower(1);
                         rightServo.setPower(-1);
@@ -74,7 +75,11 @@ public class newredClose extends driveConstant {
                     //.splineTo(new Vector2d(51, -46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,-46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeRight(3)
                     /*.back(4.8,
@@ -101,6 +106,7 @@ public class newredClose extends driveConstant {
                     //.splineTo(new Vector2d(23, -40), Math.toRadians(90))
                     //.strafeTo(new Vector2d(6.7,-40))
                     .splineTo(new Vector2d(6.7,-38),Math.toRadians(160))
+                    .back(5)
                     .addTemporalMarker(()->{
                         leftServo.setPower(1);
                         rightServo.setPower(-1);
@@ -115,7 +121,11 @@ public class newredClose extends driveConstant {
                     //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,-46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeRight(20)
                     /*.back(4,
@@ -157,7 +167,11 @@ public class newredClose extends driveConstant {
                     //.splineTo(new Vector2d(49, -46), Math.toRadians(0))
                     .lineTo(new Vector2d(50,-46))
                     .addTemporalMarker(()->{
-                        moveArm(.5,-5800);
+                        outTake.setPosition(.9);
+                    })
+                    .waitSeconds(1.5)
+                    .addTemporalMarker(()->{
+                        moveArm(.4,-5500);
                     })
                     .strafeRight(9)
                     /*.back(4.8,
@@ -203,17 +217,20 @@ public class newredClose extends driveConstant {
 
 
             if (teamElementPos == 2) {
+                winch.setPosition(1);
 
                 drive.followTrajectorySequence(right);
 
 
             }
             else if (teamElementPos == 1) {
+                winch.setPosition(1);
 
                 drive.followTrajectorySequence(left);
 
             }
             else if (teamElementPos == 3) {
+                winch.setPosition(1);
 
                 drive.followTrajectorySequence(center);
 
