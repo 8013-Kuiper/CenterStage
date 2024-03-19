@@ -37,10 +37,14 @@ public class internationalNight extends driveConstant {
 
         while (opModeIsActive()) {
 
-            outTake.setPosition(.4);
-            sleep(2000);
-            outTake.setPosition(.7);
-
+            if (mRuntime.seconds()<1)
+                outTake.setPosition(.7);
+            if (mRuntime.seconds()>1)
+                outTake.setPosition(.4);
+            if (mRuntime.seconds()>2)
+                mRuntime.reset(); 
+            telemetry.addData("sdf",mRuntime);
+            telemetry.update();
         }
 
     }
