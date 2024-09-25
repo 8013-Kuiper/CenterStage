@@ -72,13 +72,13 @@ public class newblueClose extends driveConstant {
                     .waitSeconds(1)
                     .splineTo(new Vector2d(23, 40), Math.toRadians(-90))
                     .addTemporalMarker(()->{
-                        leftServo.setPower(1);
+                        //leftServo.setPower(1);
                         rightServo.setPower(-1);
                         telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        leftServo.setPower(0);
+                        //leftServo.setPower(0);
                         rightServo.setPower(0);
 
                     })
@@ -122,13 +122,13 @@ public class newblueClose extends driveConstant {
                     .splineTo(new Vector2d(6.7,38),Math.toRadians(-160))
                     .back(5)
                     .addTemporalMarker(()->{
-                        leftServo.setPower(1);
+                        //leftServo.setPower(1);
                         rightServo.setPower(-1);
                         telemetry.addLine("deliver");
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        leftServo.setPower(0);
+                       // leftServo.setPower(0);
                         rightServo.setPower(0);
                     })
                     //.splineToSplineHeading(new Pose2d(46, 46, Math.toRadians(-180)), Math.toRadians(0))
@@ -175,13 +175,13 @@ public class newblueClose extends driveConstant {
                     //.strafeTo(new Vector2d(10,35))
                     .splineTo(new Vector2d(23,27),Math.toRadians(-179))//-160
                     .addTemporalMarker(()->{
-                        leftServo.setPower(1);
+                        //leftServo.setPower(1);
                         rightServo.setPower(-1);
                         telemetry.addLine("deliver center");
                     })
                     .waitSeconds(1)
                     .addTemporalMarker(()->{
-                        leftServo.setPower(0);
+                        //leftServo.setPower(0);
                         rightServo.setPower(0);
 
                         telemetry.addLine("crane up");

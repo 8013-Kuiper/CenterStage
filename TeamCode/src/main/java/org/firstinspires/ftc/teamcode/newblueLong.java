@@ -66,7 +66,7 @@ public class newblueLong extends driveConstant {
                     .splineTo(new Vector2d(-29, 37.5), Math.toRadians(-20))
                     .back(5)
                     .addTemporalMarker(()->{
-                        leftServo.setPower(1);
+                        //leftServo.setPower(1);
                         rightServo.setPower(-1);
                     })
                     .waitSeconds(1)

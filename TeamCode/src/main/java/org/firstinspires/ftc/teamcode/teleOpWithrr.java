@@ -112,7 +112,7 @@ public class teleOpWithrr extends driveConstant {
 
             switch (state){
                 case reset:
-                    leftServo.setPower(0);
+                    //leftServo.setPower(0);
                     rightServo.setPower(0);
                     winch.setPosition(1);//
                     if (backwards&&mRuntime.seconds()>1){
@@ -132,7 +132,7 @@ public class teleOpWithrr extends driveConstant {
                     }
                     break;
                 case firstPixel:
-                    leftServo.setPower(-1);
+                    //leftServo.setPower(-1);
                     rightServo.setPower(1);
                     if (backwards){
                         mRuntime.reset();
@@ -152,7 +152,7 @@ public class teleOpWithrr extends driveConstant {
                     }
                     break;
                 case backwards:
-                    leftServo.setPower(1);
+                    //leftServo.setPower(1);
                     rightServo.setPower(-1);
                     if (backwards&&mRuntime.seconds()>1){
                         mRuntime.reset();
