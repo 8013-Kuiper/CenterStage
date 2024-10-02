@@ -20,7 +20,7 @@ public class LocalizationTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-
+        double distance =0;
         double speed = 0;
         double curentspeed =0;
         ElapsedTime timer = new ElapsedTime();
@@ -32,7 +32,7 @@ public class LocalizationTest extends LinearOpMode {
         while (!isStopRequested()) {
             drive.setWeightedDrivePower(
                     new Pose2d(
-                            speed*.5,
+                            speed*.3,
                             gamepad1.left_stick_x,
                             gamepad1.right_stick_x
                     )
@@ -43,10 +43,18 @@ public class LocalizationTest extends LinearOpMode {
 if (gamepad1.y) {
     //timer.reset();
     curentspeed = timer.seconds();
-    speed = 1;
+    distance =0;
+    speed = -1;
 }
 if(!gamepad1.y)
+    if (curentspeed+2 > timer.seconds() && timer.seconds() > curentspeed+1){
+        drive.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        telemetry.addLine("start");
+    }
     if(timer.seconds()> curentspeed+2){
+        distance = (drive.leftFront.getCurrentPosition()/2000)*150.79;
+        telemetry.addData("distance (mm)", distance);
+        //telemetry.update();
         speed = 0;
     }
 
@@ -55,6 +63,7 @@ if(!gamepad1.y)
             //telemetry.addData("y", poseEstimate.getY());
             telemetry.addData("heading", poseEstimate.getHeading());
             telemetry.addData("distance", drive.leftFront.getCurrentPosition());
+            telemetry.addData("timer", timer.seconds());
             telemetry.update();
         }
     }
