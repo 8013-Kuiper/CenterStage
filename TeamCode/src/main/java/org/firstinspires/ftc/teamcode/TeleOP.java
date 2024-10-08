@@ -23,7 +23,9 @@ public class TeleOP extends driveConstant {
     public void runOpMode() {
         //initrobot();
         initdrivetrain();
-
+        double speed=0;
+        double curentspeed=0;
+        double distance=0;
       waitForStart();
 
         while (opModeIsActive()) {
@@ -32,6 +34,8 @@ public class TeleOP extends driveConstant {
             double throttle;
             boolean strafeLeft;
             boolean strafeRight;
+
+
 
 
 
@@ -63,15 +67,40 @@ public class TeleOP extends driveConstant {
             }
 
 
-            frontLeft.setPower(throttle);
-            frontRight.setPower(throttle * .97);
-            backLeft.setPower(throttle);
-            backRight.setPower(throttle * .97);
+           // frontLeft.setPower(throttle);
+            //frontRight.setPower(throttle * .97);
+           // backLeft.setPower(throttle);
+           // backRight.setPower(throttle * .97);
 
-            frontLeft.setPower(-turn);
-            frontRight.setPower(turn);
-            backLeft.setPower(-turn);
-            backRight.setPower(turn);
+            //frontLeft.setPower(-turn);
+           // frontRight.setPower(turn);
+          //  backLeft.setPower(-turn);
+          //  backRight.setPower(turn);
+
+            frontLeft.setPower(speed);
+            frontRight.setPower(speed * .97);
+            backLeft.setPower(speed);
+            backRight.setPower(speed * .97);
+
+
+            if(gamepad1.y){
+                curentspeed=mRuntime.seconds();
+                distance=0;
+                speed=-1;
+            }
+
+            if (!gamepad1.y){
+                if (curentspeed+2 > mRuntime.seconds() && mRuntime.seconds() > curentspeed+1){
+                    frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                    telemetry.addLine("start");
+                }
+                if (mRuntime.seconds() > curentspeed+2){
+                    distance= ((frontLeft.getCurrentPosition()/2000)*150.79);
+                    telemetry.addData("distance mm", distance);
+                    speed = 0;
+                }
+            }
 
 
 
