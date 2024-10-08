@@ -18,22 +18,13 @@ import org.opencv.features2d.BRISK;
 
 public class TeleOP extends driveConstant {
 
-    enum State{
-        firstPixel,
-        backwards,
-        dump,
-        reset,
-        up
-    }
+
     @Override
     public void runOpMode() {
-        initrobot();
+        //initrobot();
         initdrivetrain();
 
-        State state = State.reset;
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        waitForStart();
+      waitForStart();
 
         while (opModeIsActive()) {
 
@@ -42,15 +33,7 @@ public class TeleOP extends driveConstant {
             boolean strafeLeft;
             boolean strafeRight;
 
-            boolean winchUp;                                   //setting varibles from conteroler imputs
 
-            double armpower;
-
-            double plane;
-
-            double Winchpower;
-
-            boolean backwards;
 
 
 
@@ -62,16 +45,6 @@ public class TeleOP extends driveConstant {
             strafeLeft = gamepad1.left_bumper;
             strafeRight = gamepad1.right_bumper;
 
-            armpower = gamepad2.right_stick_y;
-
-            winchUp = gamepad2.y;
-
-            Winchpower = gamepad2.left_stick_y;
-
-            plane = gamepad1.right_trigger;
-
-
-            backwards = gamepad2.a;
 
 
 
@@ -101,85 +74,13 @@ public class TeleOP extends driveConstant {
             backRight.setPower(turn);
 
 
-            arm.setPower(armpower);
-
-            WinchM.setPower(Winchpower);
 
 
 
 
 
-            if (plane > 0) {
-                Plane.setPosition(.9);
-            }
-
-            if (plane <= 0) {
-                Plane.setPosition(.5);
-            }
-
-            outTake.setPosition(servoPos(arm.getCurrentPosition(),5500));//2200
 
 
-            switch (state){
-                case reset:
-                    leftServo.setPower(0);
-                    rightServo.setPower(0);
-                    winch.setPosition(1);//
-                    if (backwards&&mRuntime.seconds()>1){
-                        mRuntime.reset();
-                        state = State.backwards;
-                        break;
-                    }
-                    else if (gamepad2.x) {
-                        mRuntime.reset();
-                        state = State.firstPixel;
-                        break;
-                    }
-                    else if (winchUp&&mRuntime.seconds()>1){
-                        mRuntime.reset();
-                        state= State.up;
-                        break;
-                    }
-                    break;
-                case firstPixel:
-                    leftServo.setPower(-1);
-                    rightServo.setPower(1);
-                    if (backwards){
-                        mRuntime.reset();
-                        state = State.backwards;
-                        break;
-                    }
-                    else if(gamepad2.x&&mRuntime.seconds()>1) {
-                        mRuntime.reset();
-                        winch.setPosition(.82);
-                        state = State.dump;
-                    }
-                    break;
-                case dump:
-                    if (mRuntime.seconds()>3.5){
-                        state = State.reset;
-                        break;
-                    }
-                    break;
-                case backwards:
-                    leftServo.setPower(1);
-                    rightServo.setPower(-1);
-                    if (backwards&&mRuntime.seconds()>1){
-                        mRuntime.reset();
-                        state = State.reset;
-                        break;
-                    }
-                    break;
-                case up:
-                    winch.setPosition(.86);
-                    if (winchUp&&mRuntime.seconds()>1){
-                        mRuntime.reset();
-                        state=State.reset;
-                    }
-
-
-                    break;
-            }
 
 
 
@@ -188,11 +89,7 @@ public class TeleOP extends driveConstant {
             telemetry.addData("bL", backLeft.getCurrentPosition());
             telemetry.addData("bR", backRight.getCurrentPosition());
 
-            telemetry.addData("arm pos", arm.getCurrentPosition());
 
-            telemetry.addData("state",state);
-
-            telemetry.addData("servo",servoPos(arm.getCurrentPosition(), 5500));
 
             telemetry.addData("timer", mRuntime.seconds());
             telemetry.update();
