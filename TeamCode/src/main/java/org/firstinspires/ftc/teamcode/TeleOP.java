@@ -86,17 +86,17 @@ public class TeleOP extends driveConstant {
             if(gamepad1.y){
                 curentspeed=mRuntime.seconds();
                 distance=0;
-                speed=-1;
+                speed=-.1;
             }
 
             if (!gamepad1.y){
-                if (curentspeed+2 > mRuntime.seconds() && mRuntime.seconds() > curentspeed+1){
+                if (curentspeed+1.1 > mRuntime.seconds() && mRuntime.seconds() > curentspeed+1){
                     frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
                     frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                     telemetry.addLine("start");
                 }
                 if (mRuntime.seconds() > curentspeed+2){
-                    distance= ((frontLeft.getCurrentPosition()/2000)*150.79);
+
                     telemetry.addData("distance mm", distance);
                     speed = 0;
                 }
@@ -104,7 +104,7 @@ public class TeleOP extends driveConstant {
 
 
 
-
+            //distance= ((frontLeft.getCurrentPosition()/2000)*150.79);
 
 
 
@@ -114,9 +114,9 @@ public class TeleOP extends driveConstant {
 
 
             telemetry.addData("fL", frontLeft.getCurrentPosition());
-            telemetry.addData("fR", frontRight.getCurrentPosition());
-            telemetry.addData("bL", backLeft.getCurrentPosition());
-            telemetry.addData("bR", backRight.getCurrentPosition());
+           // telemetry.addData("fR", frontRight.getCurrentPosition());
+          //  telemetry.addData("bL", backLeft.getCurrentPosition());
+          //  telemetry.addData("bR", backRight.getCurrentPosition());
 
 
 
