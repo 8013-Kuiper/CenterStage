@@ -19,7 +19,7 @@ public class v2 extends driveConstant {
     };
     public void runOpMode() {
         initdrivetrain();
-        State state = State.end;
+        State state = State.rest;
         ElapsedTime timer = new ElapsedTime();
         double speed = 0;
         double curentspeed = 0;
