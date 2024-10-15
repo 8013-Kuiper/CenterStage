@@ -9,6 +9,7 @@ import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+@TeleOp
 public class v2 extends driveConstant {
 
     enum State{
@@ -41,15 +42,16 @@ public class v2 extends driveConstant {
                     state = State.accel;
                 case accel:
                     if(timer.seconds()>1){
-                        backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-                        backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                        frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                        frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
                         state = State.end;
                     }
                 case end:
                     if(timer.seconds()>2){
                         speed=0;
-                        distance=((backLeft.getCurrentPosition()/2000)*150.79);
-                        telemetry.addData("distance mm", distance);
+                        distance=((frontLeft.getCurrentPosition()/2000)*150.79);
+                        //telemetry.addData("distance mm", distance);
+                        telemetry.update();
                         state = State.rest;
                     }
                 case rest:
@@ -58,6 +60,10 @@ public class v2 extends driveConstant {
             }
 
 
+            telemetry.addData("state:",state);
+            telemetry.addData("timer", timer);
+            telemetry.addData("distance(mm)",distance);
+            telemetry.addData("rawdis", frontLeft.getCurrentPosition());
             telemetry.update();
         }
 
